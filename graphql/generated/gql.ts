@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "query ExampleQuery($where: BookWhereUniqueInput!) {\n  getAllBooks {\n    id\n    title\n  }\n}": types.ExampleQueryDocument,
+    "query ExapleQuery {\n  getAllBooks {\n    id\n  }\n}": types.ExapleQueryDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query ExampleQuery($where: BookWhereUniqueInput!) {\n  getAllBooks {\n    id\n    title\n  }\n}"): (typeof documents)["query ExampleQuery($where: BookWhereUniqueInput!) {\n  getAllBooks {\n    id\n    title\n  }\n}"];
+export function graphql(source: "query ExapleQuery {\n  getAllBooks {\n    id\n  }\n}"): (typeof documents)["query ExapleQuery {\n  getAllBooks {\n    id\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

@@ -7,8 +7,10 @@ interface ButtonProps{
 };
 
 export const Button:React.FC<ButtonProps> = ({col, label})=> {
+    console.log(css[col]);
+    console.log(css);
     return (
-    <button className={`${col}`}>
+    <button className={`${css[col]}`}>
         {label}
     </button>);
 };

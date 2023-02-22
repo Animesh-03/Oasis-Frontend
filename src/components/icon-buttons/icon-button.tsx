@@ -10,7 +10,7 @@ interface IconButtonProps{
 export const IconButton:React.FC<IconButtonProps> = ({ICO,href})=> {
     return (
         <a href={`${href}`}>
-    <button className = {'icon-btn'}>
+    <button className = {`${css["icon-btn"]}`}>
         <ICO/>
     </button></a>);
 };

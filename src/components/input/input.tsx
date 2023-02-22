@@ -7,5 +7,5 @@ interface InputProps{
 
 export const Input:React.FC<InputProps> = ({placeholder})=> {
     return (
-    <input className={`input`} placeholder={placeholder}/>);
+    <input className={`${css["input"]}`} placeholder={placeholder}/>);
 };

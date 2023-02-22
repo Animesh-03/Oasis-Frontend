@@ -1,5 +1,5 @@
 import { Button } from '@/components/button/button'
-import { useExampleQueryQuery } from '@/graphql/generated/graphql'
+// import { useExampleQueryQuery } from '@/graphql/generated/graphql'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
