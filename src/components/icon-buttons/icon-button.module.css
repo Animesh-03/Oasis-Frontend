@@ -1,0 +1,11 @@
+.icon-btn
+{
+    padding: 10px;
+    border-radius: 100%;
+    border: none;
+}
+
+.icon-btn:hover
+{
+    filter:brightness(90%);
+}

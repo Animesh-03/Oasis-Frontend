@@ -1,0 +1,21 @@
+.red,.blue
+{
+    padding: 10px;
+    border-radius: 30px;
+    color: white;
+    box-shadow: 10px;
+    border:none;
+}
+
+.red:hover,.blue:hover{
+    filter:brightness(90%);
+    box-shadow: 20px;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
