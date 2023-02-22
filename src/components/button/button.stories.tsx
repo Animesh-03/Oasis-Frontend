@@ -18,5 +18,5 @@ export const Secondary = Template.bind({});
 
 Secondary.args ={
     col:"blue",
-    label:"Hello Worlddd!"
+    label:"Hello World Twice!"
 };

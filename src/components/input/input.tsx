@@ -1,11 +1,11 @@
 import React from 'react'
 import css from './input.module.css'
 
-interface InputProps{
-    placeholder:string
+interface InputProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLInputElement>,HTMLInputElement>{
+    
 };
 
-export const Input:React.FC<InputProps> = ({placeholder})=> {
+export const Input:React.FC<InputProps> = ({placeholder,...rest})=> {
     return (
-    <input className={`${css["input"]}`} placeholder={placeholder}/>);
+    <input className={`${css["input"]}`} placeholder={placeholder} {...rest}/>);
 };
