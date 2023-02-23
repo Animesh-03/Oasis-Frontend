@@ -8,7 +8,7 @@ export default function Test(){
     return (
         <div>
             <Input placeholder='test'></Input>
-            <IconButton ICO={AiOutlineGoogle} />
+            <IconButton icon={AiOutlineGoogle} />
             <Button label = {"dummy"} col="blue"/>
         </div>
     );

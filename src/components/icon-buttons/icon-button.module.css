@@ -1,11 +1,17 @@
-.icon-btn
+.root
 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 100%;
     border: none;
+    margin: 5px;
+
+    @apply active:scale-90 hover:brightness-90
 }
 
-.icon-btn:hover
-{
-    filter:brightness(90%);
+.primary {
+    background-color: #DDDDDD;
+}
+
+.primary svg {
+    color: black;
 }

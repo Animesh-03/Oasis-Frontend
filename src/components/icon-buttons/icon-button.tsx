@@ -1,16 +1,25 @@
 import React from 'react'
 import css from './icon-button.module.css'
 import { IconType } from 'react-icons';
+import clsx from 'clsx';
+
+const variants = {
+    primary: css.primary,
+}
 
 interface IconButtonProps{
-    ICO:IconType,
-    href?:string
+    Icon:IconType,
+    size: number
+    variant?: string,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 };
 
-export const IconButton:React.FC<IconButtonProps> = ({ICO,href})=> {
+const IconButton:React.FC<IconButtonProps> = ({Icon, size, onClick, variant = 'primary'})=> {
     return (
-        <a href={`${href}`}>
-    <button className = {`${css["icon-btn"]}`}>
-        <ICO/>
-    </button></a>);
+    <button className = {clsx([css.root, variants[variant]])} onClick={onClick} >
+        <Icon size={size}/>
+    </button>
+    );
 };
+
+export default IconButton;

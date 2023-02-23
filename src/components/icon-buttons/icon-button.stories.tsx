@@ -1,15 +1,18 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { IconButton } from "./icon-button";
+import IconButton from "./icon-button";
 import {AiOutlineGoogle} from 'react-icons/ai'
 
 
-export default IconButton as ComponentMeta<typeof IconButton>;
+export default {
+    title: "Components/Icon Button",
+    component: IconButton
+} as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />;
 
-export const Primary = Template.bind({});
+export const GoogleButton = Template.bind({});
 
-Primary.args ={
-    ICO:AiOutlineGoogle,
-    href:"/login"
+GoogleButton.args ={
+    Icon: AiOutlineGoogle,
+    size: 20,
 };

@@ -1,19 +1,6 @@
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
 .login-root
 {
     
-}
-
-.login-root h1 {
-	font-weight: bold;
-	margin: 0;
-    font-size: 40px;
-}
-
-.login-root h2 {
-	text-align: center;
 }
 
 .login-root p {
@@ -33,32 +20,6 @@
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
-}
-
-.login-root button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-}
-
-.login-root button:active {
-	transform: scale(0.95);
-}
-
-.login-root button:focus {
-	outline: none;
-}
-
-.login-root button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
 }
 
 .login-root form {

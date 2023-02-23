@@ -1,21 +1,23 @@
-.red,.blue
-{
-    padding: 10px;
-    border-radius: 30px;
-    color: white;
-    box-shadow: 10px;
-    border:none;
+.root {
+    @apply active:scale-90 focus:border-none
 }
 
-.red:hover,.blue:hover{
-    filter:brightness(90%);
-    box-shadow: 20px;
+.primary{
+    border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
 
-.red{
-    background-color: red;
-}
+.outline {
+    @apply focus:border-solid;
 
-.blue{
-    background-color: blue;
+	border: 1px solid white;
+	background-color: transparent;
 }
