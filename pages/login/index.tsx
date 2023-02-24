@@ -5,14 +5,17 @@ import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { Input } from "@/components/input/input";
 import clsx from "clsx";
 import Button from "@/components/button/button";
-import { useRegisterUserMutation } from "@/graphql/generated/graphql";
+import { useRegisterUserMutation } from "@/graphql/generated/";
+import withApollo from '@/apollo/client';
 
-export default function LoginPage() {
+function LoginPage() {
   const [signUpPageActive, setSignupPageActive] =
     React.useState<boolean>(false);
   const [signUpUser, setSignUpUser] = React.useState("");
   const [signUpEmail, setSignUpEmail] = React.useState("");
   const [signUpPassword, setSignUpPassword] = React.useState("");
+
+  const [loginUser] = useRegisterUserMutation();
 
   return (
     <div className={css["login-root"]}>
@@ -42,21 +45,18 @@ export default function LoginPage() {
               or use your email for registration
             </span>
             <Input
-              className={"text"}
               placeholder="Name"
               onChange={(e) => {
                 setSignUpUser(e.currentTarget.value);
               }}
             />
             <Input
-              className={"email"}
               placeholder="Email"
               onChange={(e) => {
                 setSignUpEmail(e.currentTarget.value);
               }}
             />
             <Input
-              className={"password"}
               placeholder="Password"
               type={"password"}
               onChange={(e) => {
@@ -66,8 +66,8 @@ export default function LoginPage() {
             <Button
               label="Sign Up"
               onClick={() => {
-                useRegisterUserMutation({
-					          variables:{registerDetails:{username:signUpUser,email:signUpEmail,password:signUpPassword}}
+                loginUser({
+                  variables: { registerDetails: { username: signUpUser, email: signUpEmail, password: signUpPassword } }
                 });
               }}
             ></Button>
@@ -91,9 +91,8 @@ export default function LoginPage() {
               <IconButton size={16} Icon={FaLinkedinIn} />
             </div>
             <span className="text-black">or use your account</span>
-            <Input className={"email"} placeholder="Email" />
+            <Input placeholder="Email" />
             <Input
-              className={"password"}
               placeholder="Password"
               type={"password"}
             />
@@ -133,3 +132,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default withApollo({ssr: true})(LoginPage);

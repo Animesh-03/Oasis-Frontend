@@ -1,0 +1,724 @@
+type AdvertisementType {
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String!
+  isbn: String!
+  price: Int!
+  seller: UserType!
+  sellerID: String!
+  time: String!
+}
+
+type AdvertisementTypeAvgAggregate {
+  price: Float
+}
+
+input AdvertisementTypeAvgOrderByAggregateInput {
+  price: SortOrder
+}
+
+type AdvertisementTypeCountAggregate {
+  _all: Int!
+  authorName: Int!
+  bookName: Int!
+  desc: Int!
+  id: Int!
+  isbn: Int!
+  price: Int!
+  sellerID: Int!
+  time: Int!
+}
+
+input AdvertisementTypeCountOrderByAggregateInput {
+  authorName: SortOrder
+  bookName: SortOrder
+  desc: SortOrder
+  id: SortOrder
+  isbn: SortOrder
+  price: SortOrder
+  sellerID: SortOrder
+  time: SortOrder
+}
+
+input AdvertisementTypeCreateInput {
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String
+  isbn: String!
+  price: Int!
+  seller: UserTypeCreateNestedOneWithoutAdsInput!
+  time: String!
+}
+
+input AdvertisementTypeCreateManyInput {
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String
+  isbn: String!
+  price: Int!
+  sellerID: String!
+  time: String!
+}
+
+input AdvertisementTypeCreateManySellerInput {
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String
+  isbn: String!
+  price: Int!
+  time: String!
+}
+
+input AdvertisementTypeCreateManySellerInputEnvelope {
+  data: [AdvertisementTypeCreateManySellerInput!]!
+}
+
+input AdvertisementTypeCreateNestedManyWithoutSellerInput {
+  connect: [AdvertisementTypeWhereUniqueInput!]
+  connectOrCreate: [AdvertisementTypeCreateOrConnectWithoutSellerInput!]
+  create: [AdvertisementTypeCreateWithoutSellerInput!]
+  createMany: AdvertisementTypeCreateManySellerInputEnvelope
+}
+
+input AdvertisementTypeCreateOrConnectWithoutSellerInput {
+  create: AdvertisementTypeCreateWithoutSellerInput!
+  where: AdvertisementTypeWhereUniqueInput!
+}
+
+input AdvertisementTypeCreateWithoutSellerInput {
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String
+  isbn: String!
+  price: Int!
+  time: String!
+}
+
+type AdvertisementTypeGroupBy {
+  _avg: AdvertisementTypeAvgAggregate
+  _count: AdvertisementTypeCountAggregate
+  _max: AdvertisementTypeMaxAggregate
+  _min: AdvertisementTypeMinAggregate
+  _sum: AdvertisementTypeSumAggregate
+  authorName: String!
+  bookName: String!
+  desc: String!
+  id: String!
+  isbn: String!
+  price: Int!
+  sellerID: String!
+  time: String!
+}
+
+input AdvertisementTypeListRelationFilter {
+  every: AdvertisementTypeWhereInput
+  none: AdvertisementTypeWhereInput
+  some: AdvertisementTypeWhereInput
+}
+
+type AdvertisementTypeMaxAggregate {
+  authorName: String
+  bookName: String
+  desc: String
+  id: String
+  isbn: String
+  price: Int
+  sellerID: String
+  time: String
+}
+
+input AdvertisementTypeMaxOrderByAggregateInput {
+  authorName: SortOrder
+  bookName: SortOrder
+  desc: SortOrder
+  id: SortOrder
+  isbn: SortOrder
+  price: SortOrder
+  sellerID: SortOrder
+  time: SortOrder
+}
+
+type AdvertisementTypeMinAggregate {
+  authorName: String
+  bookName: String
+  desc: String
+  id: String
+  isbn: String
+  price: Int
+  sellerID: String
+  time: String
+}
+
+input AdvertisementTypeMinOrderByAggregateInput {
+  authorName: SortOrder
+  bookName: SortOrder
+  desc: SortOrder
+  id: SortOrder
+  isbn: SortOrder
+  price: SortOrder
+  sellerID: SortOrder
+  time: SortOrder
+}
+
+input AdvertisementTypeOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AdvertisementTypeOrderByWithAggregationInput {
+  _avg: AdvertisementTypeAvgOrderByAggregateInput
+  _count: AdvertisementTypeCountOrderByAggregateInput
+  _max: AdvertisementTypeMaxOrderByAggregateInput
+  _min: AdvertisementTypeMinOrderByAggregateInput
+  _sum: AdvertisementTypeSumOrderByAggregateInput
+  authorName: SortOrder
+  bookName: SortOrder
+  desc: SortOrder
+  id: SortOrder
+  isbn: SortOrder
+  price: SortOrder
+  sellerID: SortOrder
+  time: SortOrder
+}
+
+input AdvertisementTypeOrderByWithRelationInput {
+  authorName: SortOrder
+  bookName: SortOrder
+  desc: SortOrder
+  id: SortOrder
+  isbn: SortOrder
+  price: SortOrder
+  seller: UserTypeOrderByWithRelationInput
+  sellerID: SortOrder
+  time: SortOrder
+}
+
+enum AdvertisementTypeScalarFieldEnum {
+  authorName
+  bookName
+  desc
+  id
+  isbn
+  price
+  sellerID
+  time
+}
+
+input AdvertisementTypeScalarWhereInput {
+  AND: [AdvertisementTypeScalarWhereInput!]
+  NOT: [AdvertisementTypeScalarWhereInput!]
+  OR: [AdvertisementTypeScalarWhereInput!]
+  authorName: StringFilter
+  bookName: StringFilter
+  desc: StringFilter
+  id: StringFilter
+  isbn: StringFilter
+  price: IntFilter
+  sellerID: StringFilter
+  time: StringFilter
+}
+
+input AdvertisementTypeScalarWhereWithAggregatesInput {
+  AND: [AdvertisementTypeScalarWhereWithAggregatesInput!]
+  NOT: [AdvertisementTypeScalarWhereWithAggregatesInput!]
+  OR: [AdvertisementTypeScalarWhereWithAggregatesInput!]
+  authorName: StringWithAggregatesFilter
+  bookName: StringWithAggregatesFilter
+  desc: StringWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  isbn: StringWithAggregatesFilter
+  price: IntWithAggregatesFilter
+  sellerID: StringWithAggregatesFilter
+  time: StringWithAggregatesFilter
+}
+
+type AdvertisementTypeSumAggregate {
+  price: Int
+}
+
+input AdvertisementTypeSumOrderByAggregateInput {
+  price: SortOrder
+}
+
+input AdvertisementTypeUpdateInput {
+  authorName: StringFieldUpdateOperationsInput
+  bookName: StringFieldUpdateOperationsInput
+  desc: StringFieldUpdateOperationsInput
+  isbn: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
+  seller: UserTypeUpdateOneRequiredWithoutAdsNestedInput
+  time: StringFieldUpdateOperationsInput
+}
+
+input AdvertisementTypeUpdateManyMutationInput {
+  authorName: StringFieldUpdateOperationsInput
+  bookName: StringFieldUpdateOperationsInput
+  desc: StringFieldUpdateOperationsInput
+  isbn: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+}
+
+input AdvertisementTypeUpdateManyWithWhereWithoutSellerInput {
+  data: AdvertisementTypeUpdateManyMutationInput!
+  where: AdvertisementTypeScalarWhereInput!
+}
+
+input AdvertisementTypeUpdateManyWithoutSellerNestedInput {
+  connect: [AdvertisementTypeWhereUniqueInput!]
+  connectOrCreate: [AdvertisementTypeCreateOrConnectWithoutSellerInput!]
+  create: [AdvertisementTypeCreateWithoutSellerInput!]
+  createMany: AdvertisementTypeCreateManySellerInputEnvelope
+  delete: [AdvertisementTypeWhereUniqueInput!]
+  deleteMany: [AdvertisementTypeScalarWhereInput!]
+  disconnect: [AdvertisementTypeWhereUniqueInput!]
+  set: [AdvertisementTypeWhereUniqueInput!]
+  update: [AdvertisementTypeUpdateWithWhereUniqueWithoutSellerInput!]
+  updateMany: [AdvertisementTypeUpdateManyWithWhereWithoutSellerInput!]
+  upsert: [AdvertisementTypeUpsertWithWhereUniqueWithoutSellerInput!]
+}
+
+input AdvertisementTypeUpdateWithWhereUniqueWithoutSellerInput {
+  data: AdvertisementTypeUpdateWithoutSellerInput!
+  where: AdvertisementTypeWhereUniqueInput!
+}
+
+input AdvertisementTypeUpdateWithoutSellerInput {
+  authorName: StringFieldUpdateOperationsInput
+  bookName: StringFieldUpdateOperationsInput
+  desc: StringFieldUpdateOperationsInput
+  isbn: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
+  time: StringFieldUpdateOperationsInput
+}
+
+input AdvertisementTypeUpsertWithWhereUniqueWithoutSellerInput {
+  create: AdvertisementTypeCreateWithoutSellerInput!
+  update: AdvertisementTypeUpdateWithoutSellerInput!
+  where: AdvertisementTypeWhereUniqueInput!
+}
+
+input AdvertisementTypeWhereInput {
+  AND: [AdvertisementTypeWhereInput!]
+  NOT: [AdvertisementTypeWhereInput!]
+  OR: [AdvertisementTypeWhereInput!]
+  authorName: StringFilter
+  bookName: StringFilter
+  desc: StringFilter
+  id: StringFilter
+  isbn: StringFilter
+  price: IntFilter
+  seller: UserTypeRelationFilter
+  sellerID: StringFilter
+  time: StringFilter
+}
+
+input AdvertisementTypeWhereUniqueInput {
+  id: String
+}
+
+type AffectedRowsOutput {
+  count: Int!
+}
+
+type AggregateAdvertisementType {
+  _avg: AdvertisementTypeAvgAggregate
+  _count: AdvertisementTypeCountAggregate
+  _max: AdvertisementTypeMaxAggregate
+  _min: AdvertisementTypeMinAggregate
+  _sum: AdvertisementTypeSumAggregate
+}
+
+type AggregateUserType {
+  _count: UserTypeCountAggregate
+  _max: UserTypeMaxAggregate
+  _min: UserTypeMinAggregate
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+type Mutation {
+  createManyAdvertisementType(data: [AdvertisementTypeCreateManyInput!]!): AffectedRowsOutput!
+  createManyUserType(data: [UserTypeCreateManyInput!]!): AffectedRowsOutput!
+  createOneAdvertisementType(data: AdvertisementTypeCreateInput!): AdvertisementType!
+  createOneUserType(data: UserTypeCreateInput!): UserType!
+  deleteManyAdvertisementType(where: AdvertisementTypeWhereInput): AffectedRowsOutput!
+  deleteManyUserType(where: UserTypeWhereInput): AffectedRowsOutput!
+  deleteOneAdvertisementType(where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
+  deleteOneUserType(where: UserTypeWhereUniqueInput!): UserType
+  loginUser(loginDetails: UserLoginType!): UserType
+  registerUser(registerDetails: UserRegisterType!): Boolean!
+  updateManyAdvertisementType(data: AdvertisementTypeUpdateManyMutationInput!, where: AdvertisementTypeWhereInput): AffectedRowsOutput!
+  updateManyUserType(data: UserTypeUpdateManyMutationInput!, where: UserTypeWhereInput): AffectedRowsOutput!
+  updateOneAdvertisementType(data: AdvertisementTypeUpdateInput!, where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
+  updateOneUserType(data: UserTypeUpdateInput!, where: UserTypeWhereUniqueInput!): UserType
+  upsertOneAdvertisementType(create: AdvertisementTypeCreateInput!, update: AdvertisementTypeUpdateInput!, where: AdvertisementTypeWhereUniqueInput!): AdvertisementType!
+  upsertOneUserType(create: UserTypeCreateInput!, update: UserTypeUpdateInput!, where: UserTypeWhereUniqueInput!): UserType!
+}
+
+input NestedFloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float!]
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type Query {
+  advertisementType(where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
+  advertisementTypes(cursor: AdvertisementTypeWhereUniqueInput, distinct: [AdvertisementTypeScalarFieldEnum!], orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): [AdvertisementType!]!
+  aggregateAdvertisementType(cursor: AdvertisementTypeWhereUniqueInput, orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): AggregateAdvertisementType!
+  aggregateUserType(cursor: UserTypeWhereUniqueInput, orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): AggregateUserType!
+  findFirstAdvertisementType(cursor: AdvertisementTypeWhereUniqueInput, distinct: [AdvertisementTypeScalarFieldEnum!], orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): AdvertisementType
+  findFirstAdvertisementTypeOrThrow(cursor: AdvertisementTypeWhereUniqueInput, distinct: [AdvertisementTypeScalarFieldEnum!], orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): AdvertisementType
+  findFirstUserType(cursor: UserTypeWhereUniqueInput, distinct: [UserTypeScalarFieldEnum!], orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): UserType
+  findFirstUserTypeOrThrow(cursor: UserTypeWhereUniqueInput, distinct: [UserTypeScalarFieldEnum!], orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): UserType
+  getAdvertisementType(where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
+  getUserType(where: UserTypeWhereUniqueInput!): UserType
+  groupByAdvertisementType(by: [AdvertisementTypeScalarFieldEnum!]!, having: AdvertisementTypeScalarWhereWithAggregatesInput, orderBy: [AdvertisementTypeOrderByWithAggregationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): [AdvertisementTypeGroupBy!]!
+  groupByUserType(by: [UserTypeScalarFieldEnum!]!, having: UserTypeScalarWhereWithAggregatesInput, orderBy: [UserTypeOrderByWithAggregationInput!], skip: Int, take: Int, where: UserTypeWhereInput): [UserTypeGroupBy!]!
+  userType(where: UserTypeWhereUniqueInput!): UserType
+  userTypes(cursor: UserTypeWhereUniqueInput, distinct: [UserTypeScalarFieldEnum!], orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): [UserType!]!
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input UserLoginType {
+  password: String!
+  username: String!
+}
+
+input UserRegisterType {
+  email: String!
+  password: String!
+  username: String!
+}
+
+type UserType {
+  _count: UserTypeCount
+  ads(cursor: AdvertisementTypeWhereUniqueInput, distinct: [AdvertisementTypeScalarFieldEnum!], orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): [AdvertisementType!]!
+  email: String!
+  id: String!
+  password: String!
+  username: String!
+}
+
+type UserTypeCount {
+  ads: Int!
+}
+
+type UserTypeCountAggregate {
+  _all: Int!
+  email: Int!
+  id: Int!
+  password: Int!
+  username: Int!
+}
+
+input UserTypeCountOrderByAggregateInput {
+  email: SortOrder
+  id: SortOrder
+  password: SortOrder
+  username: SortOrder
+}
+
+input UserTypeCreateInput {
+  ads: AdvertisementTypeCreateNestedManyWithoutSellerInput
+  email: String!
+  id: String
+  password: String!
+  username: String!
+}
+
+input UserTypeCreateManyInput {
+  email: String!
+  id: String
+  password: String!
+  username: String!
+}
+
+input UserTypeCreateNestedOneWithoutAdsInput {
+  connect: UserTypeWhereUniqueInput
+  connectOrCreate: UserTypeCreateOrConnectWithoutAdsInput
+  create: UserTypeCreateWithoutAdsInput
+}
+
+input UserTypeCreateOrConnectWithoutAdsInput {
+  create: UserTypeCreateWithoutAdsInput!
+  where: UserTypeWhereUniqueInput!
+}
+
+input UserTypeCreateWithoutAdsInput {
+  email: String!
+  id: String
+  password: String!
+  username: String!
+}
+
+type UserTypeGroupBy {
+  _count: UserTypeCountAggregate
+  _max: UserTypeMaxAggregate
+  _min: UserTypeMinAggregate
+  email: String!
+  id: String!
+  password: String!
+  username: String!
+}
+
+type UserTypeMaxAggregate {
+  email: String
+  id: String
+  password: String
+  username: String
+}
+
+input UserTypeMaxOrderByAggregateInput {
+  email: SortOrder
+  id: SortOrder
+  password: SortOrder
+  username: SortOrder
+}
+
+type UserTypeMinAggregate {
+  email: String
+  id: String
+  password: String
+  username: String
+}
+
+input UserTypeMinOrderByAggregateInput {
+  email: SortOrder
+  id: SortOrder
+  password: SortOrder
+  username: SortOrder
+}
+
+input UserTypeOrderByWithAggregationInput {
+  _count: UserTypeCountOrderByAggregateInput
+  _max: UserTypeMaxOrderByAggregateInput
+  _min: UserTypeMinOrderByAggregateInput
+  email: SortOrder
+  id: SortOrder
+  password: SortOrder
+  username: SortOrder
+}
+
+input UserTypeOrderByWithRelationInput {
+  ads: AdvertisementTypeOrderByRelationAggregateInput
+  email: SortOrder
+  id: SortOrder
+  password: SortOrder
+  username: SortOrder
+}
+
+input UserTypeRelationFilter {
+  is: UserTypeWhereInput
+  isNot: UserTypeWhereInput
+}
+
+enum UserTypeScalarFieldEnum {
+  email
+  id
+  password
+  username
+}
+
+input UserTypeScalarWhereWithAggregatesInput {
+  AND: [UserTypeScalarWhereWithAggregatesInput!]
+  NOT: [UserTypeScalarWhereWithAggregatesInput!]
+  OR: [UserTypeScalarWhereWithAggregatesInput!]
+  email: StringWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  password: StringWithAggregatesFilter
+  username: StringWithAggregatesFilter
+}
+
+input UserTypeUpdateInput {
+  ads: AdvertisementTypeUpdateManyWithoutSellerNestedInput
+  email: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserTypeUpdateManyMutationInput {
+  email: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserTypeUpdateOneRequiredWithoutAdsNestedInput {
+  connect: UserTypeWhereUniqueInput
+  connectOrCreate: UserTypeCreateOrConnectWithoutAdsInput
+  create: UserTypeCreateWithoutAdsInput
+  update: UserTypeUpdateWithoutAdsInput
+  upsert: UserTypeUpsertWithoutAdsInput
+}
+
+input UserTypeUpdateWithoutAdsInput {
+  email: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserTypeUpsertWithoutAdsInput {
+  create: UserTypeCreateWithoutAdsInput!
+  update: UserTypeUpdateWithoutAdsInput!
+}
+
+input UserTypeWhereInput {
+  AND: [UserTypeWhereInput!]
+  NOT: [UserTypeWhereInput!]
+  OR: [UserTypeWhereInput!]
+  ads: AdvertisementTypeListRelationFilter
+  email: StringFilter
+  id: StringFilter
+  password: StringFilter
+  username: StringFilter
+}
+
+input UserTypeWhereUniqueInput {
+  id: String
+}
