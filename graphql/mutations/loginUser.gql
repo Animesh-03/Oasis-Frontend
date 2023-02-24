@@ -1,0 +1,6 @@
+mutation LoginUser($loginDetails: UserLoginType!) {
+  loginUser(loginDetails: $loginDetails) {
+    username
+    password
+  }
+}

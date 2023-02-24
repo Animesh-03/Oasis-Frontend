@@ -1,5 +1,0 @@
-query ExapleQuery {
-    getAllBooks {
-        id
-    }
-}

@@ -1,0 +1,3 @@
+mutation RegisterUser($registerDetails: UserRegisterType!) {
+  registerUser(registerDetails: $registerDetails)
+}
