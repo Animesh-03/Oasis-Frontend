@@ -472,6 +472,7 @@ type Query {
   findFirstUserType(cursor: UserTypeWhereUniqueInput, distinct: [UserTypeScalarFieldEnum!], orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): UserType
   findFirstUserTypeOrThrow(cursor: UserTypeWhereUniqueInput, distinct: [UserTypeScalarFieldEnum!], orderBy: [UserTypeOrderByWithRelationInput!], skip: Int, take: Int, where: UserTypeWhereInput): UserType
   getAdvertisementType(where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
+  getCurrentUser: UserType!
   getUserType(where: UserTypeWhereUniqueInput!): UserType
   groupByAdvertisementType(by: [AdvertisementTypeScalarFieldEnum!]!, having: AdvertisementTypeScalarWhereWithAggregatesInput, orderBy: [AdvertisementTypeOrderByWithAggregationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): [AdvertisementTypeGroupBy!]!
   groupByUserType(by: [UserTypeScalarFieldEnum!]!, having: UserTypeScalarWhereWithAggregatesInput, orderBy: [UserTypeOrderByWithAggregationInput!], skip: Int, take: Int, where: UserTypeWhereInput): [UserTypeGroupBy!]!

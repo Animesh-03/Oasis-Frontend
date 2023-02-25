@@ -9,15 +9,17 @@ const variants = {
 interface ButtonProps {
     label: string,
     variant?: string,
+    type?:"button" | "submit" | "reset",
     outlined?: boolean,
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 };
 
-const Button:React.FC<ButtonProps> = ({outlined=false, variant='primary', onClick, label})=> {
+const Button:React.FC<ButtonProps> = ({outlined=false, variant='primary', type='button',onClick, label})=> {
 
     return (
     <button 
         className={clsx([css.root, variants[variant], outlined && css.outline])}
+        type={type}
         onClick={onClick}
     >
         {label}

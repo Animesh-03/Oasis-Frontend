@@ -5,8 +5,10 @@ import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { Input } from "@/components/input/input";
 import clsx from "clsx";
 import Button from "@/components/button/button";
-import { useRegisterUserMutation } from "@/graphql/generated/";
+import { useLoginUserMutation, useRegisterUserMutation } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
+import { redirect } from "next/navigation";
+
 
 function LoginPage() {
   const [signUpPageActive, setSignupPageActive] =
@@ -14,8 +16,11 @@ function LoginPage() {
   const [signUpUser, setSignUpUser] = React.useState("");
   const [signUpEmail, setSignUpEmail] = React.useState("");
   const [signUpPassword, setSignUpPassword] = React.useState("");
+  const [loginUserName, setLoginUserName] = React.useState("");
+  const [loginUserPassword,setLoginUserPassword] = React.useState("");
 
-  const [loginUser] = useRegisterUserMutation();
+  const [registerUser] = useRegisterUserMutation();
+  const [loginUser] = useLoginUserMutation();
 
   return (
     <div className={css["login-root"]}>
@@ -29,7 +34,7 @@ function LoginPage() {
         <div
           className={clsx([css["form-container"], css["sign-up-container"]])}
         >
-          <form action="#">
+          <form action="/test">
             <h1 className="text-black text-3xl font-bold">Create Account</h1>
             <div
               className={clsx([
@@ -65,8 +70,9 @@ function LoginPage() {
             />
             <Button
               label="Sign Up"
+              type="submit"
               onClick={() => {
-                loginUser({
+                registerUser({
                   variables: { registerDetails: { username: signUpUser, email: signUpEmail, password: signUpPassword } }
                 });
               }}
@@ -78,7 +84,7 @@ function LoginPage() {
             " "
           )}
         >
-          <form action="#">
+          <form action="/test">
             <h1 className="text-black text-3xl font-bold">Sign in</h1>
             <div
               className={clsx([
@@ -91,13 +97,19 @@ function LoginPage() {
               <IconButton size={16} Icon={FaLinkedinIn} />
             </div>
             <span className="text-black">or use your account</span>
-            <Input placeholder="Email" />
+            <Input placeholder="Username" onChange={(e)=>setLoginUserName(e.currentTarget.value)}/>
             <Input
               placeholder="Password"
               type={"password"}
+              onChange={(e)=>setLoginUserPassword(e.currentTarget.value)}
             />
             <a href="#">Forgot your password?</a>
-            <Button label="Sign In" />
+            <Button label="Sign In" type="submit" onClick={async ()=>{
+              const a = await loginUser({
+                variables:{loginDetails:{username:loginUserName,password:loginUserPassword}}
+              });
+              console.log(a);
+            }}/>
           </form>
         </div>
         <div className={css["overlay-container"]}>
