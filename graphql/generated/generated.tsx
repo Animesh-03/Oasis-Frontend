@@ -979,6 +979,7 @@ export type UserTypeWhereUniqueInput = {
 export const LoginUserDocument = gql`
     mutation LoginUser($loginDetails: UserLoginType!) {
   loginUser(loginDetails: $loginDetails) {
+    id
     username
     password
   }
@@ -1085,7 +1086,7 @@ export type LoginUserMutationVariables = Exact<{
 }>;
 
 
-export type LoginUserMutation = { __typename?: 'Mutation', loginUser?: { __typename?: 'UserType', username: string, password: string } | null };
+export type LoginUserMutation = { __typename?: 'Mutation', loginUser?: { __typename?: 'UserType', id: string, username: string, password: string } | null };
 
 export type RegisterUserMutationVariables = Exact<{
   registerDetails: UserRegisterType;
