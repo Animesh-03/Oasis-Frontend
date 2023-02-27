@@ -1,0 +1,10 @@
+query getCurrentUser {
+  getCurrentUser {
+    id
+    email
+    username
+    ads {
+      bookName
+    }
+  }
+}

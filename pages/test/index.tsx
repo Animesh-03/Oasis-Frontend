@@ -1,15 +1,12 @@
-import { Button } from '@/components/button/button';
-import {IconButton} from '@/components/icon-buttons/icon-button';
-import { Input } from '@/components/input/input';
-import React from 'react'
-import { AiOutlineGoogle } from 'react-icons/ai'; 'react-icons/ai'
 
-export default function Test(){
+import { useGetCurrentUserQuery } from "@/graphql/generated/generated";
+import  withApollo  from '@/apollo/client';
+
+function test(){
+    const a = useGetCurrentUserQuery();
     return (
-        <div>
-            <Input placeholder='test'></Input>
-            <IconButton icon={AiOutlineGoogle} />
-            <Button label = {"dummy"} col="blue"/>
-        </div>
-    );
-};
+        <>
+        The user is : {!a.loading && (a.data?.getCurrentUser.username)}</>
+    )
+}
+export default withApollo({ssr:true})(test);

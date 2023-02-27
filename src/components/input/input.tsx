@@ -7,5 +7,5 @@ interface InputProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLIn
 
 export const Input:React.FC<InputProps> = ({placeholder, type, ...rest})=> {
     return (
-    <input className={`${css["input"]}`} placeholder={placeholder} type={type} {...rest}/>);
+    <input className={`${css["input"]}`} placeholder={placeholder} {...rest}/>);
 };
