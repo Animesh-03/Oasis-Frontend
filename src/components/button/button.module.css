@@ -1,5 +1,10 @@
 .root {
-    @apply active:scale-90 focus:border-none
+    @apply active:scale-90 focus:border-none;
+}
+
+.root:hover{
+	filter: brightness(95%);
+	box-shadow: 10px 10px black;
 }
 
 .primary{
