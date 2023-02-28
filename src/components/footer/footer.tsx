@@ -1,13 +1,14 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import styles from "./footer.module.css";
+import OasisLogo from "../oasis logo/oasisLogo";
 export default function Footer() {
 	return (
 		<footer className={styles.footerWrapper}>
 			<div className={styles.footer}>
 				<div className={styles.footerLeft}>
 					<div className={styles.info}>
-						<h2>O A S I S</h2>
+						<OasisLogo />
 						<p>Read, Learn, Achieve</p>
 					</div>
 					<div className={styles.social}>

@@ -7,3 +7,12 @@
 	width: 100%;
 	color: black;
 }
+
+.outlined {
+	background-color: #f6f5f7;;
+	color: #9A9A9A;
+	border-bottom: #999999 solid 1px;
+	font-size: large;
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+}
