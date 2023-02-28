@@ -4,8 +4,9 @@ import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
 import Footer from "@/components/footer/footer";
 import MainSection from "@/components/mainSection/mainSection"
+
 export default function dashBoard() {
-    const [sideBarActive, setsideBarActive] = React.useState<boolean>(false);
+    const [sideBarActive, setSideBarActive] = React.useState<boolean>(false);
     const [option, setOption] = React.useState<Number>(2)
     /*
         option : 1 -> profile page 
@@ -14,10 +15,13 @@ export default function dashBoard() {
     */
     return (
         <div className={css["dashboard-root"]}>
-            <Navbar sideBarActive = {sideBarActive} setsideBarActive = {setsideBarActive} />
-            {sideBarActive && <Sidebar option={option} setOption={setOption} setsideBarActive={setsideBarActive} />}
+            <Navbar sideBarActive = {sideBarActive} setsideBarActive = {setSideBarActive} />
+
+            {<Sidebar sideBarActive={sideBarActive} option={option} setOption={setOption} setSidebarActive={setSideBarActive} />}
+
             <MainSection option={option}/>
+
             <Footer />
         </div>
-    )
+    );
 }

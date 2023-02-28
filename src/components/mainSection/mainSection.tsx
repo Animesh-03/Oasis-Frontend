@@ -1,7 +1,10 @@
 import React from "react";
 import css from "./mainSection.module.css";
 
-function MainSection({ option }) {
+interface MainSectionProps {
+	option: any
+}
+const MainSection:  React.FC<MainSectionProps> = () => {
 	return (
 		<>
 			<div className={css["outer"]}>

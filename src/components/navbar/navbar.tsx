@@ -3,7 +3,13 @@ import css from "./navbar.module.css";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import logo from "../../../assets/oasis.png";
 import Image from "next/image";
-function Navbar({ sideBarActive, setsideBarActive }) {
+
+interface NavBarProps {
+	sideBarActive: boolean,
+	setsideBarActive: Function
+}
+
+const Navbar: React.FC<NavBarProps> = ({ sideBarActive, setsideBarActive }) => {
 	const handleClick = () => {
 		setsideBarActive(!sideBarActive);
 	};
