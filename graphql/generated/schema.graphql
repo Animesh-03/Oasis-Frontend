@@ -1,7 +1,7 @@
 type AdvertisementType {
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String!
   isbn: String!
   price: Int!
@@ -22,7 +22,7 @@ type AdvertisementTypeCountAggregate {
   _all: Int!
   authorName: Int!
   bookName: Int!
-  desc: Int!
+  description: Int!
   id: Int!
   isbn: Int!
   price: Int!
@@ -33,7 +33,7 @@ type AdvertisementTypeCountAggregate {
 input AdvertisementTypeCountOrderByAggregateInput {
   authorName: SortOrder
   bookName: SortOrder
-  desc: SortOrder
+  description: SortOrder
   id: SortOrder
   isbn: SortOrder
   price: SortOrder
@@ -44,7 +44,7 @@ input AdvertisementTypeCountOrderByAggregateInput {
 input AdvertisementTypeCreateInput {
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String
   isbn: String!
   price: Int!
@@ -55,7 +55,7 @@ input AdvertisementTypeCreateInput {
 input AdvertisementTypeCreateManyInput {
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String
   isbn: String!
   price: Int!
@@ -66,7 +66,7 @@ input AdvertisementTypeCreateManyInput {
 input AdvertisementTypeCreateManySellerInput {
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String
   isbn: String!
   price: Int!
@@ -92,7 +92,7 @@ input AdvertisementTypeCreateOrConnectWithoutSellerInput {
 input AdvertisementTypeCreateWithoutSellerInput {
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String
   isbn: String!
   price: Int!
@@ -107,7 +107,7 @@ type AdvertisementTypeGroupBy {
   _sum: AdvertisementTypeSumAggregate
   authorName: String!
   bookName: String!
-  desc: String!
+  description: String!
   id: String!
   isbn: String!
   price: Int!
@@ -124,7 +124,7 @@ input AdvertisementTypeListRelationFilter {
 type AdvertisementTypeMaxAggregate {
   authorName: String
   bookName: String
-  desc: String
+  description: String
   id: String
   isbn: String
   price: Int
@@ -135,7 +135,7 @@ type AdvertisementTypeMaxAggregate {
 input AdvertisementTypeMaxOrderByAggregateInput {
   authorName: SortOrder
   bookName: SortOrder
-  desc: SortOrder
+  description: SortOrder
   id: SortOrder
   isbn: SortOrder
   price: SortOrder
@@ -146,7 +146,7 @@ input AdvertisementTypeMaxOrderByAggregateInput {
 type AdvertisementTypeMinAggregate {
   authorName: String
   bookName: String
-  desc: String
+  description: String
   id: String
   isbn: String
   price: Int
@@ -157,7 +157,7 @@ type AdvertisementTypeMinAggregate {
 input AdvertisementTypeMinOrderByAggregateInput {
   authorName: SortOrder
   bookName: SortOrder
-  desc: SortOrder
+  description: SortOrder
   id: SortOrder
   isbn: SortOrder
   price: SortOrder
@@ -177,7 +177,7 @@ input AdvertisementTypeOrderByWithAggregationInput {
   _sum: AdvertisementTypeSumOrderByAggregateInput
   authorName: SortOrder
   bookName: SortOrder
-  desc: SortOrder
+  description: SortOrder
   id: SortOrder
   isbn: SortOrder
   price: SortOrder
@@ -188,7 +188,7 @@ input AdvertisementTypeOrderByWithAggregationInput {
 input AdvertisementTypeOrderByWithRelationInput {
   authorName: SortOrder
   bookName: SortOrder
-  desc: SortOrder
+  description: SortOrder
   id: SortOrder
   isbn: SortOrder
   price: SortOrder
@@ -200,7 +200,7 @@ input AdvertisementTypeOrderByWithRelationInput {
 enum AdvertisementTypeScalarFieldEnum {
   authorName
   bookName
-  desc
+  description
   id
   isbn
   price
@@ -214,7 +214,7 @@ input AdvertisementTypeScalarWhereInput {
   OR: [AdvertisementTypeScalarWhereInput!]
   authorName: StringFilter
   bookName: StringFilter
-  desc: StringFilter
+  description: StringFilter
   id: StringFilter
   isbn: StringFilter
   price: IntFilter
@@ -228,7 +228,7 @@ input AdvertisementTypeScalarWhereWithAggregatesInput {
   OR: [AdvertisementTypeScalarWhereWithAggregatesInput!]
   authorName: StringWithAggregatesFilter
   bookName: StringWithAggregatesFilter
-  desc: StringWithAggregatesFilter
+  description: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
   isbn: StringWithAggregatesFilter
   price: IntWithAggregatesFilter
@@ -247,7 +247,7 @@ input AdvertisementTypeSumOrderByAggregateInput {
 input AdvertisementTypeUpdateInput {
   authorName: StringFieldUpdateOperationsInput
   bookName: StringFieldUpdateOperationsInput
-  desc: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
   isbn: StringFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   seller: UserTypeUpdateOneRequiredWithoutAdsNestedInput
@@ -257,7 +257,7 @@ input AdvertisementTypeUpdateInput {
 input AdvertisementTypeUpdateManyMutationInput {
   authorName: StringFieldUpdateOperationsInput
   bookName: StringFieldUpdateOperationsInput
-  desc: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
   isbn: StringFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   time: StringFieldUpdateOperationsInput
@@ -290,7 +290,7 @@ input AdvertisementTypeUpdateWithWhereUniqueWithoutSellerInput {
 input AdvertisementTypeUpdateWithoutSellerInput {
   authorName: StringFieldUpdateOperationsInput
   bookName: StringFieldUpdateOperationsInput
-  desc: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
   isbn: StringFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   time: StringFieldUpdateOperationsInput
@@ -308,7 +308,7 @@ input AdvertisementTypeWhereInput {
   OR: [AdvertisementTypeWhereInput!]
   authorName: StringFilter
   bookName: StringFilter
-  desc: StringFilter
+  description: StringFilter
   id: StringFilter
   isbn: StringFilter
   price: IntFilter
@@ -319,6 +319,7 @@ input AdvertisementTypeWhereInput {
 
 input AdvertisementTypeWhereUniqueInput {
   id: String
+  isbn: String
 }
 
 type AffectedRowsOutput {
@@ -383,12 +384,14 @@ type Mutation {
   deleteManyUserType(where: UserTypeWhereInput): AffectedRowsOutput!
   deleteOneAdvertisementType(where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
   deleteOneUserType(where: UserTypeWhereUniqueInput!): UserType
+  deleteUser: Boolean!
   loginUser(loginDetails: UserLoginType!): UserType
   registerUser(registerDetails: UserRegisterType!): Boolean!
   updateManyAdvertisementType(data: AdvertisementTypeUpdateManyMutationInput!, where: AdvertisementTypeWhereInput): AffectedRowsOutput!
   updateManyUserType(data: UserTypeUpdateManyMutationInput!, where: UserTypeWhereInput): AffectedRowsOutput!
   updateOneAdvertisementType(data: AdvertisementTypeUpdateInput!, where: AdvertisementTypeWhereUniqueInput!): AdvertisementType
   updateOneUserType(data: UserTypeUpdateInput!, where: UserTypeWhereUniqueInput!): UserType
+  updateUser(input: UserUpdateType!): UserType!
   upsertOneAdvertisementType(create: AdvertisementTypeCreateInput!, update: AdvertisementTypeUpdateInput!, where: AdvertisementTypeWhereUniqueInput!): AdvertisementType!
   upsertOneUserType(create: UserTypeCreateInput!, update: UserTypeUpdateInput!, where: UserTypeWhereUniqueInput!): UserType!
 }
@@ -412,6 +415,18 @@ input NestedIntFilter {
   lt: Int
   lte: Int
   not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  isSet: Boolean
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
   notIn: [Int!]
 }
 
@@ -445,6 +460,39 @@ input NestedStringFilter {
   startsWith: String
 }
 
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  isSet: Boolean
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  isSet: Boolean
+  lt: String
+  lte: String
+  not: NestedStringNullableWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
 input NestedStringWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedStringFilter
@@ -460,6 +508,11 @@ input NestedStringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+  unset: Boolean
 }
 
 type Query {
@@ -509,6 +562,41 @@ input StringFilter {
   startsWith: String
 }
 
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  isSet: Boolean
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  isSet: Boolean
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
 input StringWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedStringFilter
@@ -540,10 +628,13 @@ input UserRegisterType {
 
 type UserType {
   _count: UserTypeCount
+  address: String
   ads(cursor: AdvertisementTypeWhereUniqueInput, distinct: [AdvertisementTypeScalarFieldEnum!], orderBy: [AdvertisementTypeOrderByWithRelationInput!], skip: Int, take: Int, where: AdvertisementTypeWhereInput): [AdvertisementType!]!
   email: String!
+  fullName: String
   id: String!
   password: String!
+  phoneNo: String
   username: String!
 }
 
@@ -553,31 +644,43 @@ type UserTypeCount {
 
 type UserTypeCountAggregate {
   _all: Int!
+  address: Int!
   email: Int!
+  fullName: Int!
   id: Int!
   password: Int!
+  phoneNo: Int!
   username: Int!
 }
 
 input UserTypeCountOrderByAggregateInput {
+  address: SortOrder
   email: SortOrder
+  fullName: SortOrder
   id: SortOrder
   password: SortOrder
+  phoneNo: SortOrder
   username: SortOrder
 }
 
 input UserTypeCreateInput {
+  address: String
   ads: AdvertisementTypeCreateNestedManyWithoutSellerInput
   email: String!
+  fullName: String
   id: String
   password: String!
+  phoneNo: String
   username: String!
 }
 
 input UserTypeCreateManyInput {
+  address: String
   email: String!
+  fullName: String
   id: String
   password: String!
+  phoneNo: String
   username: String!
 }
 
@@ -593,9 +696,12 @@ input UserTypeCreateOrConnectWithoutAdsInput {
 }
 
 input UserTypeCreateWithoutAdsInput {
+  address: String
   email: String!
+  fullName: String
   id: String
   password: String!
+  phoneNo: String
   username: String!
 }
 
@@ -603,37 +709,52 @@ type UserTypeGroupBy {
   _count: UserTypeCountAggregate
   _max: UserTypeMaxAggregate
   _min: UserTypeMinAggregate
+  address: String
   email: String!
+  fullName: String
   id: String!
   password: String!
+  phoneNo: String
   username: String!
 }
 
 type UserTypeMaxAggregate {
+  address: String
   email: String
+  fullName: String
   id: String
   password: String
+  phoneNo: String
   username: String
 }
 
 input UserTypeMaxOrderByAggregateInput {
+  address: SortOrder
   email: SortOrder
+  fullName: SortOrder
   id: SortOrder
   password: SortOrder
+  phoneNo: SortOrder
   username: SortOrder
 }
 
 type UserTypeMinAggregate {
+  address: String
   email: String
+  fullName: String
   id: String
   password: String
+  phoneNo: String
   username: String
 }
 
 input UserTypeMinOrderByAggregateInput {
+  address: SortOrder
   email: SortOrder
+  fullName: SortOrder
   id: SortOrder
   password: SortOrder
+  phoneNo: SortOrder
   username: SortOrder
 }
 
@@ -641,17 +762,23 @@ input UserTypeOrderByWithAggregationInput {
   _count: UserTypeCountOrderByAggregateInput
   _max: UserTypeMaxOrderByAggregateInput
   _min: UserTypeMinOrderByAggregateInput
+  address: SortOrder
   email: SortOrder
+  fullName: SortOrder
   id: SortOrder
   password: SortOrder
+  phoneNo: SortOrder
   username: SortOrder
 }
 
 input UserTypeOrderByWithRelationInput {
+  address: SortOrder
   ads: AdvertisementTypeOrderByRelationAggregateInput
   email: SortOrder
+  fullName: SortOrder
   id: SortOrder
   password: SortOrder
+  phoneNo: SortOrder
   username: SortOrder
 }
 
@@ -661,9 +788,12 @@ input UserTypeRelationFilter {
 }
 
 enum UserTypeScalarFieldEnum {
+  address
   email
+  fullName
   id
   password
+  phoneNo
   username
 }
 
@@ -671,22 +801,31 @@ input UserTypeScalarWhereWithAggregatesInput {
   AND: [UserTypeScalarWhereWithAggregatesInput!]
   NOT: [UserTypeScalarWhereWithAggregatesInput!]
   OR: [UserTypeScalarWhereWithAggregatesInput!]
+  address: StringNullableWithAggregatesFilter
   email: StringWithAggregatesFilter
+  fullName: StringNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
   password: StringWithAggregatesFilter
+  phoneNo: StringNullableWithAggregatesFilter
   username: StringWithAggregatesFilter
 }
 
 input UserTypeUpdateInput {
+  address: NullableStringFieldUpdateOperationsInput
   ads: AdvertisementTypeUpdateManyWithoutSellerNestedInput
   email: StringFieldUpdateOperationsInput
+  fullName: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  phoneNo: NullableStringFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserTypeUpdateManyMutationInput {
+  address: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  fullName: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  phoneNo: NullableStringFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -699,8 +838,11 @@ input UserTypeUpdateOneRequiredWithoutAdsNestedInput {
 }
 
 input UserTypeUpdateWithoutAdsInput {
+  address: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  fullName: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  phoneNo: NullableStringFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -713,13 +855,23 @@ input UserTypeWhereInput {
   AND: [UserTypeWhereInput!]
   NOT: [UserTypeWhereInput!]
   OR: [UserTypeWhereInput!]
+  address: StringNullableFilter
   ads: AdvertisementTypeListRelationFilter
   email: StringFilter
+  fullName: StringNullableFilter
   id: StringFilter
   password: StringFilter
+  phoneNo: StringNullableFilter
   username: StringFilter
 }
 
 input UserTypeWhereUniqueInput {
   id: String
+}
+
+input UserUpdateType {
+  address: String!
+  email: String!
+  fullName: String!
+  phoneNo: String!
 }

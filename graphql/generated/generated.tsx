@@ -19,7 +19,7 @@ export type AdvertisementType = {
   __typename?: 'AdvertisementType';
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id: Scalars['String'];
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -42,7 +42,7 @@ export type AdvertisementTypeCountAggregate = {
   _all: Scalars['Int'];
   authorName: Scalars['Int'];
   bookName: Scalars['Int'];
-  desc: Scalars['Int'];
+  description: Scalars['Int'];
   id: Scalars['Int'];
   isbn: Scalars['Int'];
   price: Scalars['Int'];
@@ -53,7 +53,7 @@ export type AdvertisementTypeCountAggregate = {
 export type AdvertisementTypeCountOrderByAggregateInput = {
   authorName?: InputMaybe<SortOrder>;
   bookName?: InputMaybe<SortOrder>;
-  desc?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
@@ -64,7 +64,7 @@ export type AdvertisementTypeCountOrderByAggregateInput = {
 export type AdvertisementTypeCreateInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -75,7 +75,7 @@ export type AdvertisementTypeCreateInput = {
 export type AdvertisementTypeCreateManyInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -86,7 +86,7 @@ export type AdvertisementTypeCreateManyInput = {
 export type AdvertisementTypeCreateManySellerInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -112,7 +112,7 @@ export type AdvertisementTypeCreateOrConnectWithoutSellerInput = {
 export type AdvertisementTypeCreateWithoutSellerInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -128,7 +128,7 @@ export type AdvertisementTypeGroupBy = {
   _sum?: Maybe<AdvertisementTypeSumAggregate>;
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  desc: Scalars['String'];
+  description: Scalars['String'];
   id: Scalars['String'];
   isbn: Scalars['String'];
   price: Scalars['Int'];
@@ -146,7 +146,7 @@ export type AdvertisementTypeMaxAggregate = {
   __typename?: 'AdvertisementTypeMaxAggregate';
   authorName?: Maybe<Scalars['String']>;
   bookName?: Maybe<Scalars['String']>;
-  desc?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   isbn?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
@@ -157,7 +157,7 @@ export type AdvertisementTypeMaxAggregate = {
 export type AdvertisementTypeMaxOrderByAggregateInput = {
   authorName?: InputMaybe<SortOrder>;
   bookName?: InputMaybe<SortOrder>;
-  desc?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
@@ -169,7 +169,7 @@ export type AdvertisementTypeMinAggregate = {
   __typename?: 'AdvertisementTypeMinAggregate';
   authorName?: Maybe<Scalars['String']>;
   bookName?: Maybe<Scalars['String']>;
-  desc?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   isbn?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
@@ -180,7 +180,7 @@ export type AdvertisementTypeMinAggregate = {
 export type AdvertisementTypeMinOrderByAggregateInput = {
   authorName?: InputMaybe<SortOrder>;
   bookName?: InputMaybe<SortOrder>;
-  desc?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
@@ -200,7 +200,7 @@ export type AdvertisementTypeOrderByWithAggregationInput = {
   _sum?: InputMaybe<AdvertisementTypeSumOrderByAggregateInput>;
   authorName?: InputMaybe<SortOrder>;
   bookName?: InputMaybe<SortOrder>;
-  desc?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
@@ -211,7 +211,7 @@ export type AdvertisementTypeOrderByWithAggregationInput = {
 export type AdvertisementTypeOrderByWithRelationInput = {
   authorName?: InputMaybe<SortOrder>;
   bookName?: InputMaybe<SortOrder>;
-  desc?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
@@ -223,7 +223,7 @@ export type AdvertisementTypeOrderByWithRelationInput = {
 export enum AdvertisementTypeScalarFieldEnum {
   AuthorName = 'authorName',
   BookName = 'bookName',
-  Desc = 'desc',
+  Description = 'description',
   Id = 'id',
   Isbn = 'isbn',
   Price = 'price',
@@ -237,7 +237,7 @@ export type AdvertisementTypeScalarWhereInput = {
   OR?: InputMaybe<Array<AdvertisementTypeScalarWhereInput>>;
   authorName?: InputMaybe<StringFilter>;
   bookName?: InputMaybe<StringFilter>;
-  desc?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   isbn?: InputMaybe<StringFilter>;
   price?: InputMaybe<IntFilter>;
@@ -251,7 +251,7 @@ export type AdvertisementTypeScalarWhereWithAggregatesInput = {
   OR?: InputMaybe<Array<AdvertisementTypeScalarWhereWithAggregatesInput>>;
   authorName?: InputMaybe<StringWithAggregatesFilter>;
   bookName?: InputMaybe<StringWithAggregatesFilter>;
-  desc?: InputMaybe<StringWithAggregatesFilter>;
+  description?: InputMaybe<StringWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
   isbn?: InputMaybe<StringWithAggregatesFilter>;
   price?: InputMaybe<IntWithAggregatesFilter>;
@@ -271,7 +271,7 @@ export type AdvertisementTypeSumOrderByAggregateInput = {
 export type AdvertisementTypeUpdateInput = {
   authorName?: InputMaybe<StringFieldUpdateOperationsInput>;
   bookName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  desc?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
   isbn?: InputMaybe<StringFieldUpdateOperationsInput>;
   price?: InputMaybe<IntFieldUpdateOperationsInput>;
   seller?: InputMaybe<UserTypeUpdateOneRequiredWithoutAdsNestedInput>;
@@ -281,7 +281,7 @@ export type AdvertisementTypeUpdateInput = {
 export type AdvertisementTypeUpdateManyMutationInput = {
   authorName?: InputMaybe<StringFieldUpdateOperationsInput>;
   bookName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  desc?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
   isbn?: InputMaybe<StringFieldUpdateOperationsInput>;
   price?: InputMaybe<IntFieldUpdateOperationsInput>;
   time?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -314,7 +314,7 @@ export type AdvertisementTypeUpdateWithWhereUniqueWithoutSellerInput = {
 export type AdvertisementTypeUpdateWithoutSellerInput = {
   authorName?: InputMaybe<StringFieldUpdateOperationsInput>;
   bookName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  desc?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
   isbn?: InputMaybe<StringFieldUpdateOperationsInput>;
   price?: InputMaybe<IntFieldUpdateOperationsInput>;
   time?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -332,7 +332,7 @@ export type AdvertisementTypeWhereInput = {
   OR?: InputMaybe<Array<AdvertisementTypeWhereInput>>;
   authorName?: InputMaybe<StringFilter>;
   bookName?: InputMaybe<StringFilter>;
-  desc?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   isbn?: InputMaybe<StringFilter>;
   price?: InputMaybe<IntFilter>;
@@ -343,6 +343,7 @@ export type AdvertisementTypeWhereInput = {
 
 export type AdvertisementTypeWhereUniqueInput = {
   id?: InputMaybe<Scalars['String']>;
+  isbn?: InputMaybe<Scalars['String']>;
 };
 
 export type AffectedRowsOutput = {
@@ -411,12 +412,14 @@ export type Mutation = {
   deleteManyUserType: AffectedRowsOutput;
   deleteOneAdvertisementType?: Maybe<AdvertisementType>;
   deleteOneUserType?: Maybe<UserType>;
+  deleteUser: Scalars['Boolean'];
   loginUser?: Maybe<UserType>;
   registerUser: Scalars['Boolean'];
   updateManyAdvertisementType: AffectedRowsOutput;
   updateManyUserType: AffectedRowsOutput;
   updateOneAdvertisementType?: Maybe<AdvertisementType>;
   updateOneUserType?: Maybe<UserType>;
+  updateUser: UserType;
   upsertOneAdvertisementType: AdvertisementType;
   upsertOneUserType: UserType;
 };
@@ -496,6 +499,11 @@ export type MutationUpdateOneUserTypeArgs = {
 };
 
 
+export type MutationUpdateUserArgs = {
+  input: UserUpdateType;
+};
+
+
 export type MutationUpsertOneAdvertisementTypeArgs = {
   create: AdvertisementTypeCreateInput;
   update: AdvertisementTypeUpdateInput;
@@ -531,6 +539,18 @@ export type NestedIntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
+export type NestedIntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  isSet?: InputMaybe<Scalars['Boolean']>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
+};
+
 export type NestedIntWithAggregatesFilter = {
   _avg?: InputMaybe<NestedFloatFilter>;
   _count?: InputMaybe<NestedIntFilter>;
@@ -561,6 +581,39 @@ export type NestedStringFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type NestedStringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  isSet?: InputMaybe<Scalars['Boolean']>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
+  not?: InputMaybe<NestedStringNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type NestedStringNullableWithAggregatesFilter = {
+  _count?: InputMaybe<NestedIntNullableFilter>;
+  _max?: InputMaybe<NestedStringNullableFilter>;
+  _min?: InputMaybe<NestedStringNullableFilter>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  isSet?: InputMaybe<Scalars['Boolean']>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
+  not?: InputMaybe<NestedStringNullableWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  startsWith?: InputMaybe<Scalars['String']>;
+};
+
 export type NestedStringWithAggregatesFilter = {
   _count?: InputMaybe<NestedIntFilter>;
   _max?: InputMaybe<NestedStringFilter>;
@@ -576,6 +629,11 @@ export type NestedStringWithAggregatesFilter = {
   not?: InputMaybe<NestedStringWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars['String']>>;
   startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: InputMaybe<Scalars['String']>;
+  unset?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type Query = {
@@ -744,6 +802,41 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type StringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  isSet?: InputMaybe<Scalars['Boolean']>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
+  mode?: InputMaybe<QueryMode>;
+  not?: InputMaybe<NestedStringNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type StringNullableWithAggregatesFilter = {
+  _count?: InputMaybe<NestedIntNullableFilter>;
+  _max?: InputMaybe<NestedStringNullableFilter>;
+  _min?: InputMaybe<NestedStringNullableFilter>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  isSet?: InputMaybe<Scalars['Boolean']>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
+  mode?: InputMaybe<QueryMode>;
+  not?: InputMaybe<NestedStringNullableWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  startsWith?: InputMaybe<Scalars['String']>;
+};
+
 export type StringWithAggregatesFilter = {
   _count?: InputMaybe<NestedIntFilter>;
   _max?: InputMaybe<NestedStringFilter>;
@@ -776,10 +869,13 @@ export type UserRegisterType = {
 export type UserType = {
   __typename?: 'UserType';
   _count?: Maybe<UserTypeCount>;
+  address?: Maybe<Scalars['String']>;
   ads: Array<AdvertisementType>;
   email: Scalars['String'];
+  fullName?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   password: Scalars['String'];
+  phoneNo?: Maybe<Scalars['String']>;
   username: Scalars['String'];
 };
 
@@ -801,31 +897,43 @@ export type UserTypeCount = {
 export type UserTypeCountAggregate = {
   __typename?: 'UserTypeCountAggregate';
   _all: Scalars['Int'];
+  address: Scalars['Int'];
   email: Scalars['Int'];
+  fullName: Scalars['Int'];
   id: Scalars['Int'];
   password: Scalars['Int'];
+  phoneNo: Scalars['Int'];
   username: Scalars['Int'];
 };
 
 export type UserTypeCountOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  fullName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
+  phoneNo?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
 };
 
 export type UserTypeCreateInput = {
+  address?: InputMaybe<Scalars['String']>;
   ads?: InputMaybe<AdvertisementTypeCreateNestedManyWithoutSellerInput>;
   email: Scalars['String'];
+  fullName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
+  phoneNo?: InputMaybe<Scalars['String']>;
   username: Scalars['String'];
 };
 
 export type UserTypeCreateManyInput = {
+  address?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
+  fullName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
+  phoneNo?: InputMaybe<Scalars['String']>;
   username: Scalars['String'];
 };
 
@@ -841,9 +949,12 @@ export type UserTypeCreateOrConnectWithoutAdsInput = {
 };
 
 export type UserTypeCreateWithoutAdsInput = {
+  address?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
+  fullName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
+  phoneNo?: InputMaybe<Scalars['String']>;
   username: Scalars['String'];
 };
 
@@ -852,39 +963,54 @@ export type UserTypeGroupBy = {
   _count?: Maybe<UserTypeCountAggregate>;
   _max?: Maybe<UserTypeMaxAggregate>;
   _min?: Maybe<UserTypeMinAggregate>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
+  fullName?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   password: Scalars['String'];
+  phoneNo?: Maybe<Scalars['String']>;
   username: Scalars['String'];
 };
 
 export type UserTypeMaxAggregate = {
   __typename?: 'UserTypeMaxAggregate';
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
+  fullName?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
+  phoneNo?: Maybe<Scalars['String']>;
   username?: Maybe<Scalars['String']>;
 };
 
 export type UserTypeMaxOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  fullName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
+  phoneNo?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
 };
 
 export type UserTypeMinAggregate = {
   __typename?: 'UserTypeMinAggregate';
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
+  fullName?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
+  phoneNo?: Maybe<Scalars['String']>;
   username?: Maybe<Scalars['String']>;
 };
 
 export type UserTypeMinOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  fullName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
+  phoneNo?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
 };
 
@@ -892,17 +1018,23 @@ export type UserTypeOrderByWithAggregationInput = {
   _count?: InputMaybe<UserTypeCountOrderByAggregateInput>;
   _max?: InputMaybe<UserTypeMaxOrderByAggregateInput>;
   _min?: InputMaybe<UserTypeMinOrderByAggregateInput>;
+  address?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  fullName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
+  phoneNo?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
 };
 
 export type UserTypeOrderByWithRelationInput = {
+  address?: InputMaybe<SortOrder>;
   ads?: InputMaybe<AdvertisementTypeOrderByRelationAggregateInput>;
   email?: InputMaybe<SortOrder>;
+  fullName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
+  phoneNo?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
 };
 
@@ -912,9 +1044,12 @@ export type UserTypeRelationFilter = {
 };
 
 export enum UserTypeScalarFieldEnum {
+  Address = 'address',
   Email = 'email',
+  FullName = 'fullName',
   Id = 'id',
   Password = 'password',
+  PhoneNo = 'phoneNo',
   Username = 'username'
 }
 
@@ -922,22 +1057,31 @@ export type UserTypeScalarWhereWithAggregatesInput = {
   AND?: InputMaybe<Array<UserTypeScalarWhereWithAggregatesInput>>;
   NOT?: InputMaybe<Array<UserTypeScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<UserTypeScalarWhereWithAggregatesInput>>;
+  address?: InputMaybe<StringNullableWithAggregatesFilter>;
   email?: InputMaybe<StringWithAggregatesFilter>;
+  fullName?: InputMaybe<StringNullableWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
   password?: InputMaybe<StringWithAggregatesFilter>;
+  phoneNo?: InputMaybe<StringNullableWithAggregatesFilter>;
   username?: InputMaybe<StringWithAggregatesFilter>;
 };
 
 export type UserTypeUpdateInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   ads?: InputMaybe<AdvertisementTypeUpdateManyWithoutSellerNestedInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  fullName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phoneNo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   username?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserTypeUpdateManyMutationInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  fullName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phoneNo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   username?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
@@ -950,8 +1094,11 @@ export type UserTypeUpdateOneRequiredWithoutAdsNestedInput = {
 };
 
 export type UserTypeUpdateWithoutAdsInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  fullName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phoneNo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   username?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
@@ -964,10 +1111,13 @@ export type UserTypeWhereInput = {
   AND?: InputMaybe<Array<UserTypeWhereInput>>;
   NOT?: InputMaybe<Array<UserTypeWhereInput>>;
   OR?: InputMaybe<Array<UserTypeWhereInput>>;
+  address?: InputMaybe<StringNullableFilter>;
   ads?: InputMaybe<AdvertisementTypeListRelationFilter>;
   email?: InputMaybe<StringFilter>;
+  fullName?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<StringFilter>;
   password?: InputMaybe<StringFilter>;
+  phoneNo?: InputMaybe<StringNullableFilter>;
   username?: InputMaybe<StringFilter>;
 };
 
@@ -975,7 +1125,44 @@ export type UserTypeWhereUniqueInput = {
   id?: InputMaybe<Scalars['String']>;
 };
 
+export type UserUpdateType = {
+  address: Scalars['String'];
+  email: Scalars['String'];
+  fullName: Scalars['String'];
+  phoneNo: Scalars['String'];
+};
 
+
+export const DeleteUserDocument = gql`
+    mutation DeleteUser {
+  deleteUser
+}
+    `;
+export type DeleteUserMutationFn = Apollo.MutationFunction<DeleteUserMutation, DeleteUserMutationVariables>;
+
+/**
+ * __useDeleteUserMutation__
+ *
+ * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useDeleteUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteUserMutation, DeleteUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(DeleteUserDocument, options);
+      }
+export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
+export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
+export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
 export const LoginUserDocument = gql`
     mutation LoginUser($loginDetails: UserLoginType!) {
   loginUser(loginDetails: $loginDetails) {
@@ -1042,12 +1229,53 @@ export function useRegisterUserMutation(baseOptions?: Apollo.MutationHookOptions
 export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMutation>;
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
+export const UpdateUserDocument = gql`
+    mutation UpdateUser($input: UserUpdateType!) {
+  updateUser(input: $input) {
+    id
+    fullName
+    username
+    email
+    address
+    phoneNo
+  }
+}
+    `;
+export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
+
+/**
+ * __useUpdateUserMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
+      }
+export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
+export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
 export const GetCurrentUserDocument = gql`
     query getCurrentUser {
   getCurrentUser {
     id
     email
     username
+    phoneNo
+    address
+    fullName
     ads {
       bookName
     }
@@ -1081,6 +1309,11 @@ export function useGetCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
 export type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
 export type GetCurrentUserQueryResult = Apollo.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export type DeleteUserMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DeleteUserMutation = { __typename?: 'Mutation', deleteUser: boolean };
+
 export type LoginUserMutationVariables = Exact<{
   loginDetails: UserLoginType;
 }>;
@@ -1095,7 +1328,14 @@ export type RegisterUserMutationVariables = Exact<{
 
 export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: boolean };
 
+export type UpdateUserMutationVariables = Exact<{
+  input: UserUpdateType;
+}>;
+
+
+export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'UserType', id: string, fullName?: string | null, username: string, email: string, address?: string | null, phoneNo?: string | null } };
+
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __typename?: 'UserType', id: string, email: string, username: string, ads: Array<{ __typename?: 'AdvertisementType', bookName: string }> } };
+export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __typename?: 'UserType', id: string, email: string, username: string, phoneNo?: string | null, address?: string | null, fullName?: string | null, ads: Array<{ __typename?: 'AdvertisementType', bookName: string }> } };

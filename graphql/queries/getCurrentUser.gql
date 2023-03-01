@@ -3,6 +3,9 @@ query getCurrentUser {
     id
     email
     username
+    phoneNo
+    address
+    fullName
     ads {
       bookName
     }
