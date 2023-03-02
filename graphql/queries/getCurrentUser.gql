@@ -6,8 +6,5 @@ query getCurrentUser {
     phoneNo
     address
     fullName
-    ads {
-      bookName
-    }
   }
 }

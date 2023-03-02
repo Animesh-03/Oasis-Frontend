@@ -1,10 +1,13 @@
 .root{
     background-color: #FFFFFF;
-    width: 33%;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    width: 25rem;
+    min-width: 25rem;
+    margin: 1rem;
+    box-shadow: 0 0 10px black;
+    border-radius: 20px;
 }
 
-.inner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.inner {
+    padding: 0 0.5rem 0.5rem 0.5rem;
 }
