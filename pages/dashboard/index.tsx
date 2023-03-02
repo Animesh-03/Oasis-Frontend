@@ -10,7 +10,7 @@ import SearchBar from "@/components/search bar/searchBar";
 import CategoryCard from "@/components/category card/categoryCard";
 import BookCard from "@/components/book card/bookCard";
 
-export default function dashBoard() {
+export default function Dashboard() {
     // /*
     //     option : 1 -> profile page 
     //     option : 2 -> buy (default page)
