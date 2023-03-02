@@ -1,0 +1,10 @@
+.root{
+    background-color: #FFFFFF;
+    width: 33%;
+}
+
+.inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
