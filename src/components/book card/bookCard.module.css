@@ -1,13 +1,28 @@
 .root{
     background-color: #FFFFFF;
     padding: 0.5rem 0.5rem 1rem 0.5rem;
-    width: 25rem;
-    min-width: 25rem;
+
     margin: 1rem;
+    margin-top: 3rem;
     box-shadow: 0 0 10px black;
     border-radius: 20px;
+    max-width: 13.5rem;
+
+    max-height: 25rem;
+}
+.root:hover{
+    filter: brightness(110%);
+    box-shadow: 0 0 14px;
+    transform: translateY(-8%) scale(107%);
+    transition-duration: 0.3s;
+}
+.root img
+{    
+    min-width: 8rem;
+    min-height: 8rem;
+    object-fit: cover;
 }
 
 .inner {
-    padding: 0 0.5rem 0.5rem 0.5rem;
+    padding: 0 0.2rem 0.2rem 0.2rem;
 }

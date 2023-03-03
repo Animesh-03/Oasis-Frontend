@@ -189,7 +189,7 @@ export type Category = {
   __typename?: 'Category';
   _count?: Maybe<CategoryCount>;
   books: Array<Book>;
-  description: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   image: Scalars['String'];
   name: Scalars['String'];
@@ -211,7 +211,7 @@ export type CategoryCount = {
 };
 
 export type CategoryCreationInput = {
-  description: Scalars['String'];
+  description?: InputMaybe<Scalars['String']>;
   image?: Scalars['String'];
   name: Scalars['String'];
 };
@@ -234,7 +234,7 @@ export type CategoryWhereInput = {
   NOT?: InputMaybe<Array<CategoryWhereInput>>;
   OR?: InputMaybe<Array<CategoryWhereInput>>;
   books?: InputMaybe<BookListRelationFilter>;
-  description?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<StringFilter>;
   image?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
@@ -253,11 +253,17 @@ export type IntFilter = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createCategory: Category;
   deleteUser: Scalars['Boolean'];
   loginUser?: Maybe<UserType>;
   postAdvertisement: AdvertisementType;
   registerUser: Scalars['Boolean'];
   updateUser: UserType;
+};
+
+
+export type MutationCreateCategoryArgs = {
+  createCategoryInput: CategoryCreationInput;
 };
 
 
@@ -329,8 +335,10 @@ export type Query = {
   __typename?: 'Query';
   getAllActiveAdvertisements: Array<AdvertisementType>;
   getAllAdvertisements: Array<AdvertisementType>;
+  getAllCategories: Array<Category>;
   getAllUsers: Array<UserType>;
   getCurrentUser: UserType;
+  getTrendingBooks: Array<Book>;
 };
 
 export enum QueryMode {
@@ -593,6 +601,41 @@ export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<U
 export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
 export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
 export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
+export const GetAllCategoriesDocument = gql`
+    query GetAllCategories {
+  getAllCategories {
+    description
+    name
+  }
+}
+    `;
+
+/**
+ * __useGetAllCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetAllCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetAllCategoriesQuery, GetAllCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllCategoriesQuery, GetAllCategoriesQueryVariables>(GetAllCategoriesDocument, options);
+      }
+export function useGetAllCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllCategoriesQuery, GetAllCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllCategoriesQuery, GetAllCategoriesQueryVariables>(GetAllCategoriesDocument, options);
+        }
+export type GetAllCategoriesQueryHookResult = ReturnType<typeof useGetAllCategoriesQuery>;
+export type GetAllCategoriesLazyQueryHookResult = ReturnType<typeof useGetAllCategoriesLazyQuery>;
+export type GetAllCategoriesQueryResult = Apollo.QueryResult<GetAllCategoriesQuery, GetAllCategoriesQueryVariables>;
 export const GetCurrentUserDocument = gql`
     query getCurrentUser {
   getCurrentUser {
@@ -657,6 +700,11 @@ export type UpdateUserMutationVariables = Exact<{
 
 
 export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'UserType', id: string, fullName?: string | null, username: string, email: string, address?: string | null, phoneNo?: string | null } };
+
+export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', description?: string | null, name: string }> };
 
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 

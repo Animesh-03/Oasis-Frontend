@@ -2,16 +2,22 @@ import React, { ReactNode } from "react";
 import css from "./navbar.module.css";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import OasisLogo from "../oasis logo/oasisLogo";
+import { useGetCurrentUserQuery } from "@/graphql/generated/generated";
+import { useRouter } from "next/router";
+import clsx from "clsx";
 
 interface NavBarProps {
 	sideBarActive: boolean,
 	setsideBarActive: Function
 }
 
+
 const Navbar: React.FC<NavBarProps> = ({ sideBarActive, setsideBarActive }) => {
 	const handleClick = () => {
 		setsideBarActive(!sideBarActive);
 	};
+	const router = useRouter();
+	const {data,loading} = useGetCurrentUserQuery();
 	return (
 		<>
 			<div className={css["navbar"]}>
@@ -28,8 +34,11 @@ const Navbar: React.FC<NavBarProps> = ({ sideBarActive, setsideBarActive }) => {
 				
 				<div>
 				</div>
+				<span className={clsx([css.greet,"text-2xl"])} >Hello, {!loading && data.getCurrentUser.username} </span>
 				<div className={css["logout"]}>
-					<RiLogoutCircleLine className={css["logout-icon"]} color={"red"} />
+					<RiLogoutCircleLine className={css["logout-icon"]} color={"red"} onClick = {()=>{
+						router.push("/login");
+					}} />
 				</div>
 			</div>
 		</>

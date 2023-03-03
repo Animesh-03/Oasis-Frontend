@@ -158,7 +158,7 @@ input BoolFilter {
 type Category {
   _count: CategoryCount
   books(cursor: BookWhereUniqueInput, distinct: [BookScalarFieldEnum!], orderBy: [BookOrderByWithRelationInput!], skip: Int, take: Int, where: BookWhereInput): [Book!]!
-  description: String!
+  description: String
   id: String!
   image: String!
   name: String!
@@ -169,7 +169,7 @@ type CategoryCount {
 }
 
 input CategoryCreationInput {
-  description: String!
+  description: String
   image: String! = ""
   name: String!
 }
@@ -192,7 +192,7 @@ input CategoryWhereInput {
   NOT: [CategoryWhereInput!]
   OR: [CategoryWhereInput!]
   books: BookListRelationFilter
-  description: StringFilter
+  description: StringNullableFilter
   id: StringFilter
   image: StringFilter
   name: StringFilter
@@ -210,6 +210,7 @@ input IntFilter {
 }
 
 type Mutation {
+  createCategory(createCategoryInput: CategoryCreationInput!): Category!
   deleteUser: Boolean!
   loginUser(loginDetails: UserLoginType!): UserType
   postAdvertisement(postAdvertisement: AdvertisementPostInputType!): AdvertisementType!
@@ -265,8 +266,10 @@ input NestedStringNullableFilter {
 type Query {
   getAllActiveAdvertisements: [AdvertisementType!]!
   getAllAdvertisements: [AdvertisementType!]!
+  getAllCategories: [Category!]!
   getAllUsers: [UserType!]!
   getCurrentUser: UserType!
+  getTrendingBooks: [Book!]!
 }
 
 enum QueryMode {

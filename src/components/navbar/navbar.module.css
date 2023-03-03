@@ -9,7 +9,11 @@
     padding-left: 2%;
     padding-right: 2%;    
 }
-
+.greet
+{
+  margin-left: auto;
+  margin-right: 2em;
+}
   .sideHam {
     display: flex;
     flex-direction: column;

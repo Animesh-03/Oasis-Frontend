@@ -1,6 +1,10 @@
 import css from "./categoryCard.module.css"
 
-const CategoryCard = ()=> {
+interface CategoryCardProps{
+    name:string,
+    desc?:string
+};
+const CategoryCard:React.FC<CategoryCardProps> = ({name,desc})=> {
     return (
         <div className={css.root}>
             <div>
@@ -8,8 +12,8 @@ const CategoryCard = ()=> {
                 
             </div>
             <div className={css.inner}>
-                <p className="text-2xl font-semibold">Science</p>
-                <p className="text-xs font-extralight break-words">Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet</p>
+                <p className="text-2xl font-semibold">{name}</p>
+                <p className="text-xs font-extralight break-words">{desc}</p>
             </div>
         </div>
     )
