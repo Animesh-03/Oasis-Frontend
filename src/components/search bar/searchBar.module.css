@@ -1,0 +1,16 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 0.1rem 0.2rem;
+    border-radius: 10px;
+    min-width: 40rem;
+}
+
+.search {
+    width: 100%;
+    color: black;
+    padding: 0.2rem;
+    outline: none;
+}

@@ -4,6 +4,8 @@ import css from './button.module.css'
 
 const variants = {
     primary: css.primary,
+    light: css.light,
+    dark: css.dark
 }
 
 interface ButtonProps {

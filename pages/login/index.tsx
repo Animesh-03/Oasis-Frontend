@@ -29,8 +29,9 @@ function LoginPage() {
       const a = await loginUser({
         variables: { loginDetails: { username: loginUserName, password: loginUserPassword } }
       });
-
-      router.push("/test");
+      setLoginUserName("");
+      setLoginUserPassword("");
+      router.push("/dashboard");
     }
     catch (e) {
       console.log(e.message);
@@ -47,6 +48,9 @@ function LoginPage() {
         }
       }
     });
+    setSignUpEmail("");
+    setSignUpUser("");
+    setSignUpPassword("");
   }
 
   return (
@@ -81,12 +85,14 @@ function LoginPage() {
               onChange={(e) => {
                 setSignUpUser(e.currentTarget.value);
               }}
+              value = {signUpUser}
             />
             <Input
               placeholder="Email"
               onChange={(e) => {
                 setSignUpEmail(e.currentTarget.value);
               }}
+              value = {signUpEmail}
             />
             <Input
               placeholder="Password"
@@ -94,6 +100,8 @@ function LoginPage() {
               onChange={(e) => {
                 setSignUpPassword(e.currentTarget.value);
               }}
+              value = {signUpPassword}
+
             />
             <Button
               label="Sign Up"
@@ -106,7 +114,7 @@ function LoginPage() {
             " "
           )}
         >
-          <form action="#">
+          <form onSubmit={handleLogin} >
             <h1 className="text-black text-3xl font-bold">Sign in</h1>
             <div
               className={clsx([
@@ -119,14 +127,16 @@ function LoginPage() {
               <IconButton size={16} Icon={FaLinkedinIn} />
             </div>
             <span className="text-black">or use your account</span>
-            <Input placeholder="Username" onChange={(e) => setLoginUserName(e.currentTarget.value)} />
+            <Input placeholder="Username" onChange={(e) => setLoginUserName(e.currentTarget.value)} 
+              value={loginUserName}/>
             <Input
               placeholder="Password"
               type={"password"}
               onChange={(e) => setLoginUserPassword(e.currentTarget.value)}
+              value={loginUserPassword}
             />
             <a href="#">Forgot your password?</a>
-            <Button label="Sign In" type="submit" onClick={handleLogin} />
+            <Button label="Sign In" type="submit" />
           </form>
         </div>
         <div className={css["overlay-container"]}>

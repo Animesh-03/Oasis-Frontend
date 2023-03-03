@@ -12,3 +12,10 @@ export const Primary = Template.bind({});
 Primary.args ={
     placeholder:"test"
 };
+
+export const Secondary = Template.bind({});
+
+Secondary.args ={
+    placeholder:"test",
+    variant: "outlined"
+};

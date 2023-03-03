@@ -7,3 +7,57 @@
     justify-content: flex-start;
     align-items: center;
 }
+.hero_par
+{
+    padding: 2rem;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+.hero {
+    background-image: url("https://thediplomat.com/wp-content/uploads/2020/07/sizes/medium/thediplomat-2020-07-31-2.jpg");
+    background-size: cover;
+    width: 80vw;
+    min-width: 800px;
+    height: 350px;;
+    margin: 2% 10% 5% 10%;
+    border-radius: 48px;
+    box-shadow: 2px 5px 33px black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    margin-bottom: 1.5rem;
+}
+
+.hero-text div {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 0.1rem;
+}
+
+.category {
+    display: flex;
+    align-items: flex-start;
+    justify-content: safe space-around;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.trending {
+    display: flex;
+    align-items: flex-start;
+    justify-content: safe space-around;
+    width: 100%;
+    overflow-x: auto;
+}
