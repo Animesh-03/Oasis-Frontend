@@ -1,0 +1,226 @@
+.sell-root {
+	padding: 10px;
+	width: 100vw;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.hero_par {
+	padding: 2rem;
+	width: 100vw;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: rgb(255, 255, 255);
+}
+.hero {
+	background-image: url("https://thediplomat.com/wp-content/uploads/2020/07/sizes/medium/thediplomat-2020-07-31-2.jpg");
+	background-size: cover;
+	width: 80vw;
+	min-width: 800px;
+	height: 150px;
+	margin: 2% 10% 5% 10%;
+	border-radius: 48px;
+	box-shadow: 2px 5px 33px black;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero-text {
+	margin-bottom: 1.5rem;
+}
+
+.hero-text div {
+	display: flex;
+	justify-content: center;
+	font-size: 2rem;
+	color: white;
+	letter-spacing: 0.1rem;
+}
+
+.add-info-root {
+	width: 80vw;
+	min-height: 70vh;
+	display: flex;
+	padding: 20px;
+}
+
+.add-image {
+	background: #ffffff;
+	border: 0.5px solid #391a00;
+	box-shadow: 0px 0px 19px rgba(57, 26, 0, 0.25);
+	border-radius: 8px;
+	flex-basis: 35%;
+	margin: 5px 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.add-info {
+	background: #ffffff;
+	border: 0.5px solid #391a00;
+	box-shadow: 0px 0px 19px rgba(57, 26, 0, 0.25);
+	border-radius: 8px;
+	flex-basis: 55%;
+	margin: 5px 8px;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.div-heading {
+	background: rgba(255, 203, 164, 0.19);
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 8px;
+	color: black;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.image {
+	width: 80%;
+	background: #f1f1f1;
+	border-radius: 8px;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+.add-image-text {
+	font-family: "DM Sans";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 19px;
+	text-align: center;
+	color: #727272;
+	margin: 10px;
+}
+
+.add-image-button {
+	border: 1px solid #391a00;
+	border-radius: 8px;
+	text-decoration: none;
+}
+
+.remove {
+	background: #f1f1f1;
+	border: 1px solid rgba(57, 26, 0, 0.6);
+	border-radius: 8px;
+	padding: 10px 15px;
+	margin: 10px;
+}
+
+.price-tag {
+	width: 450px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 10px;
+	height: fit-content;
+}
+
+.add-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 80%;
+	margin: 20px;
+}
+
+.price {
+	flex-basis: 45%;
+	border: 0.5px solid #391a00;
+	box-shadow: 0px 0px 19px rgba(57, 26, 0, 0.25);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-bottom: 20px;
+	/* align-items: center; */
+}
+
+.tags {
+	flex-basis: 45%;
+	padding-bottom: 20px;
+	border: 0.5px solid #391a00;
+	box-shadow: 0px 0px 19px rgba(57, 26, 0, 0.25);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	/* align-items: center; */
+}
+
+.price-tag .div-heading {
+	height: fit-content;
+	padding: 10px;
+}
+
+.add-info-title {
+	font-family: "DM Sans";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	padding: 5px;
+	color: #391a00;
+}
+
+.title-author {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+}
+
+.description {
+	padding: 20px;
+	width: 100%;
+}
+.description-input {
+	width: 100%;
+	min-height: 200px;
+	background: #ffffff;
+	border: 1px solid #391a00;
+	border-radius: 8px;
+}
+
+.input-fields {
+	background: #ffffff;
+	border: 1px solid #391a00;
+	border-radius: 8px;
+	height: 40px;
+	margin: 10px;
+	padding: 2px;
+	width: 90%;
+}
+
+.post {
+	background: #391a00;
+	box-shadow: 0px 4px 14px rgba(87, 77, 77, 0.25);
+	border-radius: 8px;
+    color: white;
+    padding: 10px 15px;
+	margin: 10px
+}
