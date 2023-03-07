@@ -3,6 +3,9 @@ import MainSection from "@/components/mainSection/mainSection";
 import css from "./sell.module.css";
 import clsx from "clsx";
 import withApollo from "@/apollo/client";
+import { Input } from "@/components/input/input";
+import { title } from "process";
+import Button from "@/components/button/button";
 
 function PostAdd() {
 	const [addInfo, setAddInfo] = React.useState<any>({
@@ -70,11 +73,11 @@ function PostAdd() {
 							<div className={css["title-author"]}>
 								<div>
 									<div className={css["add-info-title"]}> Book Title </div>
-									<input className={css["input-fields"]} type="text" name="title" onChange={onAddInfoChange} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"title"} />
 								</div>
 								<div>
 									<div className={css["add-info-title"]}> Author </div>
-									<input className={css["input-fields"]} type="text" name="author" onChange={onAddInfoChange} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"author"} />
 								</div>
 								<div>
 									<div className={css["add-info-title"]}> Category </div>
@@ -100,19 +103,17 @@ function PostAdd() {
 								<div className={css["price"]}>
 									<div className={css["div-heading"]}>Pricing</div>
 									<div className={css["add-info-title"]}> Price </div>
-									<input className={css["input-fields"]} type="text" name="price" onChange={onAddInfoChange} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"price"} />
 								</div>
 								<div className={css["tags"]}>
 									<div className={css["div-heading"]}>Tags</div>
 									<div className={css["add-info-title"]}> Tags </div>
-									<input className={css["input-fields"]} type="text" name="tags" onChange={onAddInfoChange} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"tags"} />
 								</div>
 							</div>
 						</div>
-						<div>
-							<div className={css["post"]} onClick={handleSubmit}>
-								Post
-							</div>
+						<div className="mb-4">
+							<Button variant={"dark"} label={"Post"} />
 						</div>
 					</div>
 				</div>

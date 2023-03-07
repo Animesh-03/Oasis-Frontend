@@ -49,7 +49,7 @@ function Dashboard() {
                         <p className="text-4xl font-bold tracking-wide mb-4 mt-4">Categories</p>
                         <div className={css.category}>
                             {data.getAllCategories.map((e)=>
-                                <CategoryCard name={e.name} desc={e.description}/> 
+                                <CategoryCard key={e.id} name={e.name} desc={e.description}/> 
                             )}
                         </div>
                     </div>

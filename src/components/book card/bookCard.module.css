@@ -18,9 +18,10 @@
 }
 .root img
 {    
-    min-width: 8rem;
-    min-height: 8rem;
+    min-width: 10rem;
+    min-height: 12rem;
     object-fit: cover;
+    border-radius: 10%;
 }
 
 .inner {

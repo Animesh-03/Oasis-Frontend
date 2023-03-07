@@ -24,14 +24,16 @@ function LoginPage() {
   const [registerUser] = useRegisterUserMutation();
   const [loginUser] = useLoginUserMutation();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     try {
       const a = await loginUser({
         variables: { loginDetails: { username: loginUserName, password: loginUserPassword } }
       });
       setLoginUserName("");
       setLoginUserPassword("");
-      router.push("/dashboard");
+      await router.push("/dashboard");
     }
     catch (e) {
       console.log(e.message);
@@ -131,7 +133,7 @@ function LoginPage() {
               value={loginUserName}/>
             <Input
               placeholder="Password"
-              type={"password"}
+              type="password"
               onChange={(e) => setLoginUserPassword(e.currentTarget.value)}
               value={loginUserPassword}
             />
