@@ -23,6 +23,7 @@ function Dashboard() {
     const {data,loading} = useGetAllCategoriesQuery();
     if(loading)
         return (<></>)
+        
     const onSearch = () => {
 
     }
