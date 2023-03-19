@@ -6,15 +6,18 @@ import withApollo from "@/apollo/client";
 import { Input } from "@/components/input/input";
 import { title } from "process";
 import Button from "@/components/button/button";
+import UploadImage from "@/components/upload image/uploadImage";
 
 function PostAdd() {
+
+
 	const [addInfo, setAddInfo] = React.useState<any>({
 		title: "",
 		author: "",
 		description: "",
 		category: "",
 		price: "",
-		image: "",
+		image: null,
 		tags: "",
 	});
 
@@ -54,18 +57,25 @@ function PostAdd() {
 					<div className={css["add-image"]}>
 						<div className={css["div-heading"]}>Media</div>
 						<div className={css["image"]}>
-							<div className={css["add-image-text"]}>
-								{" "}
-								Drag And Drop Your File Here{" "}
-							</div>
-							<input
-								className={css["add-image-button"]}
-								type="file"
-								name="image"
-								onChange={onAddInfoChange}
-							/>
+							{
+								addInfo.image == null ?
+									<UploadImage onSuccess={
+										(url: string) => {
+											setAddInfo({
+												...addInfo,
+												image: url
+											});
+											console.log(url);
+										}
+									}
+									/>
+									: <img src={addInfo.image} />
+							}
 						</div>
-						<div className={css["remove"]}>Remove</div>
+						<Button label="remove" onClick={() => setAddInfo({
+							...addInfo,
+							image: null
+						})} />
 					</div>
 					<div className={css["add-info"]}>
 						<div className={css["div-heading"]}>Product Information</div>
@@ -77,7 +87,7 @@ function PostAdd() {
 								</div>
 								<div>
 									<div className={css["add-info-title"]}> Author </div>
-									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"author"} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.author} name={"author"} />
 								</div>
 								<div>
 									<div className={css["add-info-title"]}> Category </div>
@@ -103,12 +113,12 @@ function PostAdd() {
 								<div className={css["price"]}>
 									<div className={css["div-heading"]}>Pricing</div>
 									<div className={css["add-info-title"]}> Price </div>
-									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"price"} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.price} name={"price"} />
 								</div>
 								<div className={css["tags"]}>
 									<div className={css["div-heading"]}>Tags</div>
 									<div className={css["add-info-title"]}> Tags </div>
-									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.title} name={"tags"} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.tags} name={"tags"} />
 								</div>
 							</div>
 						</div>
