@@ -8,7 +8,11 @@ export default {
     component: CategoryCard,
 } as ComponentMeta<typeof CategoryCard>;
 
-const Template: ComponentStory<typeof CategoryCard> = (args) => <CategoryCard/>;
+const Template: ComponentStory<typeof CategoryCard> = (args) => <CategoryCard {...args}/>;
 
-export const PrimarySolid = Template.bind({});
+export const Primary = Template.bind({});
+
+Primary.args= {
+    name: ""
+}
 

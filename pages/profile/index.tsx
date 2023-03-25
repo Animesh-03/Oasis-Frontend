@@ -1,4 +1,5 @@
 import MainSection from "@/components/mainSection/mainSection"
+import withApollo from "@/apollo/client";
 
 
 interface ProfilePageProps {
@@ -16,4 +17,4 @@ const ProfilePage: React.FC<ProfilePageProps> = ({}) => {
     )
 }
 
-export default ProfilePage;
+export default withApollo({ssr: true})(ProfilePage);

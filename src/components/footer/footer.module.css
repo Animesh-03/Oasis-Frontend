@@ -3,6 +3,7 @@
   min-width: 100vw;
   background-color: white;
   margin-top: 6rem;
+  height: fit-content;
 }
 .footerWrapper {
     margin: 0;
@@ -18,7 +19,6 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin-bottom: 30px;
   }
   .footerLeft {
     display: flex;

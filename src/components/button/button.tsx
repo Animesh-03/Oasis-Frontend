@@ -10,7 +10,7 @@ const variants = {
 
 interface ButtonProps {
     label: string,
-    variant?: string,
+    variant?: keyof typeof variants,
     type?:"button" | "submit" | "reset",
     outlined?: boolean,
     onClick?: React.MouseEventHandler<HTMLButtonElement>

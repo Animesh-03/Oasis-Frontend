@@ -118,7 +118,7 @@ export type BookCount = {
 export type BookCreationInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  category: CategoryCreationInput;
+  category: Scalars['String'];
   description: Scalars['String'];
   isbn: Scalars['String'];
 };
@@ -604,6 +604,7 @@ export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMut
 export const GetAllCategoriesDocument = gql`
     query GetAllCategories {
   getAllCategories {
+    id
     description
     name
   }
@@ -704,7 +705,7 @@ export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __type
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', description?: string | null, name: string }> };
+export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, description?: string | null, name: string }> };
 
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 

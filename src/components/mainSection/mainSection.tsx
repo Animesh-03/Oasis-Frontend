@@ -20,7 +20,6 @@ const MainSection:  React.FC<MainSectionProps> = ({children}) => {
 	return (
 		<>
 			<Navbar sideBarActive = {sideBarActive} setsideBarActive = {setSideBarActive} />
-
 			{<Sidebar sideBarActive={sideBarActive} option={option} setOption={setOption} setSidebarActive={setSideBarActive} />}
 			<div className={css.outer}>
 				<main className={css.inner}>
