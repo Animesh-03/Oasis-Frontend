@@ -20,6 +20,10 @@
     height: 16rem;
 }
 
+.root img {
+    object-fit: cover;
+}
+
 .right {
     display: flex;
     flex-direction: column;
