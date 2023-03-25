@@ -52,7 +52,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ }) => {
 
     if (userLoading)
         return <>Loading...</>
-
+        // sconsole.log(userData.getCurrentUser);
     return (
         <MainSection>
             <div className={clsx([css.root])}>
@@ -71,11 +71,12 @@ const EditProfile: React.FC<EditProfileProps> = ({ }) => {
                 </div>
 
                 <div className={clsx([css.right, "col-span-7"])}>
-                    <Input placeholder="Full Name" defaultValue={fullName} variant="outlined" onChange={(e) => setFullName(e.currentTarget.value)} />
-                    <Input placeholder="Address" defaultValue={address} variant="outlined" onChange={(e) => setAddress(e.currentTarget.value)} />
-                    <Input placeholder="Phone No" defaultValue={phoneNo} variant="outlined" onChange={(e) => setPhoneNo(e.currentTarget.value)} />
-                    <Input placeholder="Email ID" defaultValue={email} variant="outlined" onChange={(e) => setEmail(e.currentTarget.value)} />
+                    <Input placeholder="Full Name" value={fullName} variant="outlined" onChange={(e) => setFullName(e.currentTarget.value)} />
+                    <Input placeholder="Address" value={address} variant="outlined" onChange={(e) => setAddress(e.currentTarget.value)} />
+                    <Input placeholder="Phone No" value={phoneNo} variant="outlined" onChange={(e) => setPhoneNo(e.currentTarget.value)} />
+                    <Input placeholder="Email ID" value={email} variant="outlined" onChange={(e) => setEmail(e.currentTarget.value)} />
                     <Button label="Save" variant="dark" onClick={handleUpdate} />
+                    
                 </div>
             </div>
         </MainSection>

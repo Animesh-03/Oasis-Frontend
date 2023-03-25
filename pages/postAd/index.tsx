@@ -8,7 +8,7 @@ import { title } from "process";
 import Button from "@/components/button/button";
 import UploadImage from "@/components/upload image/uploadImage";
 
-function PostAdd() {
+function PostAd() {
 
 
 	const [addInfo, setAddInfo] = React.useState<any>({
@@ -132,4 +132,4 @@ function PostAdd() {
 	);
 }
 
-export default withApollo({ ssr: true })(PostAdd);
+export default withApollo({ ssr: true })(PostAd);

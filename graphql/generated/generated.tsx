@@ -118,7 +118,7 @@ export type BookCount = {
 export type BookCreationInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  category: Scalars['String'];
+  category: CategoryCreationInput;
   description: Scalars['String'];
   isbn: Scalars['String'];
 };

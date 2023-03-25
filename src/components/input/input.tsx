@@ -12,9 +12,10 @@ interface InputProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLIn
     variant?: keyof typeof variants
     value?: string
     name?: string
+    defaultValue? : string
 };
 
-export const Input:React.FC<InputProps> = ({placeholder, type, variant="",value, name, ...rest})=> {
+export const Input:React.FC<InputProps> = ({defaultValue,placeholder, type, variant="",value, name, ...rest})=> {
     return (
-    <input className={clsx([css["input"], variants[variant]])} placeholder={placeholder} type={type} value = {value} name={name} {...rest}/>);
+    <input defaultValue = {defaultValue} className={clsx([css["input"], variants[variant]])} placeholder={placeholder} type={type} value = {value} name={name} {...rest}/>);
 };

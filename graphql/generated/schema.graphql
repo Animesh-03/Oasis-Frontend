@@ -88,7 +88,7 @@ type BookCount {
 input BookCreationInput {
   authorName: String!
   bookName: String!
-  category: String!
+  category: CategoryCreationInput!
   description: String!
   isbn: String!
 }
