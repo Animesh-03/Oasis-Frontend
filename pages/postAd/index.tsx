@@ -4,21 +4,36 @@ import css from "./sell.module.css";
 import clsx from "clsx";
 import withApollo from "@/apollo/client";
 import { Input } from "@/components/input/input";
-import { title } from "process";
 import Button from "@/components/button/button";
 import UploadImage from "@/components/upload image/uploadImage";
+import { useGetAllCategoriesQuery, usePostAdvertisementMutation } from "@/graphql/generated/generated";
+
+interface AdInfo {
+	title: string,
+	author: string,
+	description: string,
+	category: string,
+	price: string,
+	image: string,
+	tags: string,
+	isbn: string
+}
 
 function PostAd() {
 
+	const {data: categories, loading} = useGetAllCategoriesQuery();
+	const [postAdvertisement] = usePostAdvertisementMutation();
 
-	const [addInfo, setAddInfo] = React.useState<any>({
+
+	const [addInfo, setAddInfo] = React.useState<AdInfo>({
 		title: "",
 		author: "",
 		description: "",
 		category: "",
-		price: "",
+		price: "0",
 		image: null,
 		tags: "",
+		isbn: ""
 	});
 
 	const onAddInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,10 +50,33 @@ function PostAd() {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(addInfo);
+
+		let adPosted = await postAdvertisement({
+			variables: {
+				postAdvertisement: {
+					isbn: addInfo.isbn,
+					price: Number(addInfo.price),
+					images: [addInfo.image],
+					book : {
+						authorName: addInfo.author,
+						bookName: addInfo.title,
+						description: addInfo.description,
+						isbn: addInfo.isbn,
+						category: addInfo.category
+					}
+				}
+			}
+		});
+
+
+
+		console.log(adPosted);
 	};
+
+	if(loading)
+		return <>Loading</>
 
 	return (
 		<MainSection>
@@ -69,13 +107,15 @@ function PostAd() {
 										}
 									}
 									/>
-									: <img src={addInfo.image} />
+									: <img src={addInfo.image[0]} />
 							}
 						</div>
-						<Button label="remove" onClick={() => setAddInfo({
-							...addInfo,
-							image: null
-						})} />
+						<div className="mb-4">
+							<Button variant="dark" label="remove" onClick={() => setAddInfo({
+								...addInfo,
+								image: null
+							})} />
+						</div>
 					</div>
 					<div className={css["add-info"]}>
 						<div className={css["div-heading"]}>Product Information</div>
@@ -92,10 +132,10 @@ function PostAd() {
 								<div>
 									<div className={css["add-info-title"]}> Category </div>
 									<select className={css["input-fields"]} name="category" onChange={handleCategoryChange}>
-										<option value="1">Fiction</option>
-										<option value="2">Non-Fiction</option>
-										<option value="3">Academic</option>
-										<option value="4">Others</option>
+										{categories.getAllCategories.map(category => {
+											return <option key={category.id} value={category.name}>{category.name}</option>
+										})}
+										
 									</select>
 								</div>
 							</div>
@@ -110,20 +150,28 @@ function PostAd() {
 							</div>
 
 							<div className={css["price-tag"]}>
+
 								<div className={css["price"]}>
 									<div className={css["div-heading"]}>Pricing</div>
 									<div className={css["add-info-title"]}> Price </div>
-									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.price} name={"price"} />
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.price.toString()} name={"price"} />
 								</div>
+
 								<div className={css["tags"]}>
 									<div className={css["div-heading"]}>Tags</div>
 									<div className={css["add-info-title"]}> Tags </div>
 									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.tags} name={"tags"} />
 								</div>
+
+								<div className={css["tags"]}>
+									<div className={css["div-heading"]}>ISBN</div>
+									<div className={css["add-info-title"]}> ISBN </div>
+									<Input variant="bordered" onChange={onAddInfoChange} value={addInfo.isbn} name={"isbn"} />
+								</div>
 							</div>
 						</div>
 						<div className="mb-4">
-							<Button variant={"dark"} label={"Post"} />
+							<Button variant={"dark"} label={"Post"} onClick={(e) => handleSubmit(e)} />
 						</div>
 					</div>
 				</div>

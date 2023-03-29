@@ -1,0 +1,17 @@
+mutation PostAdvertisement($postAdvertisement: AdvertisementPostInputType!) {
+  postAdvertisement(postAdvertisement: $postAdvertisement) {
+    images
+    price
+    time
+    book {
+      authorName
+      bookName
+      description
+      id
+      isbn
+      category {
+        name
+      }
+    }
+  }
+}

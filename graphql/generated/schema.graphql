@@ -1,11 +1,12 @@
 input AdvertisementPostInputType {
   book: BookCreationInput = null
-  images: [String!]!
+  images: [String!]
   isbn: String!
   price: Float!
 }
 
 type AdvertisementType {
+  _count: AdvertisementTypeCount
   book: Book!
   bookID: String!
   id: String!
@@ -15,6 +16,11 @@ type AdvertisementType {
   seller: UserType!
   sellerID: String!
   time: String!
+  touches(cursor: TouchTypeWhereUniqueInput, distinct: [TouchTypeScalarFieldEnum!], orderBy: [TouchTypeOrderByWithRelationInput!], skip: Int, take: Int, where: TouchTypeWhereInput): [TouchType!]!
+}
+
+type AdvertisementTypeCount {
+  touches: Int!
 }
 
 input AdvertisementTypeListRelationFilter {
@@ -37,6 +43,12 @@ input AdvertisementTypeOrderByWithRelationInput {
   seller: UserTypeOrderByWithRelationInput
   sellerID: SortOrder
   time: SortOrder
+  touches: TouchTypeOrderByRelationAggregateInput
+}
+
+input AdvertisementTypeRelationFilter {
+  is: AdvertisementTypeWhereInput
+  isNot: AdvertisementTypeWhereInput
 }
 
 enum AdvertisementTypeScalarFieldEnum {
@@ -62,10 +74,16 @@ input AdvertisementTypeWhereInput {
   seller: UserTypeRelationFilter
   sellerID: StringFilter
   time: StringFilter
+  touches: TouchTypeListRelationFilter
 }
 
 input AdvertisementTypeWhereUniqueInput {
   id: String
+}
+
+input AdvertisementtouchInputType {
+  advertisementId: String!
+  price: Float!
 }
 
 type Book {
@@ -88,7 +106,7 @@ type BookCount {
 input BookCreationInput {
   authorName: String!
   bookName: String!
-  category: CategoryCreationInput!
+  category: String!
   description: String!
   isbn: String!
 }
@@ -215,6 +233,7 @@ type Mutation {
   loginUser(loginDetails: UserLoginType!): UserType
   postAdvertisement(postAdvertisement: AdvertisementPostInputType!): AdvertisementType!
   registerUser(registerDetails: UserRegisterType!): Boolean!
+  touchAdvertisement(touchAdvertisement: AdvertisementtouchInputType!): Boolean!
   updateUser(input: UserUpdateType!): UserType!
 }
 
@@ -321,6 +340,69 @@ input StringNullableListFilter {
   isEmpty: Boolean
 }
 
+type TouchType {
+  advertisement: AdvertisementType!
+  advertisementId: String!
+  buyer: UserType!
+  buyerId: String!
+  id: String!
+  isActive: Boolean!
+  price: Int!
+  responded: Boolean!
+  responded_price: Int!
+}
+
+input TouchTypeListRelationFilter {
+  every: TouchTypeWhereInput
+  none: TouchTypeWhereInput
+  some: TouchTypeWhereInput
+}
+
+input TouchTypeOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TouchTypeOrderByWithRelationInput {
+  advertisement: AdvertisementTypeOrderByWithRelationInput
+  advertisementId: SortOrder
+  buyer: UserTypeOrderByWithRelationInput
+  buyerId: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+  price: SortOrder
+  responded: SortOrder
+  responded_price: SortOrder
+}
+
+enum TouchTypeScalarFieldEnum {
+  advertisementId
+  buyerId
+  id
+  isActive
+  price
+  responded
+  responded_price
+}
+
+input TouchTypeWhereInput {
+  AND: [TouchTypeWhereInput!]
+  NOT: [TouchTypeWhereInput!]
+  OR: [TouchTypeWhereInput!]
+  advertisement: AdvertisementTypeRelationFilter
+  advertisementId: StringFilter
+  buyer: UserTypeRelationFilter
+  buyerId: StringFilter
+  id: StringFilter
+  isActive: BoolFilter
+  price: IntFilter
+  responded: BoolFilter
+  responded_price: IntFilter
+}
+
+input TouchTypeWhereUniqueInput {
+  id: String
+}
+
 input UserLoginType {
   password: String!
   username: String!
@@ -341,11 +423,13 @@ type UserType {
   id: String!
   password: String!
   phoneNo: String
+  touches(cursor: TouchTypeWhereUniqueInput, distinct: [TouchTypeScalarFieldEnum!], orderBy: [TouchTypeOrderByWithRelationInput!], skip: Int, take: Int, where: TouchTypeWhereInput): [TouchType!]!
   username: String!
 }
 
 type UserTypeCount {
   ads: Int!
+  touches: Int!
 }
 
 input UserTypeOrderByWithRelationInput {
@@ -356,6 +440,7 @@ input UserTypeOrderByWithRelationInput {
   id: SortOrder
   password: SortOrder
   phoneNo: SortOrder
+  touches: TouchTypeOrderByRelationAggregateInput
   username: SortOrder
 }
 
@@ -375,6 +460,7 @@ input UserTypeWhereInput {
   id: StringFilter
   password: StringFilter
   phoneNo: StringNullableFilter
+  touches: TouchTypeListRelationFilter
   username: StringFilter
 }
 

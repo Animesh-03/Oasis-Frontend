@@ -17,13 +17,14 @@ export type Scalars = {
 
 export type AdvertisementPostInputType = {
   book?: InputMaybe<BookCreationInput>;
-  images: Array<Scalars['String']>;
+  images?: InputMaybe<Array<Scalars['String']>>;
   isbn: Scalars['String'];
   price: Scalars['Float'];
 };
 
 export type AdvertisementType = {
   __typename?: 'AdvertisementType';
+  _count?: Maybe<AdvertisementTypeCount>;
   book: Book;
   bookID: Scalars['String'];
   id: Scalars['String'];
@@ -33,6 +34,22 @@ export type AdvertisementType = {
   seller: UserType;
   sellerID: Scalars['String'];
   time: Scalars['String'];
+  touches: Array<TouchType>;
+};
+
+
+export type AdvertisementTypeTouchesArgs = {
+  cursor?: InputMaybe<TouchTypeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<TouchTypeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<TouchTypeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TouchTypeWhereInput>;
+};
+
+export type AdvertisementTypeCount = {
+  __typename?: 'AdvertisementTypeCount';
+  touches: Scalars['Int'];
 };
 
 export type AdvertisementTypeListRelationFilter = {
@@ -55,6 +72,12 @@ export type AdvertisementTypeOrderByWithRelationInput = {
   seller?: InputMaybe<UserTypeOrderByWithRelationInput>;
   sellerID?: InputMaybe<SortOrder>;
   time?: InputMaybe<SortOrder>;
+  touches?: InputMaybe<TouchTypeOrderByRelationAggregateInput>;
+};
+
+export type AdvertisementTypeRelationFilter = {
+  is?: InputMaybe<AdvertisementTypeWhereInput>;
+  isNot?: InputMaybe<AdvertisementTypeWhereInput>;
 };
 
 export enum AdvertisementTypeScalarFieldEnum {
@@ -80,10 +103,16 @@ export type AdvertisementTypeWhereInput = {
   seller?: InputMaybe<UserTypeRelationFilter>;
   sellerID?: InputMaybe<StringFilter>;
   time?: InputMaybe<StringFilter>;
+  touches?: InputMaybe<TouchTypeListRelationFilter>;
 };
 
 export type AdvertisementTypeWhereUniqueInput = {
   id?: InputMaybe<Scalars['String']>;
+};
+
+export type AdvertisementtouchInputType = {
+  advertisementId: Scalars['String'];
+  price: Scalars['Float'];
 };
 
 export type Book = {
@@ -118,7 +147,7 @@ export type BookCount = {
 export type BookCreationInput = {
   authorName: Scalars['String'];
   bookName: Scalars['String'];
-  category: CategoryCreationInput;
+  category: Scalars['String'];
   description: Scalars['String'];
   isbn: Scalars['String'];
 };
@@ -258,6 +287,7 @@ export type Mutation = {
   loginUser?: Maybe<UserType>;
   postAdvertisement: AdvertisementType;
   registerUser: Scalars['Boolean'];
+  touchAdvertisement: Scalars['Boolean'];
   updateUser: UserType;
 };
 
@@ -279,6 +309,11 @@ export type MutationPostAdvertisementArgs = {
 
 export type MutationRegisterUserArgs = {
   registerDetails: UserRegisterType;
+};
+
+
+export type MutationTouchAdvertisementArgs = {
+  touchAdvertisement: AdvertisementtouchInputType;
 };
 
 
@@ -390,6 +425,70 @@ export type StringNullableListFilter = {
   isEmpty?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type TouchType = {
+  __typename?: 'TouchType';
+  advertisement: AdvertisementType;
+  advertisementId: Scalars['String'];
+  buyer: UserType;
+  buyerId: Scalars['String'];
+  id: Scalars['String'];
+  isActive: Scalars['Boolean'];
+  price: Scalars['Int'];
+  responded: Scalars['Boolean'];
+  responded_price: Scalars['Int'];
+};
+
+export type TouchTypeListRelationFilter = {
+  every?: InputMaybe<TouchTypeWhereInput>;
+  none?: InputMaybe<TouchTypeWhereInput>;
+  some?: InputMaybe<TouchTypeWhereInput>;
+};
+
+export type TouchTypeOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type TouchTypeOrderByWithRelationInput = {
+  advertisement?: InputMaybe<AdvertisementTypeOrderByWithRelationInput>;
+  advertisementId?: InputMaybe<SortOrder>;
+  buyer?: InputMaybe<UserTypeOrderByWithRelationInput>;
+  buyerId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isActive?: InputMaybe<SortOrder>;
+  price?: InputMaybe<SortOrder>;
+  responded?: InputMaybe<SortOrder>;
+  responded_price?: InputMaybe<SortOrder>;
+};
+
+export enum TouchTypeScalarFieldEnum {
+  AdvertisementId = 'advertisementId',
+  BuyerId = 'buyerId',
+  Id = 'id',
+  IsActive = 'isActive',
+  Price = 'price',
+  Responded = 'responded',
+  RespondedPrice = 'responded_price'
+}
+
+export type TouchTypeWhereInput = {
+  AND?: InputMaybe<Array<TouchTypeWhereInput>>;
+  NOT?: InputMaybe<Array<TouchTypeWhereInput>>;
+  OR?: InputMaybe<Array<TouchTypeWhereInput>>;
+  advertisement?: InputMaybe<AdvertisementTypeRelationFilter>;
+  advertisementId?: InputMaybe<StringFilter>;
+  buyer?: InputMaybe<UserTypeRelationFilter>;
+  buyerId?: InputMaybe<StringFilter>;
+  id?: InputMaybe<StringFilter>;
+  isActive?: InputMaybe<BoolFilter>;
+  price?: InputMaybe<IntFilter>;
+  responded?: InputMaybe<BoolFilter>;
+  responded_price?: InputMaybe<IntFilter>;
+};
+
+export type TouchTypeWhereUniqueInput = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
 export type UserLoginType = {
   password: Scalars['String'];
   username: Scalars['String'];
@@ -411,6 +510,7 @@ export type UserType = {
   id: Scalars['String'];
   password: Scalars['String'];
   phoneNo?: Maybe<Scalars['String']>;
+  touches: Array<TouchType>;
   username: Scalars['String'];
 };
 
@@ -424,9 +524,20 @@ export type UserTypeAdsArgs = {
   where?: InputMaybe<AdvertisementTypeWhereInput>;
 };
 
+
+export type UserTypeTouchesArgs = {
+  cursor?: InputMaybe<TouchTypeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<TouchTypeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<TouchTypeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TouchTypeWhereInput>;
+};
+
 export type UserTypeCount = {
   __typename?: 'UserTypeCount';
   ads: Scalars['Int'];
+  touches: Scalars['Int'];
 };
 
 export type UserTypeOrderByWithRelationInput = {
@@ -437,6 +548,7 @@ export type UserTypeOrderByWithRelationInput = {
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
   phoneNo?: InputMaybe<SortOrder>;
+  touches?: InputMaybe<TouchTypeOrderByRelationAggregateInput>;
   username?: InputMaybe<SortOrder>;
 };
 
@@ -456,6 +568,7 @@ export type UserTypeWhereInput = {
   id?: InputMaybe<StringFilter>;
   password?: InputMaybe<StringFilter>;
   phoneNo?: InputMaybe<StringNullableFilter>;
+  touches?: InputMaybe<TouchTypeListRelationFilter>;
   username?: InputMaybe<StringFilter>;
 };
 
@@ -532,6 +645,51 @@ export function useLoginUserMutation(baseOptions?: Apollo.MutationHookOptions<Lo
 export type LoginUserMutationHookResult = ReturnType<typeof useLoginUserMutation>;
 export type LoginUserMutationResult = Apollo.MutationResult<LoginUserMutation>;
 export type LoginUserMutationOptions = Apollo.BaseMutationOptions<LoginUserMutation, LoginUserMutationVariables>;
+export const PostAdvertisementDocument = gql`
+    mutation PostAdvertisement($postAdvertisement: AdvertisementPostInputType!) {
+  postAdvertisement(postAdvertisement: $postAdvertisement) {
+    images
+    price
+    time
+    book {
+      authorName
+      bookName
+      description
+      id
+      isbn
+      category {
+        name
+      }
+    }
+  }
+}
+    `;
+export type PostAdvertisementMutationFn = Apollo.MutationFunction<PostAdvertisementMutation, PostAdvertisementMutationVariables>;
+
+/**
+ * __usePostAdvertisementMutation__
+ *
+ * To run a mutation, you first call `usePostAdvertisementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePostAdvertisementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [postAdvertisementMutation, { data, loading, error }] = usePostAdvertisementMutation({
+ *   variables: {
+ *      postAdvertisement: // value for 'postAdvertisement'
+ *   },
+ * });
+ */
+export function usePostAdvertisementMutation(baseOptions?: Apollo.MutationHookOptions<PostAdvertisementMutation, PostAdvertisementMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PostAdvertisementMutation, PostAdvertisementMutationVariables>(PostAdvertisementDocument, options);
+      }
+export type PostAdvertisementMutationHookResult = ReturnType<typeof usePostAdvertisementMutation>;
+export type PostAdvertisementMutationResult = Apollo.MutationResult<PostAdvertisementMutation>;
+export type PostAdvertisementMutationOptions = Apollo.BaseMutationOptions<PostAdvertisementMutation, PostAdvertisementMutationVariables>;
 export const RegisterUserDocument = gql`
     mutation RegisterUser($registerDetails: UserRegisterType!) {
   registerUser(registerDetails: $registerDetails)
@@ -605,7 +763,6 @@ export const GetAllCategoriesDocument = gql`
     query GetAllCategories {
   getAllCategories {
     id
-    description
     name
   }
 }
@@ -688,6 +845,13 @@ export type LoginUserMutationVariables = Exact<{
 
 export type LoginUserMutation = { __typename?: 'Mutation', loginUser?: { __typename?: 'UserType', id: string, username: string, password: string } | null };
 
+export type PostAdvertisementMutationVariables = Exact<{
+  postAdvertisement: AdvertisementPostInputType;
+}>;
+
+
+export type PostAdvertisementMutation = { __typename?: 'Mutation', postAdvertisement: { __typename?: 'AdvertisementType', images: Array<string>, price: number, time: string, book: { __typename?: 'Book', authorName: string, bookName: string, description: string, id: string, isbn: string, category: { __typename?: 'Category', name: string } } } };
+
 export type RegisterUserMutationVariables = Exact<{
   registerDetails: UserRegisterType;
 }>;
@@ -705,7 +869,7 @@ export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __type
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, description?: string | null, name: string }> };
+export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, name: string }> };
 
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
