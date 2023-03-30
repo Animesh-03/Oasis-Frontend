@@ -1,3 +1,6 @@
+import { useGetCurrentUserQuery } from "@/graphql/generated/generated";
+import { NetworkStatus } from "@apollo/client";
+import { useRouter } from "next/router";
 import React from "react";
 import Footer from "../footer/footer";
 import Navbar from "../navbar/navbar";
@@ -9,13 +12,38 @@ interface MainSectionProps {
 	children: React.ReactNode
 }
 const MainSection:  React.FC<MainSectionProps> = ({children}) => {
+
+	const router = useRouter();
+	const {loading, data , networkStatus} = useGetCurrentUserQuery();
+
+	
+
+	React.useEffect(() => {
+		if(!loading || networkStatus === NetworkStatus.ready)
+		{
+			if(!data?.getCurrentUser.id) 
+			{
+				router.replace("/login");
+				console.log("Unauthorised");
+			}
+		}
+
+
+	}, [loading, data, networkStatus]);
+
+
 	const [sideBarActive, setSideBarActive] = React.useState<boolean>(false);
-    const [option, setOption] = React.useState<Number>(2)
+    const [option, setOption] = React.useState<Number>(2);
     /*
         option : 1 -> profile page 
         option : 2 -> buy (default page)
         option : 3 -> sell
     */
+
+	if(loading || data == undefined)
+	{
+		return <>Loading...</>
+	}
 
 	return (
 		<>

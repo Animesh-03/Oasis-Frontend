@@ -1,8 +1,18 @@
+input AdvertisementBuyerResponseType {
+  accept: Boolean!
+  touchId: String!
+}
+
 input AdvertisementPostInputType {
   book: BookCreationInput = null
   images: [String!]
   isbn: String!
   price: Float!
+}
+
+input AdvertisementSellerResponseType {
+  responsePrice: Float!
+  touchId: String!
 }
 
 type AdvertisementType {
@@ -231,8 +241,11 @@ type Mutation {
   createCategory(createCategoryInput: CategoryCreationInput!): Category!
   deleteUser: Boolean!
   loginUser(loginDetails: UserLoginType!): UserType
+  logoutUser: Boolean!
   postAdvertisement(postAdvertisement: AdvertisementPostInputType!): AdvertisementType!
   registerUser(registerDetails: UserRegisterType!): Boolean!
+  respondBuyerTouch(responseInput: AdvertisementBuyerResponseType!): Boolean!
+  respondSellerTouch(responseInput: AdvertisementSellerResponseType!): Boolean!
   touchAdvertisement(touchAdvertisement: AdvertisementtouchInputType!): Boolean!
   updateUser(input: UserUpdateType!): UserType!
 }
@@ -347,6 +360,7 @@ type TouchType {
   buyerId: String!
   id: String!
   isActive: Boolean!
+  isFinal: Boolean!
   price: Int!
   responded: Boolean!
   responded_price: Int!
@@ -369,6 +383,7 @@ input TouchTypeOrderByWithRelationInput {
   buyerId: SortOrder
   id: SortOrder
   isActive: SortOrder
+  isFinal: SortOrder
   price: SortOrder
   responded: SortOrder
   responded_price: SortOrder
@@ -379,6 +394,7 @@ enum TouchTypeScalarFieldEnum {
   buyerId
   id
   isActive
+  isFinal
   price
   responded
   responded_price
@@ -394,6 +410,7 @@ input TouchTypeWhereInput {
   buyerId: StringFilter
   id: StringFilter
   isActive: BoolFilter
+  isFinal: BoolFilter
   price: IntFilter
   responded: BoolFilter
   responded_price: IntFilter

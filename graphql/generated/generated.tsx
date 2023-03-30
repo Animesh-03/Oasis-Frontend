@@ -15,11 +15,21 @@ export type Scalars = {
   Float: number;
 };
 
+export type AdvertisementBuyerResponseType = {
+  accept: Scalars['Boolean'];
+  touchId: Scalars['String'];
+};
+
 export type AdvertisementPostInputType = {
   book?: InputMaybe<BookCreationInput>;
   images?: InputMaybe<Array<Scalars['String']>>;
   isbn: Scalars['String'];
   price: Scalars['Float'];
+};
+
+export type AdvertisementSellerResponseType = {
+  responsePrice: Scalars['Float'];
+  touchId: Scalars['String'];
 };
 
 export type AdvertisementType = {
@@ -285,8 +295,11 @@ export type Mutation = {
   createCategory: Category;
   deleteUser: Scalars['Boolean'];
   loginUser?: Maybe<UserType>;
+  logoutUser: Scalars['Boolean'];
   postAdvertisement: AdvertisementType;
   registerUser: Scalars['Boolean'];
+  respondBuyerTouch: Scalars['Boolean'];
+  respondSellerTouch: Scalars['Boolean'];
   touchAdvertisement: Scalars['Boolean'];
   updateUser: UserType;
 };
@@ -309,6 +322,16 @@ export type MutationPostAdvertisementArgs = {
 
 export type MutationRegisterUserArgs = {
   registerDetails: UserRegisterType;
+};
+
+
+export type MutationRespondBuyerTouchArgs = {
+  responseInput: AdvertisementBuyerResponseType;
+};
+
+
+export type MutationRespondSellerTouchArgs = {
+  responseInput: AdvertisementSellerResponseType;
 };
 
 
@@ -433,6 +456,7 @@ export type TouchType = {
   buyerId: Scalars['String'];
   id: Scalars['String'];
   isActive: Scalars['Boolean'];
+  isFinal: Scalars['Boolean'];
   price: Scalars['Int'];
   responded: Scalars['Boolean'];
   responded_price: Scalars['Int'];
@@ -455,6 +479,7 @@ export type TouchTypeOrderByWithRelationInput = {
   buyerId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   isActive?: InputMaybe<SortOrder>;
+  isFinal?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
   responded?: InputMaybe<SortOrder>;
   responded_price?: InputMaybe<SortOrder>;
@@ -465,6 +490,7 @@ export enum TouchTypeScalarFieldEnum {
   BuyerId = 'buyerId',
   Id = 'id',
   IsActive = 'isActive',
+  IsFinal = 'isFinal',
   Price = 'price',
   Responded = 'responded',
   RespondedPrice = 'responded_price'
@@ -480,6 +506,7 @@ export type TouchTypeWhereInput = {
   buyerId?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   isActive?: InputMaybe<BoolFilter>;
+  isFinal?: InputMaybe<BoolFilter>;
   price?: InputMaybe<IntFilter>;
   responded?: InputMaybe<BoolFilter>;
   responded_price?: InputMaybe<IntFilter>;
@@ -645,6 +672,36 @@ export function useLoginUserMutation(baseOptions?: Apollo.MutationHookOptions<Lo
 export type LoginUserMutationHookResult = ReturnType<typeof useLoginUserMutation>;
 export type LoginUserMutationResult = Apollo.MutationResult<LoginUserMutation>;
 export type LoginUserMutationOptions = Apollo.BaseMutationOptions<LoginUserMutation, LoginUserMutationVariables>;
+export const LogoutUserDocument = gql`
+    mutation LogoutUser {
+  logoutUser
+}
+    `;
+export type LogoutUserMutationFn = Apollo.MutationFunction<LogoutUserMutation, LogoutUserMutationVariables>;
+
+/**
+ * __useLogoutUserMutation__
+ *
+ * To run a mutation, you first call `useLogoutUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutUserMutation, { data, loading, error }] = useLogoutUserMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<LogoutUserMutation, LogoutUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LogoutUserMutation, LogoutUserMutationVariables>(LogoutUserDocument, options);
+      }
+export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
+export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
+export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
 export const PostAdvertisementDocument = gql`
     mutation PostAdvertisement($postAdvertisement: AdvertisementPostInputType!) {
   postAdvertisement(postAdvertisement: $postAdvertisement) {
@@ -764,6 +821,7 @@ export const GetAllCategoriesDocument = gql`
   getAllCategories {
     id
     name
+    description
   }
 }
     `;
@@ -845,6 +903,11 @@ export type LoginUserMutationVariables = Exact<{
 
 export type LoginUserMutation = { __typename?: 'Mutation', loginUser?: { __typename?: 'UserType', id: string, username: string, password: string } | null };
 
+export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean };
+
 export type PostAdvertisementMutationVariables = Exact<{
   postAdvertisement: AdvertisementPostInputType;
 }>;
@@ -869,7 +932,7 @@ export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __type
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, name: string }> };
+export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, name: string, description?: string | null }> };
 
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
