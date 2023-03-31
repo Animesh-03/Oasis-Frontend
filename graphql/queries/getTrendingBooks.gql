@@ -1,0 +1,6 @@
+query GetTrendingBooks {
+  getTrendingBooks {
+    description
+    bookName
+  }
+}

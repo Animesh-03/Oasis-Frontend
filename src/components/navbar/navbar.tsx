@@ -36,7 +36,7 @@ const Navbar: React.FC<NavBarProps> = ({ sideBarActive, setsideBarActive }) => {
 				
 				<div>
 				</div>
-				<span className={clsx([css.greet,"text-2xl"])} >Hello, {!loading && data?.getCurrentUser.username} </span>
+				<span className={clsx([css.greet,"text-2xl"])} >Hello, {!loading && data?.getCurrentUser.fullName} </span>
 				<div className={css["logout"]}>
 					<RiLogoutCircleLine className={css["logout-icon"]} color={"red"} onClick = {()=>{
 						logoutUser();

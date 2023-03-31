@@ -891,6 +891,41 @@ export function useGetCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
 export type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
 export type GetCurrentUserQueryResult = Apollo.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export const GetTrendingBooksDocument = gql`
+    query GetTrendingBooks {
+  getTrendingBooks {
+    description
+    bookName
+  }
+}
+    `;
+
+/**
+ * __useGetTrendingBooksQuery__
+ *
+ * To run a query within a React component, call `useGetTrendingBooksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTrendingBooksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTrendingBooksQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTrendingBooksQuery(baseOptions?: Apollo.QueryHookOptions<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>(GetTrendingBooksDocument, options);
+      }
+export function useGetTrendingBooksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>(GetTrendingBooksDocument, options);
+        }
+export type GetTrendingBooksQueryHookResult = ReturnType<typeof useGetTrendingBooksQuery>;
+export type GetTrendingBooksLazyQueryHookResult = ReturnType<typeof useGetTrendingBooksLazyQuery>;
+export type GetTrendingBooksQueryResult = Apollo.QueryResult<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>;
 export type DeleteUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -938,3 +973,8 @@ export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __typename?: 'UserType', id: string, email: string, username: string, phoneNo?: string | null, address?: string | null, fullName?: string | null } };
+
+export type GetTrendingBooksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTrendingBooksQuery = { __typename?: 'Query', getTrendingBooks: Array<{ __typename?: 'Book', description: string, bookName: string }> };

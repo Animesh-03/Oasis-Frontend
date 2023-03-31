@@ -9,7 +9,7 @@ import clsx from "clsx";
 import SearchBar from "@/components/search bar/searchBar";
 import CategoryCard from "@/components/category card/categoryCard";
 import BookCard from "@/components/book card/bookCard";
-import { useGetAllCategoriesQuery } from "@/graphql/generated/generated";
+import { useGetAllCategoriesQuery, useGetTrendingBooksQuery } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
 
 function Dashboard() {
@@ -19,13 +19,14 @@ function Dashboard() {
     //     option : 3 -> sell
     // */
 
-    const [searchString, setSearchString] = useState<string>("");
-    const {data,loading} = useGetAllCategoriesQuery();
-    if(loading)
-        return (<></>)
-        
-    const onSearch = () => {
+    const {data: categoriesData,loading: categoriesLoading} = useGetAllCategoriesQuery();
+    const {data: trendingData, loading: trendingLoading} = useGetTrendingBooksQuery();
 
+    if(categoriesLoading || trendingLoading)
+        return (<>Loading...</>)
+        
+    const onSearch = (searchRef: React.MutableRefObject<HTMLInputElement>) => {
+        console.log(searchRef.current.value);
     }
 
     return (
@@ -40,7 +41,7 @@ function Dashboard() {
                             <div>easier</div>
                         </div>
                         <div>
-                            <SearchBar value={searchString} onChange={setSearchString} onSearch={onSearch} />
+                            <SearchBar onSearch={onSearch} />
                         </div>
 
                         </div>
@@ -49,7 +50,7 @@ function Dashboard() {
                     <div className="flex flex-col items-center w-full">
                         <p className="text-4xl font-bold tracking-wide mb-4 mt-4">Categories</p>
                         <div className={css.category}>
-                            {data?.getAllCategories.map((e)=>
+                            {categoriesData?.getAllCategories.map((e)=>
                                 <CategoryCard key={e.id} name={e.name} desc={e.description}/> 
                             )}
                         </div>
@@ -58,18 +59,9 @@ function Dashboard() {
                     <div className="flex flex-col items-center w-full mt-16">
                         <p className="text-4xl font-bold tracking-wide mb-4">Trending</p>
                         <div className={css.trending}>
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
-                            <BookCard />
+                            {trendingData?.getTrendingBooks.map(book => {
+                                return <BookCard key={book.bookName} title={book.bookName} description={book.description} />
+                            })}
                         </div>
                     </div>
                 </div>
