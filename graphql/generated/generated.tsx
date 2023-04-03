@@ -27,6 +27,15 @@ export type AdvertisementPostInputType = {
   price: Scalars['Float'];
 };
 
+export type AdvertisementSearchType = {
+  authorName?: InputMaybe<Scalars['String']>;
+  bookName?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Scalars['String']>;
+  maxPrice?: InputMaybe<Scalars['Float']>;
+  minPrice?: InputMaybe<Scalars['Float']>;
+  sellerName?: InputMaybe<Scalars['String']>;
+};
+
 export type AdvertisementSellerResponseType = {
   responsePrice: Scalars['Float'];
   touchId: Scalars['String'];
@@ -397,6 +406,12 @@ export type Query = {
   getAllUsers: Array<UserType>;
   getCurrentUser: UserType;
   getTrendingBooks: Array<Book>;
+  searchAdvertisements: Array<AdvertisementType>;
+};
+
+
+export type QuerySearchAdvertisementsArgs = {
+  searchInput: AdvertisementSearchType;
 };
 
 export enum QueryMode {

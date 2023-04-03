@@ -1,0 +1,96 @@
+.outer {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.40);
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.button {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.info_left{
+    padding: 10px;
+}
+.info_right{
+    padding: 10px;
+}
+
+.info_left > div {
+    display: flex;
+    flex-direction: column;
+}
+.info_right > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.info_left > div > label {
+    color: wheat;
+    margin: 5px;
+}
+.info_left > div > input {
+    border-radius: 5px;
+    width: 30vw;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.info_right > div > select {
+    border-radius: 5px;
+    width: 15vw;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.info_right > div > label {
+    color: wheat;
+    margin : 5px;
+}
+
+.button > div {
+    /* border: 1px solid black; */
+    padding: 8px 12px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.button > div:nth-child(1) {
+    background-color: #f44336;
+    color: white;
+}
+
+.button > div:nth-child(2) {
+    background-color: #00a6ff;
+    color: white;
+}
+
+
+.header > div {
+    font-size: 35px;
+    /* font-weight: bold; */
+    color: white;
+}

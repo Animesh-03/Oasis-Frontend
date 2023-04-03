@@ -10,6 +10,15 @@ input AdvertisementPostInputType {
   price: Float!
 }
 
+input AdvertisementSearchType {
+  authorName: String
+  bookName: String
+  category: String
+  maxPrice: Float
+  minPrice: Float
+  sellerName: String
+}
+
 input AdvertisementSellerResponseType {
   responsePrice: Float!
   touchId: String!
@@ -302,6 +311,7 @@ type Query {
   getAllUsers: [UserType!]!
   getCurrentUser: UserType!
   getTrendingBooks: [Book!]!
+  searchAdvertisements(searchInput: AdvertisementSearchType!): [AdvertisementType!]!
 }
 
 enum QueryMode {

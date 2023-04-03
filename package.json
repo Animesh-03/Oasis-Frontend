@@ -25,6 +25,7 @@
     "next": "13.1.6",
     "next-apollo": "^5.0.8",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "storybook": "^6.5.16",
