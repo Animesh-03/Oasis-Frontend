@@ -33,6 +33,9 @@ const Sidebar: React.FC<SiderbarProps> = ({ option, setOption, setSidebarActive,
 				<div onClick={() => handleClick(3, "/postAd")}>
 					SELL
 				</div>
+				<div onClick={() => handleClick(3, "/actions")}>
+					Actions
+				</div>
 			</div>
 		</>
 	);
