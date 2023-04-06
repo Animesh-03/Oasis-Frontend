@@ -11,6 +11,7 @@ interface AdvertProps{
     desc:string
     price:number,
     seller:string,
+    image: string
 };
 
 function Advert(e:AdvertProps)
@@ -18,7 +19,7 @@ function Advert(e:AdvertProps)
 
     return <div className={css["root"]}>
         <div className={css["left"]}>
-            <img src={"https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"}></img>
+            <img src={e.image ?? "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"}></img>
             <div className={css["ImgBottom"]}><Button label='Request' variant='elong'></Button> <Input></Input></div>
         </div>
         <div className={css["right"]}>

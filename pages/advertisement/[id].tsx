@@ -28,7 +28,7 @@ function Test() {
             <div className={css["section"]}>
                 <h1>Book Details</h1>
                 <Advert title={data.getAdvertisement.book.bookName} author={data.getAdvertisement.book.authorName} desc={data.getAdvertisement.book.description}
-                    price={data.getAdvertisement.price} seller={data.getAdvertisement.seller.fullName}></Advert>
+                    price={data.getAdvertisement.price} seller={data.getAdvertisement.seller.fullName} image={data.getAdvertisement.images[0]}></Advert>
             </div>
 
             <div className={css["similar"]}>
