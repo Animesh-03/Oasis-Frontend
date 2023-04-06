@@ -1,0 +1,82 @@
+.root {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-basis: 30%;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.252);
+}
+
+.image {
+    margin: 5px;
+    flex-basis: 40%;
+    min-height: 200px;
+}
+.image >img {
+    background-size: cover;
+    height: 100%
+}
+
+.inner {
+    display: flex;
+    flex-basis: 60%;
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.title {
+font-family: 'Inter';
+font-weight: 700;
+font-size: 35px;
+line-height: 110%;
+color: #391A00;
+}
+
+.author {
+margin-top: 10px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 120%;
+/* or 24px */
+
+display: flex;
+align-items: center;
+
+color: #323336;
+}
+
+.price {
+    font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 42px;
+margin-top: 15px;
+color: #550D0E;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tags > Button{
+    background: #C9C9C9;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 8px 12px;
+
+}
