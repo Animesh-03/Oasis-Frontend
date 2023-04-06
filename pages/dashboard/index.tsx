@@ -62,6 +62,12 @@ function Dashboard() {
                             {trendingData?.getTrendingBooks.map(book => {
                                 return <BookCard key={book.bookName} title={book.bookName} description={book.description} />
                             })}
+                            
+            <BookCard title="demo"></BookCard>
+            <BookCard title="demo"></BookCard>
+            <BookCard title="demo"></BookCard>
+            <BookCard title="demo"></BookCard>
+            <BookCard title="demo"></BookCard>
                         </div>
                     </div>
                 </div>

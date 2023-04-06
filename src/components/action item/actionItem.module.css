@@ -13,22 +13,26 @@
 
 .tab p{
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    width: 100%;
+    word-spacing: 0%;
+    line-height: 1.1rem;
+    margin: 0;
 }
 
 .tab div
 {
     margin-inline: 10px;
     padding-inline: 10px;
-    min-height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 5px solid #FF3838;
+    border-left: 6px solid #89460f;
+    border-radius: 3px;
     background-color: white;
 }
 
 .root:hover{
-    transform: scaleX(103%);
+    transform: scaleX(101%);
     box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
 }

@@ -1,0 +1,55 @@
+.root
+{
+    flex:1 1;
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+}
+.left
+{
+    min-width: 35%;
+    padding:40px;
+    
+}
+.ImgBottom input
+{
+    border:1px solid black;
+    border-radius: 5px;
+    margin:5px;
+    margin-left: 25px;
+}
+.ImgBottom
+{
+    display: flex;
+    margin-top: 20px;
+    height: 50px;
+    padding-inline: 40px;
+}
+.left img{
+    object-fit: cover;
+    height: 80%;
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+}
+.right h1{
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.right h2{
+    font-size: 2rem;
+    color:rgb(89, 89, 89);
+}
+.right
+{
+    flex-grow: 1;
+    display: flex;
+    padding: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.right button{
+    min-height: 40px;
+    margin-left: auto;
+}

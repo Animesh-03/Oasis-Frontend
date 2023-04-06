@@ -1,6 +1,6 @@
 .root {
     @apply active:scale-90 focus:border-none;
-	margin: 3px;
+	margin: 4px;
 }
 
 .root:hover{
@@ -21,12 +21,12 @@
 }
 
 .elog {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border-radius: 10px;
+	border: 1px solid #71390c;
+	background-color: #71390c;
 	color: #FFFFFF;
-	padding: 10px;
-	padding-inline: 30px;
+	padding: 5px;
+	padding-inline: 20px;
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
