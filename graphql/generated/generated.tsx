@@ -400,6 +400,7 @@ export type NestedStringNullableFilter = {
 
 export type Query = {
   __typename?: 'Query';
+  getAdvertisement: AdvertisementType;
   getAllActiveAdvertisements: Array<AdvertisementType>;
   getAllAdvertisements: Array<AdvertisementType>;
   getAllCategories: Array<Category>;
@@ -407,6 +408,11 @@ export type Query = {
   getCurrentUser: UserType;
   getTrendingBooks: Array<Book>;
   searchAdvertisements: Array<AdvertisementType>;
+};
+
+
+export type QueryGetAdvertisementArgs = {
+  advertisement: Scalars['String'];
 };
 
 
@@ -831,6 +837,55 @@ export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<U
 export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
 export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
 export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
+export const GetAdvertisementDocument = gql`
+    query GetAdvertisement($advertisement: String!) {
+  getAdvertisement(advertisement: $advertisement) {
+    id
+    price
+    images
+    open
+    seller {
+      fullName
+    }
+    book {
+      bookName
+      authorName
+      description
+      category {
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAdvertisementQuery__
+ *
+ * To run a query within a React component, call `useGetAdvertisementQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdvertisementQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAdvertisementQuery({
+ *   variables: {
+ *      advertisement: // value for 'advertisement'
+ *   },
+ * });
+ */
+export function useGetAdvertisementQuery(baseOptions: Apollo.QueryHookOptions<GetAdvertisementQuery, GetAdvertisementQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAdvertisementQuery, GetAdvertisementQueryVariables>(GetAdvertisementDocument, options);
+      }
+export function useGetAdvertisementLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdvertisementQuery, GetAdvertisementQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAdvertisementQuery, GetAdvertisementQueryVariables>(GetAdvertisementDocument, options);
+        }
+export type GetAdvertisementQueryHookResult = ReturnType<typeof useGetAdvertisementQuery>;
+export type GetAdvertisementLazyQueryHookResult = ReturnType<typeof useGetAdvertisementLazyQuery>;
+export type GetAdvertisementQueryResult = Apollo.QueryResult<GetAdvertisementQuery, GetAdvertisementQueryVariables>;
 export const GetAllCategoriesDocument = gql`
     query GetAllCategories {
   getAllCategories {
@@ -941,6 +996,47 @@ export function useGetTrendingBooksLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetTrendingBooksQueryHookResult = ReturnType<typeof useGetTrendingBooksQuery>;
 export type GetTrendingBooksLazyQueryHookResult = ReturnType<typeof useGetTrendingBooksLazyQuery>;
 export type GetTrendingBooksQueryResult = Apollo.QueryResult<GetTrendingBooksQuery, GetTrendingBooksQueryVariables>;
+export const SearchAdvertisementsDocument = gql`
+    query SearchAdvertisements($searchInput: AdvertisementSearchType!) {
+  searchAdvertisements(searchInput: $searchInput) {
+    id
+    images
+    book {
+      authorName
+      bookName
+    }
+    price
+  }
+}
+    `;
+
+/**
+ * __useSearchAdvertisementsQuery__
+ *
+ * To run a query within a React component, call `useSearchAdvertisementsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchAdvertisementsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchAdvertisementsQuery({
+ *   variables: {
+ *      searchInput: // value for 'searchInput'
+ *   },
+ * });
+ */
+export function useSearchAdvertisementsQuery(baseOptions: Apollo.QueryHookOptions<SearchAdvertisementsQuery, SearchAdvertisementsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchAdvertisementsQuery, SearchAdvertisementsQueryVariables>(SearchAdvertisementsDocument, options);
+      }
+export function useSearchAdvertisementsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchAdvertisementsQuery, SearchAdvertisementsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchAdvertisementsQuery, SearchAdvertisementsQueryVariables>(SearchAdvertisementsDocument, options);
+        }
+export type SearchAdvertisementsQueryHookResult = ReturnType<typeof useSearchAdvertisementsQuery>;
+export type SearchAdvertisementsLazyQueryHookResult = ReturnType<typeof useSearchAdvertisementsLazyQuery>;
+export type SearchAdvertisementsQueryResult = Apollo.QueryResult<SearchAdvertisementsQuery, SearchAdvertisementsQueryVariables>;
 export type DeleteUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -979,6 +1075,13 @@ export type UpdateUserMutationVariables = Exact<{
 
 export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'UserType', id: string, fullName?: string | null, username: string, email: string, address?: string | null, phoneNo?: string | null } };
 
+export type GetAdvertisementQueryVariables = Exact<{
+  advertisement: Scalars['String'];
+}>;
+
+
+export type GetAdvertisementQuery = { __typename?: 'Query', getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null }, book: { __typename?: 'Book', bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
+
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -993,3 +1096,10 @@ export type GetTrendingBooksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetTrendingBooksQuery = { __typename?: 'Query', getTrendingBooks: Array<{ __typename?: 'Book', description: string, bookName: string }> };
+
+export type SearchAdvertisementsQueryVariables = Exact<{
+  searchInput: AdvertisementSearchType;
+}>;
+
+
+export type SearchAdvertisementsQuery = { __typename?: 'Query', searchAdvertisements: Array<{ __typename?: 'AdvertisementType', id: string, images: Array<string>, price: number, book: { __typename?: 'Book', authorName: string, bookName: string } }> };

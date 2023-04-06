@@ -1,17 +1,14 @@
-import clsx from 'clsx';
 import React from 'react'
 import css from './actionItem.module.css'
-import IconButton from '../icon-buttons/icon-button';
-import { RiLogoutCircleLine } from "react-icons/ri";
-import BookCard from '../book card/bookCard';
+import { AiFillStar } from "react-icons/ai";
 import { TouchType } from '@/graphql/generated/generated';
 import Button from '../button/button';
 
 interface ActionProps {
-    title:String,
-    author?:String,
-    price?:String,
-    participant?:String
+    title:string,
+    author?:string,
+    price?:string,
+    participant?:string,
     touchId?:TouchType
 }
 
@@ -22,8 +19,7 @@ const ActionItem:React.FC<ActionProps> = (e)=>{
         <div ><p className='text-2xl font-bold'>{e.price}</p></div>
         <div ><p className='text-2xl font-bold'></p></div>
         <div ><p className='text-2xl font-bold'>{e.participant}</p></div>
-        {/* add stars here */}
-        <div ><p className='text-2xl font-bold'>4.5</p></div>
+        <div ><p className=' flex items-center text-2xl font-bold'>4.5 <AiFillStar color='yellow' size={"1.5em"}/></p></div>
         <div className='flex-col'><Button label="Accept" variant='elong'></Button><Button label="Reject" variant='elong'></Button></div>
         </div>
         </div>

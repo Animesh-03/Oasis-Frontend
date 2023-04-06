@@ -1,0 +1,19 @@
+query GetAdvertisement($advertisement: String!) {
+  getAdvertisement(advertisement: $advertisement) {
+    id
+    price
+    images
+    open
+    seller {
+      fullName
+    }  
+    book {
+      bookName
+      authorName
+      description
+      category {
+        name
+      }
+    }
+  }
+}

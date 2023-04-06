@@ -10,15 +10,18 @@ import { useRouter } from "next/router";
 import Navbar from "@/components/navbar/navbar";
 import MainSection from "@/components/mainSection/mainSection";
 import ActionCard from "@/components/action card/actionCard";
-import ActionItem from "@/components/action item/actionItem";
 
 function ActionsPage(){
-    return <MainSection><div className={css["root"]}>
-        <p className="text-4xl font-bold tracking-wide mb-4 mt-4 text-white">Actions</p>
-        <ActionCard Head="Touched Books" Participant="Seller"></ActionCard>
-        <ActionCard Head="Responded Books" Participant="Buyer"></ActionCard>
-        <ActionCard Head="Confirm" Participant="Buyer"></ActionCard>
-        </div></MainSection>
+    return (
+        <MainSection>
+            <div className={css["root"]}>
+                <p className="text-4xl font-bold tracking-wide mb-4 mt-4 text-white">Actions</p>
+                <ActionCard type="touch" participant="seller"></ActionCard>
+                <ActionCard type="respond" participant="buyer"></ActionCard>
+                <ActionCard type="confirm" participant="buyer"></ActionCard>
+            </div>
+        </MainSection>
+    )
 }
 
 

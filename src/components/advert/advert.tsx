@@ -9,7 +9,7 @@ interface AdvertProps{
     author:string,
     advertisementID?:AdvertisementType,
     desc:string
-    price:string,
+    price:number,
     seller:string,
 };
 
@@ -25,7 +25,7 @@ function Advert(e:AdvertProps)
             <h1>{e.title}</h1>
             <h2>{e.author}</h2>
             <p>{e.desc}</p>
-            <h1>{e.price}</h1>
+            <h1>&#8377; {e.price}</h1>
         <div className={css["tags"]}></div>
             <h2> Seller</h2>
             <p>{e.seller}</p>

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import css from "./dashboard.module.css"
-import Navbar from "@/components/navbar/navbar";
-import Sidebar from "@/components/sidebar/sidebar";
-import Footer from "@/components/footer/footer";
 import MainSection from "@/components/mainSection/mainSection"
-import Image from "next/image";
 import clsx from "clsx";
 import SearchBar from "@/components/search bar/searchBar";
 import CategoryCard from "@/components/category card/categoryCard";
@@ -25,8 +21,8 @@ function Dashboard() {
     if(categoriesLoading || trendingLoading)
         return (<>Loading...</>)
         
-    const onSearch = (searchRef: React.MutableRefObject<HTMLInputElement>) => {
-        console.log(searchRef.current.value);
+    const onSearch = (results) => {
+        console.log(results);
     }
 
     return (
@@ -41,7 +37,7 @@ function Dashboard() {
                             <div>easier</div>
                         </div>
                         <div>
-                            <SearchBar onSearch={onSearch} />
+                            <SearchBar onAdvancedSearch={onSearch} onSearch={onSearch} />
                         </div>
 
                         </div>

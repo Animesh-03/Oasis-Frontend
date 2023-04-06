@@ -1,0 +1,11 @@
+query SearchAdvertisements($searchInput: AdvertisementSearchType!) {
+  searchAdvertisements(searchInput: $searchInput) {
+    id
+    images
+    book {
+      authorName
+      bookName
+    }
+    price
+    }
+}

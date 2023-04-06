@@ -305,6 +305,7 @@ input NestedStringNullableFilter {
 }
 
 type Query {
+  getAdvertisement(advertisement: String!): AdvertisementType!
   getAllActiveAdvertisements: [AdvertisementType!]!
   getAllAdvertisements: [AdvertisementType!]!
   getAllCategories: [Category!]!
