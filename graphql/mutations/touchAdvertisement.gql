@@ -1,0 +1,3 @@
+mutation TouchAdvertisement($touchAdvertisement: AdvertisementtouchInputType!) {
+  touchAdvertisement(touchAdvertisement: $touchAdvertisement)
+}

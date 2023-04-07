@@ -799,6 +799,37 @@ export function useRegisterUserMutation(baseOptions?: Apollo.MutationHookOptions
 export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMutation>;
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
+export const TouchAdvertisementDocument = gql`
+    mutation TouchAdvertisement($touchAdvertisement: AdvertisementtouchInputType!) {
+  touchAdvertisement(touchAdvertisement: $touchAdvertisement)
+}
+    `;
+export type TouchAdvertisementMutationFn = Apollo.MutationFunction<TouchAdvertisementMutation, TouchAdvertisementMutationVariables>;
+
+/**
+ * __useTouchAdvertisementMutation__
+ *
+ * To run a mutation, you first call `useTouchAdvertisementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTouchAdvertisementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [touchAdvertisementMutation, { data, loading, error }] = useTouchAdvertisementMutation({
+ *   variables: {
+ *      touchAdvertisement: // value for 'touchAdvertisement'
+ *   },
+ * });
+ */
+export function useTouchAdvertisementMutation(baseOptions?: Apollo.MutationHookOptions<TouchAdvertisementMutation, TouchAdvertisementMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<TouchAdvertisementMutation, TouchAdvertisementMutationVariables>(TouchAdvertisementDocument, options);
+      }
+export type TouchAdvertisementMutationHookResult = ReturnType<typeof useTouchAdvertisementMutation>;
+export type TouchAdvertisementMutationResult = Apollo.MutationResult<TouchAdvertisementMutation>;
+export type TouchAdvertisementMutationOptions = Apollo.BaseMutationOptions<TouchAdvertisementMutation, TouchAdvertisementMutationVariables>;
 export const UpdateUserDocument = gql`
     mutation UpdateUser($input: UserUpdateType!) {
   updateUser(input: $input) {
@@ -1067,6 +1098,13 @@ export type RegisterUserMutationVariables = Exact<{
 
 
 export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: boolean };
+
+export type TouchAdvertisementMutationVariables = Exact<{
+  touchAdvertisement: AdvertisementtouchInputType;
+}>;
+
+
+export type TouchAdvertisementMutation = { __typename?: 'Mutation', touchAdvertisement: boolean };
 
 export type UpdateUserMutationVariables = Exact<{
   input: UserUpdateType;
