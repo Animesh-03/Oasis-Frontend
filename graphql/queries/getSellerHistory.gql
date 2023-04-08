@@ -1,0 +1,18 @@
+query GetSellerHistory {
+  getSellerHistory {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      price
+    }
+    buyer {
+      fullName
+    }
+    price
+    isFinal
+  }
+}

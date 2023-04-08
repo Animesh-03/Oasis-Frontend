@@ -315,6 +315,7 @@ type Query {
   getBuyerResponds: [TouchType!]!
   getBuyerTouches: [TouchType!]!
   getCurrentUser: UserType!
+  getSellerHistory: [TouchType!]!
   getSellerResponds: [TouchType!]!
   getTrendingBooks: [Book!]!
   searchAdvertisements(searchInput: AdvertisementSearchType!): [AdvertisementType!]!

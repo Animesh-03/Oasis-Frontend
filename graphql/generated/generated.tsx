@@ -410,6 +410,7 @@ export type Query = {
   getBuyerResponds: Array<TouchType>;
   getBuyerTouches: Array<TouchType>;
   getCurrentUser: UserType;
+  getSellerHistory: Array<TouchType>;
   getSellerResponds: Array<TouchType>;
   getTrendingBooks: Array<Book>;
   searchAdvertisements: Array<AdvertisementType>;
@@ -984,6 +985,53 @@ export function useGetAdvertisementLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetAdvertisementQueryHookResult = ReturnType<typeof useGetAdvertisementQuery>;
 export type GetAdvertisementLazyQueryHookResult = ReturnType<typeof useGetAdvertisementLazyQuery>;
 export type GetAdvertisementQueryResult = Apollo.QueryResult<GetAdvertisementQuery, GetAdvertisementQueryVariables>;
+export const GetBuyerHistoryDocument = gql`
+    query GetBuyerHistory {
+  getBuyerHistory {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      seller {
+        fullName
+      }
+      price
+    }
+    price
+    isFinal
+  }
+}
+    `;
+
+/**
+ * __useGetBuyerHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetBuyerHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBuyerHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBuyerHistoryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBuyerHistoryQuery(baseOptions?: Apollo.QueryHookOptions<GetBuyerHistoryQuery, GetBuyerHistoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBuyerHistoryQuery, GetBuyerHistoryQueryVariables>(GetBuyerHistoryDocument, options);
+      }
+export function useGetBuyerHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBuyerHistoryQuery, GetBuyerHistoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBuyerHistoryQuery, GetBuyerHistoryQueryVariables>(GetBuyerHistoryDocument, options);
+        }
+export type GetBuyerHistoryQueryHookResult = ReturnType<typeof useGetBuyerHistoryQuery>;
+export type GetBuyerHistoryLazyQueryHookResult = ReturnType<typeof useGetBuyerHistoryLazyQuery>;
+export type GetBuyerHistoryQueryResult = Apollo.QueryResult<GetBuyerHistoryQuery, GetBuyerHistoryQueryVariables>;
 export const GetBuyerRespondsDocument = gql`
     query GetBuyerResponds {
   getBuyerResponds {
@@ -1151,6 +1199,53 @@ export function useGetCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
 export type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
 export type GetCurrentUserQueryResult = Apollo.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export const GetSellerHistoryDocument = gql`
+    query GetSellerHistory {
+  getSellerHistory {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      price
+    }
+    buyer {
+      fullName
+    }
+    price
+    isFinal
+  }
+}
+    `;
+
+/**
+ * __useGetSellerHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetSellerHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSellerHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSellerHistoryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSellerHistoryQuery(baseOptions?: Apollo.QueryHookOptions<GetSellerHistoryQuery, GetSellerHistoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSellerHistoryQuery, GetSellerHistoryQueryVariables>(GetSellerHistoryDocument, options);
+      }
+export function useGetSellerHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSellerHistoryQuery, GetSellerHistoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSellerHistoryQuery, GetSellerHistoryQueryVariables>(GetSellerHistoryDocument, options);
+        }
+export type GetSellerHistoryQueryHookResult = ReturnType<typeof useGetSellerHistoryQuery>;
+export type GetSellerHistoryLazyQueryHookResult = ReturnType<typeof useGetSellerHistoryLazyQuery>;
+export type GetSellerHistoryQueryResult = Apollo.QueryResult<GetSellerHistoryQuery, GetSellerHistoryQueryVariables>;
 export const GetSellerRespondsDocument = gql`
     query GetSellerResponds {
   getSellerResponds {
@@ -1339,6 +1434,11 @@ export type GetAdvertisementQueryVariables = Exact<{
 
 export type GetAdvertisementQuery = { __typename?: 'Query', getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null }, book: { __typename?: 'Book', bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
 
+export type GetBuyerHistoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBuyerHistoryQuery = { __typename?: 'Query', getBuyerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string }, seller: { __typename?: 'UserType', fullName?: string | null } } }> };
+
 export type GetBuyerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1358,6 +1458,11 @@ export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __typename?: 'UserType', id: string, email: string, username: string, phoneNo?: string | null, address?: string | null, fullName?: string | null } };
+
+export type GetSellerHistoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSellerHistoryQuery = { __typename?: 'Query', getSellerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string } }, buyer: { __typename?: 'UserType', fullName?: string | null } }> };
 
 export type GetSellerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
 
