@@ -3,6 +3,7 @@ import Button from '../button/button';
 import {Input} from '../input/input';
 import css from './advert.module.css';
 import React from 'react';
+import { useRouter } from 'next/router';
 
 //there will be some redundant stuff after integration
 interface AdvertProps{
@@ -17,6 +18,8 @@ interface AdvertProps{
 
 function Advert(e:AdvertProps)
 {
+    const router = useRouter();
+
     const touchPriceRef = React.useRef<HTMLInputElement>();
 
     const [touchAdvertisement] = useTouchAdvertisementMutation();
@@ -31,6 +34,8 @@ function Advert(e:AdvertProps)
                 }
             }
         });
+
+        await router.push("/actions");
     }
 
     return <div className={css["root"]}>
@@ -38,7 +43,7 @@ function Advert(e:AdvertProps)
             <img src={e.image ?? "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"}></img>
             <div className={css["ImgBottom"]}>
                 <Button onClick={onRequest} label='Request' variant='elong'></Button> 
-                <Input ref={touchPriceRef} />
+                <Input reference={touchPriceRef} onChange={e => console.log(touchPriceRef.current.value)} />
             </div>
         </div>
         <div className={css["right"]}>
@@ -49,7 +54,7 @@ function Advert(e:AdvertProps)
         <div className={css["tags"]}></div>
             <h2> Seller</h2>
             <p>{e.seller}</p>
-        <Button label="Buy Now" variant='elong'></Button>
+        <Button onClick={() => router.push("/actions")} label="Buy Now" variant='elong'></Button>
         </div>
     </div>
 }

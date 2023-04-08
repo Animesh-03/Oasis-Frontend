@@ -1,17 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./advertisement.module.css"
-import Navbar from "@/components/navbar/navbar";
-import Sidebar from "@/components/sidebar/sidebar";
-import Footer from "@/components/footer/footer";
 import MainSection from "@/components/mainSection/mainSection"
-import Image from "next/image";
-import clsx from "clsx";
-import SearchBar from "@/components/search bar/searchBar";
-import CategoryCard from "@/components/category card/categoryCard";
 import BookCard from "@/components/book card/bookCard";
-import { useGetAdvertisementQuery, useGetAllCategoriesQuery, useGetTrendingBooksQuery } from "@/graphql/generated/generated";
+import { useGetAdvertisementQuery, useGetTrendingBooksQuery } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
-import dashboard from "pages/dashboard";
 import Advert from "@/components/advert/advert";
 import { useRouter } from "next/router";
 

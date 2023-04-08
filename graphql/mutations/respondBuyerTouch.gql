@@ -1,0 +1,3 @@
+mutation RespondBuyerTouch($respondBuyerTouchResponseInput2: AdvertisementBuyerResponseType!) {
+  respondBuyerTouch(responseInput: $respondBuyerTouchResponseInput2)
+}

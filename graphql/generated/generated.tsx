@@ -37,6 +37,7 @@ export type AdvertisementSearchType = {
 };
 
 export type AdvertisementSellerResponseType = {
+  accept: Scalars['Boolean'];
   responsePrice: Scalars['Float'];
   touchId: Scalars['String'];
 };
@@ -405,7 +406,11 @@ export type Query = {
   getAllAdvertisements: Array<AdvertisementType>;
   getAllCategories: Array<Category>;
   getAllUsers: Array<UserType>;
+  getBuyerHistory: Array<TouchType>;
+  getBuyerResponds: Array<TouchType>;
+  getBuyerTouches: Array<TouchType>;
   getCurrentUser: UserType;
+  getSellerResponds: Array<TouchType>;
   getTrendingBooks: Array<Book>;
   searchAdvertisements: Array<AdvertisementType>;
 };
@@ -799,6 +804,68 @@ export function useRegisterUserMutation(baseOptions?: Apollo.MutationHookOptions
 export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMutation>;
 export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
 export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
+export const RespondBuyerTouchDocument = gql`
+    mutation RespondBuyerTouch($respondBuyerTouchResponseInput2: AdvertisementBuyerResponseType!) {
+  respondBuyerTouch(responseInput: $respondBuyerTouchResponseInput2)
+}
+    `;
+export type RespondBuyerTouchMutationFn = Apollo.MutationFunction<RespondBuyerTouchMutation, RespondBuyerTouchMutationVariables>;
+
+/**
+ * __useRespondBuyerTouchMutation__
+ *
+ * To run a mutation, you first call `useRespondBuyerTouchMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRespondBuyerTouchMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [respondBuyerTouchMutation, { data, loading, error }] = useRespondBuyerTouchMutation({
+ *   variables: {
+ *      respondBuyerTouchResponseInput2: // value for 'respondBuyerTouchResponseInput2'
+ *   },
+ * });
+ */
+export function useRespondBuyerTouchMutation(baseOptions?: Apollo.MutationHookOptions<RespondBuyerTouchMutation, RespondBuyerTouchMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RespondBuyerTouchMutation, RespondBuyerTouchMutationVariables>(RespondBuyerTouchDocument, options);
+      }
+export type RespondBuyerTouchMutationHookResult = ReturnType<typeof useRespondBuyerTouchMutation>;
+export type RespondBuyerTouchMutationResult = Apollo.MutationResult<RespondBuyerTouchMutation>;
+export type RespondBuyerTouchMutationOptions = Apollo.BaseMutationOptions<RespondBuyerTouchMutation, RespondBuyerTouchMutationVariables>;
+export const RespondSellerTouchDocument = gql`
+    mutation RespondSellerTouch($responseInput: AdvertisementSellerResponseType!) {
+  respondSellerTouch(responseInput: $responseInput)
+}
+    `;
+export type RespondSellerTouchMutationFn = Apollo.MutationFunction<RespondSellerTouchMutation, RespondSellerTouchMutationVariables>;
+
+/**
+ * __useRespondSellerTouchMutation__
+ *
+ * To run a mutation, you first call `useRespondSellerTouchMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRespondSellerTouchMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [respondSellerTouchMutation, { data, loading, error }] = useRespondSellerTouchMutation({
+ *   variables: {
+ *      responseInput: // value for 'responseInput'
+ *   },
+ * });
+ */
+export function useRespondSellerTouchMutation(baseOptions?: Apollo.MutationHookOptions<RespondSellerTouchMutation, RespondSellerTouchMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RespondSellerTouchMutation, RespondSellerTouchMutationVariables>(RespondSellerTouchDocument, options);
+      }
+export type RespondSellerTouchMutationHookResult = ReturnType<typeof useRespondSellerTouchMutation>;
+export type RespondSellerTouchMutationResult = Apollo.MutationResult<RespondSellerTouchMutation>;
+export type RespondSellerTouchMutationOptions = Apollo.BaseMutationOptions<RespondSellerTouchMutation, RespondSellerTouchMutationVariables>;
 export const TouchAdvertisementDocument = gql`
     mutation TouchAdvertisement($touchAdvertisement: AdvertisementtouchInputType!) {
   touchAdvertisement(touchAdvertisement: $touchAdvertisement)
@@ -917,6 +984,98 @@ export function useGetAdvertisementLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetAdvertisementQueryHookResult = ReturnType<typeof useGetAdvertisementQuery>;
 export type GetAdvertisementLazyQueryHookResult = ReturnType<typeof useGetAdvertisementLazyQuery>;
 export type GetAdvertisementQueryResult = Apollo.QueryResult<GetAdvertisementQuery, GetAdvertisementQueryVariables>;
+export const GetBuyerRespondsDocument = gql`
+    query GetBuyerResponds {
+  getBuyerResponds {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      seller {
+        fullName
+      }
+      price
+    }
+    price
+  }
+}
+    `;
+
+/**
+ * __useGetBuyerRespondsQuery__
+ *
+ * To run a query within a React component, call `useGetBuyerRespondsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBuyerRespondsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBuyerRespondsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBuyerRespondsQuery(baseOptions?: Apollo.QueryHookOptions<GetBuyerRespondsQuery, GetBuyerRespondsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBuyerRespondsQuery, GetBuyerRespondsQueryVariables>(GetBuyerRespondsDocument, options);
+      }
+export function useGetBuyerRespondsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBuyerRespondsQuery, GetBuyerRespondsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBuyerRespondsQuery, GetBuyerRespondsQueryVariables>(GetBuyerRespondsDocument, options);
+        }
+export type GetBuyerRespondsQueryHookResult = ReturnType<typeof useGetBuyerRespondsQuery>;
+export type GetBuyerRespondsLazyQueryHookResult = ReturnType<typeof useGetBuyerRespondsLazyQuery>;
+export type GetBuyerRespondsQueryResult = Apollo.QueryResult<GetBuyerRespondsQuery, GetBuyerRespondsQueryVariables>;
+export const GetBuyerTouchesDocument = gql`
+    query GetBuyerTouches {
+  getBuyerTouches {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      seller {
+        fullName
+      }
+      price
+    }
+    price
+  }
+}
+    `;
+
+/**
+ * __useGetBuyerTouchesQuery__
+ *
+ * To run a query within a React component, call `useGetBuyerTouchesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBuyerTouchesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBuyerTouchesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBuyerTouchesQuery(baseOptions?: Apollo.QueryHookOptions<GetBuyerTouchesQuery, GetBuyerTouchesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBuyerTouchesQuery, GetBuyerTouchesQueryVariables>(GetBuyerTouchesDocument, options);
+      }
+export function useGetBuyerTouchesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBuyerTouchesQuery, GetBuyerTouchesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBuyerTouchesQuery, GetBuyerTouchesQueryVariables>(GetBuyerTouchesDocument, options);
+        }
+export type GetBuyerTouchesQueryHookResult = ReturnType<typeof useGetBuyerTouchesQuery>;
+export type GetBuyerTouchesLazyQueryHookResult = ReturnType<typeof useGetBuyerTouchesLazyQuery>;
+export type GetBuyerTouchesQueryResult = Apollo.QueryResult<GetBuyerTouchesQuery, GetBuyerTouchesQueryVariables>;
 export const GetAllCategoriesDocument = gql`
     query GetAllCategories {
   getAllCategories {
@@ -992,6 +1151,52 @@ export function useGetCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
 export type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
 export type GetCurrentUserQueryResult = Apollo.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export const GetSellerRespondsDocument = gql`
+    query GetSellerResponds {
+  getSellerResponds {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      price
+    }
+    buyer {
+      fullName
+    }
+    price
+  }
+}
+    `;
+
+/**
+ * __useGetSellerRespondsQuery__
+ *
+ * To run a query within a React component, call `useGetSellerRespondsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSellerRespondsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSellerRespondsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSellerRespondsQuery(baseOptions?: Apollo.QueryHookOptions<GetSellerRespondsQuery, GetSellerRespondsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSellerRespondsQuery, GetSellerRespondsQueryVariables>(GetSellerRespondsDocument, options);
+      }
+export function useGetSellerRespondsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSellerRespondsQuery, GetSellerRespondsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSellerRespondsQuery, GetSellerRespondsQueryVariables>(GetSellerRespondsDocument, options);
+        }
+export type GetSellerRespondsQueryHookResult = ReturnType<typeof useGetSellerRespondsQuery>;
+export type GetSellerRespondsLazyQueryHookResult = ReturnType<typeof useGetSellerRespondsLazyQuery>;
+export type GetSellerRespondsQueryResult = Apollo.QueryResult<GetSellerRespondsQuery, GetSellerRespondsQueryVariables>;
 export const GetTrendingBooksDocument = gql`
     query GetTrendingBooks {
   getTrendingBooks {
@@ -1099,6 +1304,20 @@ export type RegisterUserMutationVariables = Exact<{
 
 export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: boolean };
 
+export type RespondBuyerTouchMutationVariables = Exact<{
+  respondBuyerTouchResponseInput2: AdvertisementBuyerResponseType;
+}>;
+
+
+export type RespondBuyerTouchMutation = { __typename?: 'Mutation', respondBuyerTouch: boolean };
+
+export type RespondSellerTouchMutationVariables = Exact<{
+  responseInput: AdvertisementSellerResponseType;
+}>;
+
+
+export type RespondSellerTouchMutation = { __typename?: 'Mutation', respondSellerTouch: boolean };
+
 export type TouchAdvertisementMutationVariables = Exact<{
   touchAdvertisement: AdvertisementtouchInputType;
 }>;
@@ -1120,6 +1339,16 @@ export type GetAdvertisementQueryVariables = Exact<{
 
 export type GetAdvertisementQuery = { __typename?: 'Query', getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null }, book: { __typename?: 'Book', bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
 
+export type GetBuyerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBuyerRespondsQuery = { __typename?: 'Query', getBuyerResponds: Array<{ __typename?: 'TouchType', id: string, price: number, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string }, seller: { __typename?: 'UserType', fullName?: string | null } } }> };
+
+export type GetBuyerTouchesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBuyerTouchesQuery = { __typename?: 'Query', getBuyerTouches: Array<{ __typename?: 'TouchType', id: string, price: number, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string }, seller: { __typename?: 'UserType', fullName?: string | null } } }> };
+
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1129,6 +1358,11 @@ export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __typename?: 'UserType', id: string, email: string, username: string, phoneNo?: string | null, address?: string | null, fullName?: string | null } };
+
+export type GetSellerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSellerRespondsQuery = { __typename?: 'Query', getSellerResponds: Array<{ __typename?: 'TouchType', id: string, price: number, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string } }, buyer: { __typename?: 'UserType', fullName?: string | null } }> };
 
 export type GetTrendingBooksQueryVariables = Exact<{ [key: string]: never; }>;
 

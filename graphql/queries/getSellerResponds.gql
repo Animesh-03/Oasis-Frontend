@@ -1,0 +1,17 @@
+query GetSellerResponds {
+  getSellerResponds {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      price
+    }
+    buyer {
+      fullName
+    }
+    price
+  }
+}

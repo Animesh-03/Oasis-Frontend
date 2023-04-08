@@ -20,6 +20,7 @@ input AdvertisementSearchType {
 }
 
 input AdvertisementSellerResponseType {
+  accept: Boolean!
   responsePrice: Float!
   touchId: String!
 }
@@ -310,7 +311,11 @@ type Query {
   getAllAdvertisements: [AdvertisementType!]!
   getAllCategories: [Category!]!
   getAllUsers: [UserType!]!
+  getBuyerHistory: [TouchType!]!
+  getBuyerResponds: [TouchType!]!
+  getBuyerTouches: [TouchType!]!
   getCurrentUser: UserType!
+  getSellerResponds: [TouchType!]!
   getTrendingBooks: [Book!]!
   searchAdvertisements(searchInput: AdvertisementSearchType!): [AdvertisementType!]!
 }

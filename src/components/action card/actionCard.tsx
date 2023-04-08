@@ -4,14 +4,17 @@ import css from './action.module.css'
 import IconButton from '../icon-buttons/icon-button';
 import { RiLogoutCircleLine } from "react-icons/ri";
 import BookCard from '../book card/bookCard';
-import ActionItem from '../action item/actionItem';
+import ActionItem, { ActionItemProps } from '../action item/actionItem';
 
 interface ActionProps {
     type: "touch" | "respond" | "confirm"
     participant: "seller" | "buyer"
+    actionItems: any[]
 }
 
-const ActionCard:React.FC<ActionProps> = ({type, participant})=>{
+const ActionCard:React.FC<ActionProps> = ({type, participant, actionItems})=>{
+
+    
 
     let cardHeader;
 
@@ -37,16 +40,20 @@ const ActionCard:React.FC<ActionProps> = ({type, participant})=>{
 
         <div className={css["tab"]}>
             {/* Specify touch id */}
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
-            <ActionItem title="The Walking Dead" author="Robert" price="$20"></ActionItem>
+            
+            {actionItems.map(item => {
+                return <ActionItem 
+                    title={item.advertisement.book.bookName} 
+                    author={item.advertisement.book.authorName} 
+                    touchPrice={item.price} 
+                    price={item.advertisement.price}
+                    participant={participant === "seller" ? item.advertisement.seller.fullName : item.buyer.fullName}
+                    touchId={item.id}
+                    key={item.id}
+                    variant={type}
+                    advertisementID={item.advertisement.id}
+                />
+            })}
         </div>
     </div>
     )

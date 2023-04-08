@@ -1,0 +1,17 @@
+query GetBuyerTouches {
+  getBuyerTouches {
+    id
+    advertisement {
+      id
+      book {
+        bookName
+        authorName
+      }
+      seller {
+        fullName
+      }
+      price
+    }
+    price
+  }
+}
