@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import css from "./bookCard.module.css"
 
 interface BookCardProps {
@@ -7,8 +8,13 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({imageURL, title, description})=> {
+    const router = useRouter();
+
     return (
-        <div className={css.root}>
+        <div className={css.root} onClick={() => router.push({
+            "pathname": "/searchResult",
+            query: {bookName: title}
+        })}>
             <div>
                 <img className="rounded-xl" src={imageURL ?? "https://i0.wp.com/wordket.com/wp-content/uploads/2021/05/hiw.jpg?fit=1280%2C720&ssl=1"} />
             </div>

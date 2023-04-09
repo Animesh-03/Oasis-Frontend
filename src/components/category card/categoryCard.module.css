@@ -8,6 +8,7 @@
     border-radius: 20px;
     max-width: 30rem;
     max-height: 25rem;
+    cursor: pointer;
 }
 .root img
 {    
