@@ -1129,6 +1129,7 @@ export const GetAllCategoriesDocument = gql`
   getAllCategories {
     id
     name
+    image
     description
   }
 }
@@ -1452,7 +1453,7 @@ export type GetBuyerTouchesQuery = { __typename?: 'Query', getBuyerTouches: Arra
 export type GetAllCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, name: string, description?: string | null }> };
+export type GetAllCategoriesQuery = { __typename?: 'Query', getAllCategories: Array<{ __typename?: 'Category', id: string, name: string, image: string, description?: string | null }> };
 
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 

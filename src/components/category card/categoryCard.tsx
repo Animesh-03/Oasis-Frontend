@@ -3,9 +3,10 @@ import css from "./categoryCard.module.css"
 
 interface CategoryCardProps{
     name:string,
-    desc?:string
+    desc?:string,
+    image?: string
 };
-const CategoryCard:React.FC<CategoryCardProps> = ({name,desc})=> {
+const CategoryCard:React.FC<CategoryCardProps> = ({name,desc, image})=> {
     const router = useRouter();
 
     return (
@@ -14,7 +15,7 @@ const CategoryCard:React.FC<CategoryCardProps> = ({name,desc})=> {
             query: {category: name}
         })}>
             <div>
-                <img className="rounded-xl" src={"https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"} />
+                <img className="rounded-xl" src={image ?? "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"} />
                 
             </div>
             <div className={css.inner}>
