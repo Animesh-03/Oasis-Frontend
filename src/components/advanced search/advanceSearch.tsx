@@ -14,7 +14,7 @@ function AdvanceSearch({advanceOpen, setAdvanceOpen, onSearch}) {
     category: undefined,
     rating: undefined,
     language: undefined,
-    price: 0,
+    price: undefined,
   });
 
 
@@ -64,14 +64,16 @@ function AdvanceSearch({advanceOpen, setAdvanceOpen, onSearch}) {
             <div>
               <label>Category</label>
               <select value={data.category} onChange={(e) => setData({...data, category: e.target.value})}>
+                <option key={"none"} value={undefined}>All</option>
                 {categories?.getAllCategories.map(category => {
-                  return <option key={category.id} value={category.id}>{category.name}</option>
+                  return <option key={category.id} value={category.name}>{category.name}</option>
                 })}
               </select>   
             </div>
             <div>
               <label>Rating</label>
               <select value={data.rating} onChange={(e) => setData({...data, rating: e.target.value})}>
+                <option key={"none"} value={undefined}>All</option>
                 <option value="0">1+</option>
                 <option value="1">2+</option>
                 <option value="2">3+</option>
@@ -90,6 +92,7 @@ function AdvanceSearch({advanceOpen, setAdvanceOpen, onSearch}) {
             <div>
               <label>Price</label>
               <select value={data.price} onChange={(e) => setData({...data, price: Number(e.target.value)})}>
+                <option value={undefined}>All</option>
                 <option value={0}>Price &#8377; 0 - &#8377; 200</option>
                 <option value={2}>Price &#8377; 200 - &#8377; 400</option>
                 <option value={4}>Price &#8377; 400 - &#8377; 600</option>

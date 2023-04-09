@@ -1,31 +1,45 @@
-import IconButton from "@/components/icon-buttons/icon-button";
 import React from "react";
 import css from "./actions.module.css";
-import { Input } from "@/components/input/input";
-import clsx from "clsx";
-import Button from "@/components/button/button";
-import { useGetBuyerRespondsQuery, useGetBuyerTouchesQuery, useGetSellerRespondsQuery, useLoginUserMutation, useRegisterUserMutation } from "@/graphql/generated/generated";
+import { GetBuyerTouchesQueryResult } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
-import { useRouter } from "next/router";
-import Navbar from "@/components/navbar/navbar";
 import MainSection from "@/components/mainSection/mainSection";
 import ActionCard from "@/components/action card/actionCard";
+import { GetSellerRespondsQueryResult } from "@/graphql/generated/generated";
+import { GetBuyerRespondsQueryResult } from "@/graphql/generated/generated";
+import { useGetBuyerTouchesLazyQuery } from "@/graphql/generated/generated";
+import { useGetSellerRespondsLazyQuery } from "@/graphql/generated/generated";
+import { useGetBuyerRespondsLazyQuery } from "@/graphql/generated/generated";
 
 function ActionsPage(){
 
-    const {data: buyerTouches, loading: buyerTouchesLoading} = useGetBuyerTouchesQuery();
-    const {data: sellerResponds, loading: sellerRespondsLoading} = useGetSellerRespondsQuery();
-    const {data: buyerResponds, loading: buyerRespondsLoading} = useGetBuyerRespondsQuery();
+    // const {data: buyerTouches, loading: buyerTouchesLoading} = useGetBuyerTouchesQuery();
+    // const {data: sellerResponds, loading: sellerRespondsLoading} = useGetSellerRespondsQuery();
+    // const {data: buyerResponds, loading: buyerRespondsLoading} = useGetBuyerRespondsQuery();
 
-    if(buyerTouchesLoading || sellerRespondsLoading || buyerRespondsLoading) return <>Loading...</>
+    const [getBuyerTouches] = useGetBuyerTouchesLazyQuery();
+    const [getSellerResponds] = useGetSellerRespondsLazyQuery();
+    const [getBuyerResponds] = useGetBuyerRespondsLazyQuery();
+
+    const [buyerTouches, setBuyerTouches] = React.useState<GetBuyerTouchesQueryResult>();
+    const [sellerResponds, setSellerResponds] = React.useState<GetSellerRespondsQueryResult>();
+    const [buyerResponds, setBuyerResponds] = React.useState<GetBuyerRespondsQueryResult>();
+
+    const refreshActionsList = async () => {
+        setBuyerTouches(await getBuyerTouches());
+        setSellerResponds(await getSellerResponds());
+        setBuyerResponds(await getBuyerResponds());
+    }
+
+
+    if(buyerTouches.loading || sellerResponds.loading || buyerResponds.loading) return <>Loading...</>
 
     return (
         <MainSection>
             <div className={css["root"]}>
                 <p className="text-4xl font-bold tracking-wide mb-4 mt-4 text-white">Actions</p>
-                <ActionCard actionItems={buyerTouches.getBuyerTouches} type="touch" participant="seller"></ActionCard>
-                <ActionCard actionItems={sellerResponds.getSellerResponds} type="respond" participant="buyer"></ActionCard>
-                <ActionCard actionItems={buyerResponds.getBuyerResponds} type="confirm" participant="seller"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={buyerTouches.data.getBuyerTouches} type="touch" participant="seller"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={sellerResponds.data.getSellerResponds} type="respond" participant="buyer"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={buyerResponds.data.getBuyerResponds} type="confirm" participant="seller"></ActionCard>
             </div>
         </MainSection>
     )

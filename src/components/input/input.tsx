@@ -13,7 +13,7 @@ interface InputProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLIn
     value?: string
     name?: string
     defaultValue? : string
-    reference: React.LegacyRef<HTMLInputElement>
+    reference?: React.LegacyRef<HTMLInputElement>
 };
 
 export const Input:React.FC<InputProps> = ({defaultValue,placeholder, type, variant="",value, name, reference, ...rest})=> {

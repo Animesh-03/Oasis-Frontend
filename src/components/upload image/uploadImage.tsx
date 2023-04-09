@@ -29,7 +29,7 @@ const UploadImage: React.FC<UploadImageProps> = ({onSuccess}) => {
     },[])
 
     return (
-        <Button label='Upload Image' onClick={() => widgetRef.current.open()} />
+        <Button label='Upload Image' onClick={(e) => {e.preventDefault(); widgetRef.current.open();}} />
     )
 }
 

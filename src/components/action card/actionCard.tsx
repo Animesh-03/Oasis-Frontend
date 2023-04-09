@@ -10,9 +10,10 @@ interface ActionProps {
     type: "touch" | "respond" | "confirm"
     participant: "seller" | "buyer"
     actionItems: any[]
+    onAction: Function
 }
 
-const ActionCard:React.FC<ActionProps> = ({type, participant, actionItems})=>{
+const ActionCard:React.FC<ActionProps> = ({type, participant, actionItems, onAction})=>{
 
     
 
@@ -52,6 +53,7 @@ const ActionCard:React.FC<ActionProps> = ({type, participant, actionItems})=>{
                     key={item.id}
                     variant={type}
                     advertisementID={item.advertisement.id}
+                    onAction={onAction}
                 />
             })}
         </div>

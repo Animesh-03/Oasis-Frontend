@@ -1,26 +1,18 @@
-import IconButton from "@/components/icon-buttons/icon-button";
 import React, { useState } from "react";
 import styles from "./searchResult.module.css";
-import { Input } from "@/components/input/input";
 import clsx from "clsx";
-import Button from "@/components/button/button";
-import { useLoginUserMutation, useRegisterUserMutation, useSearchAdvertisementsQuery } from "@/graphql/generated/generated";
+import { useSearchAdvertisementsLazyQuery, useSearchAdvertisementsQuery } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
-import { useRouter } from "next/router";
-import Navbar from "@/components/navbar/navbar";
 import MainSection from "@/components/mainSection/mainSection";
 import SearchBar from "@/components/search bar/searchBar";
 import SearchCard from "@/components/searchCard/SearchCard";
+import { useRouter } from "next/router";
 
 function SearchResult(){
 
-    const {data: allAds, loading} = useSearchAdvertisementsQuery({
-        variables: {
-            searchInput: {
-                bookName: ''
-            }
-        }
-    });
+    const router = useRouter();
+
+    const [searchAds] = useSearchAdvertisementsLazyQuery();
 
     const [searchRes, setSearchRes] = useState([]);
 
@@ -35,8 +27,20 @@ function SearchResult(){
     }
 
     React.useEffect(() => {
-        if(!loading) setSearchRes(allAds.searchAdvertisements.slice(0, 10));
-    },[loading]);
+        searchAds({
+            variables: {
+                searchInput: {
+                    authorName: router.query.author as string,
+                    bookName: router.query.bookName as string,
+                    category: router.query.category as string,
+                    sellerName: router.query.seller as string
+                }
+            },
+            onCompleted(data) {
+                setSearchRes(data.searchAdvertisements);
+            },
+        });
+    }, [])
 
 
     return <MainSection>
@@ -51,11 +55,11 @@ function SearchResult(){
         <div className = {styles["root"]}>
             <p className="text-4xl font-bold tracking-wide mb-4 mt-4 text-black">Results</p>
             <div className={styles.inner}>
-            {searchRes.length && searchRes.map(data => {
+            {searchRes.length > 0 ? searchRes.map((data, index) => {
                 return (
-                    <SearchCard key={data.imageUrl} id={data.id} author={data.book.authorName} imageUrl={data.images[0]} price={data.price} tags={["Science", "Fiction", "Sci-Fi"]} title={data.book.bookName} />
+                    <SearchCard key={index} id={data.id} author={data.book.authorName} imageUrl={data.images[0]} price={data.price} tags={["Science", "Fiction", "Sci-Fi"]} title={data.book.bookName} />
                 )
-            })}
+            }) : <>No Advertisments Found</>}
             </div>
         </div> 
         </MainSection>

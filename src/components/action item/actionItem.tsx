@@ -14,6 +14,7 @@ export interface ActionItemProps {
     participant: string
     variant: "touch" | "respond" | "confirm"
     advertisementID?: string
+    onAction: Function
 }
 
 const ActionItem:React.FC<ActionItemProps> = (e)=>{
@@ -80,6 +81,7 @@ const ActionItem:React.FC<ActionItemProps> = (e)=>{
 
                                     console.log("Touch Confirmed");
                                 }
+                                await e.onAction();
                             }} 
                             label="Accept" 
                             variant='elong' />
@@ -112,6 +114,7 @@ const ActionItem:React.FC<ActionItemProps> = (e)=>{
 
                                     console.log("Touch Not Confirmed");
                                 }
+                                await e.onAction();
                             }}
                             label="Reject" 
                             variant='elong'></Button>

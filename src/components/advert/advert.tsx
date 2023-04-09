@@ -25,7 +25,9 @@ function Advert(e:AdvertProps)
     const [touchAdvertisement] = useTouchAdvertisementMutation();
 
 
-    const onRequest = async () => {
+    const onRequest = async (e) => {
+        e.preventDefault();
+
         await touchAdvertisement({
             variables: {
                 touchAdvertisement: {
@@ -40,7 +42,7 @@ function Advert(e:AdvertProps)
 
     return <div className={css["root"]}>
         <div className={css["left"]}>
-            <img src={e.image ?? "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"}></img>
+            <img className='object-cover' src={e.image ?? "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg"}></img>
             <div className={css["ImgBottom"]}>
                 <Button onClick={onRequest} label='Request' variant='elong'></Button> 
                 <Input reference={touchPriceRef} onChange={e => console.log(touchPriceRef.current.value)} />

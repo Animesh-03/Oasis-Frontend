@@ -26,9 +26,9 @@ const SearchCard : React.FC<SearchCardProps> = ({id, title, author, imageUrl, pr
                 <div className={css.price}>Rs. {price}</div>
                 <div className={css.tags}>
                 {
-                    tags?.map(tag => {
+                    tags?.map((tag) => {
                         return (
-                            <Button label={tag} variant= "light"></Button>
+                            <Button key={tag} label={tag} variant= "light"></Button>
                         )
                     })
                 }

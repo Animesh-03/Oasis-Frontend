@@ -7,6 +7,7 @@ import { Input } from "@/components/input/input";
 import Button from "@/components/button/button";
 import UploadImage from "@/components/upload image/uploadImage";
 import { useGetAllCategoriesQuery, usePostAdvertisementMutation } from "@/graphql/generated/generated";
+import { useRouter } from "next/router";
 
 interface AdInfo {
 	title: string,
@@ -20,6 +21,7 @@ interface AdInfo {
 }
 
 function PostAd() {
+	const router = useRouter();
 
 	const {data: categories, loading} = useGetAllCategoriesQuery();
 	const [postAdvertisement] = usePostAdvertisementMutation();
@@ -70,7 +72,7 @@ function PostAd() {
 			}
 		});
 
-
+		await router.push(`/dashboard`);
 
 		console.log(adPosted);
 	};
@@ -107,7 +109,7 @@ function PostAd() {
 										}
 									}
 									/>
-									: <img src={addInfo.image[0]} />
+									: <img className="object-cover" src={addInfo.image} />
 							}
 						</div>
 						<div className="mb-4">

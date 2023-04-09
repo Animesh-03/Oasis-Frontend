@@ -7,13 +7,10 @@ import CategoryCard from "@/components/category card/categoryCard";
 import BookCard from "@/components/book card/bookCard";
 import { useGetAllCategoriesQuery, useGetTrendingBooksQuery } from "@/graphql/generated/generated";
 import withApollo from '@/apollo/client';
+import { useRouter } from "next/router";
 
 function Dashboard() {
-    // /*
-    //     option : 1 -> profile page 
-    //     option : 2 -> buy (default page)
-    //     option : 3 -> sell
-    // */
+    const router = useRouter();
 
     const {data: categoriesData,loading: categoriesLoading} = useGetAllCategoriesQuery();
     const {data: trendingData, loading: trendingLoading} = useGetTrendingBooksQuery();
@@ -21,8 +18,11 @@ function Dashboard() {
     if(categoriesLoading || trendingLoading)
         return (<>Loading...</>)
         
-    const onSearch = (results) => {
-        console.log(results);
+    const onSearch = async (queryString) => {
+        await router.push({
+            pathname: "/searchResult",
+            query: {bookName: queryString, author: queryString, seller: queryString}
+        });
     }
 
     return (
@@ -37,7 +37,7 @@ function Dashboard() {
                             <div>easier</div>
                         </div>
                         <div>
-                            <SearchBar onAdvancedSearch={onSearch} onSearch={onSearch} />
+                            <SearchBar isRedirect={true} onSearch={onSearch} />
                         </div>
 
                         </div>
