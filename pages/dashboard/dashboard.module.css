@@ -61,7 +61,12 @@
     width: 100%;
     overflow-x: auto;
 }
-
+.low
+{
+    background: url(../../images/white1.jpg);
+    background-size: cover;
+    width: 100vw;
+}
 .trending {
     display: flex;
     align-items: flex-start;
