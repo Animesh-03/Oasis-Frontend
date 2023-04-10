@@ -18,7 +18,7 @@ function SearchResult(){
 
     const onSearch = (results) => {
         setSearchRes(results ?? [])
-        console.log(results);
+        console.log(results)
     }
 
     const onAdvanceSearch = (results) => {
