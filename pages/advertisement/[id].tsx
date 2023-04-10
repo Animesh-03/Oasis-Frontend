@@ -27,7 +27,7 @@ function Test() {
                 <h1>More books</h1>
                 <div className={css["scroll"]}>
                     {trendingData?.getTrendingBooks.map(book => {
-                        return <BookCard key={book.bookName} title={book.bookName} description={book.description} />
+                        return <BookCard key={book.bookName} title={book.bookName} description={book.description} imageURL={book.advertisements[0].images[0]}/>
                     })}
                 </div>
             </div>

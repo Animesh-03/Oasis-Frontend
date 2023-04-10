@@ -21,7 +21,7 @@ function Dashboard() {
     const onSearch = async (queryString) => {
         await router.push({
             pathname: "/searchResult",
-            query: {bookName: queryString, author: queryString, seller: queryString}
+            query: {bookName: queryString}
         });
     }
 
@@ -56,7 +56,7 @@ function Dashboard() {
                         <p className="text-4xl font-bold tracking-wide mb-4">Trending</p>
                         <div className={css.trending}>
                             {trendingData?.getTrendingBooks.map(book => {
-                                return <BookCard key={book.bookName} title={book.bookName} description={book.description} />
+                                return <BookCard key={book.bookName} title={book.bookName} description={book.description} imageURL={book.advertisements[0].images[0]}/>
                             })}
                             
             <BookCard title="demo"></BookCard>

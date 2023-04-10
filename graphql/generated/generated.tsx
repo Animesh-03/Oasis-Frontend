@@ -997,6 +997,7 @@ export const GetBuyerHistoryDocument = gql`
       }
       seller {
         fullName
+        phoneNo
       }
       price
     }
@@ -1214,6 +1215,7 @@ export const GetSellerHistoryDocument = gql`
     }
     buyer {
       fullName
+      phoneNo
     }
     price
     isFinal
@@ -1298,6 +1300,9 @@ export const GetTrendingBooksDocument = gql`
   getTrendingBooks {
     description
     bookName
+    advertisements {
+      images
+    }
   }
 }
     `;
@@ -1438,7 +1443,7 @@ export type GetAdvertisementQuery = { __typename?: 'Query', getAdvertisement: { 
 export type GetBuyerHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetBuyerHistoryQuery = { __typename?: 'Query', getBuyerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string }, seller: { __typename?: 'UserType', fullName?: string | null } } }> };
+export type GetBuyerHistoryQuery = { __typename?: 'Query', getBuyerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string }, seller: { __typename?: 'UserType', fullName?: string | null, phoneNo?: string | null } } }> };
 
 export type GetBuyerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1463,7 +1468,7 @@ export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser: { __ty
 export type GetSellerHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSellerHistoryQuery = { __typename?: 'Query', getSellerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string } }, buyer: { __typename?: 'UserType', fullName?: string | null } }> };
+export type GetSellerHistoryQuery = { __typename?: 'Query', getSellerHistory: Array<{ __typename?: 'TouchType', id: string, price: number, isFinal: boolean, advertisement: { __typename?: 'AdvertisementType', id: string, price: number, book: { __typename?: 'Book', bookName: string, authorName: string } }, buyer: { __typename?: 'UserType', fullName?: string | null, phoneNo?: string | null } }> };
 
 export type GetSellerRespondsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1473,7 +1478,7 @@ export type GetSellerRespondsQuery = { __typename?: 'Query', getSellerResponds: 
 export type GetTrendingBooksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrendingBooksQuery = { __typename?: 'Query', getTrendingBooks: Array<{ __typename?: 'Book', description: string, bookName: string }> };
+export type GetTrendingBooksQuery = { __typename?: 'Query', getTrendingBooks: Array<{ __typename?: 'Book', description: string, bookName: string, advertisements: Array<{ __typename?: 'AdvertisementType', images: Array<string> }> }> };
 
 export type SearchAdvertisementsQueryVariables = Exact<{
   searchInput: AdvertisementSearchType;

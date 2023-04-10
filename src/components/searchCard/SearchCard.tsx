@@ -23,7 +23,7 @@ const SearchCard : React.FC<SearchCardProps> = ({id, title, author, imageUrl, pr
             <div className={css.inner}>
                 <div className={css.title}>{title}</div>
                 <div className={css.author}>{author}</div>
-                <div className={css.price}>Rs. {price}</div>
+                <div className={css.price}>&#8377; {price}</div>
                 <div className={css.tags}>
                 {
                     tags?.map((tag) => {

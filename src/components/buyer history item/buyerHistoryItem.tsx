@@ -12,10 +12,11 @@ interface BuyerHistoryItemProps {
     participant: string,
     bought: boolean,
     type: "purchase" | "sale"
+    phoneNo: string
 }
 
 
-const BuyerHistoryItem: React.FC<BuyerHistoryItemProps> = ({title, author, price, touchPrice, advertisementId, participant: seller, bought, type}) => {
+const BuyerHistoryItem: React.FC<BuyerHistoryItemProps> = ({title, author, price, touchPrice, phoneNo,advertisementId, participant: seller, bought, type}) => {
     const router = useRouter();
 
     return (
@@ -46,7 +47,9 @@ const BuyerHistoryItem: React.FC<BuyerHistoryItemProps> = ({title, author, price
                     <p className=' flex items-center text-2xl font-bold'>4.5 <AiFillStar color='yellow' size={"1.5em"}/></p>
                 </div>
                 <div className='flex-col'>
-                    <Button onClick={async () => await router.push(`/advertisement/${advertisementId}`)} label="View Details" variant="elong" />
+                    <Button onClick={async () => {
+                        alert("Phone Number : "+phoneNo)
+                        await router.push(`/advertisement/${advertisementId}`);}} label="View Details" variant="elong" />
                 </div>
             </div>
         </div>

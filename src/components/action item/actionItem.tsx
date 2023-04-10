@@ -70,15 +70,16 @@ const ActionItem:React.FC<ActionItemProps> = (e)=>{
                                 }
                                 else
                                 {
-                                    await buyerRespond({
+                                    let temp = await buyerRespond({
                                         variables: {
                                             respondBuyerTouchResponseInput2: {
                                                 accept: true,
                                                 touchId: e.touchId
                                             }
                                         }
-                                    });
-
+                                    }); 
+                                    if(temp.errors)
+                                        alert("Already Sold!!")
                                     console.log("Touch Confirmed");
                                 }
                                 await e.onAction();

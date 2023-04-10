@@ -26,6 +26,11 @@ const MainSection:  React.FC<MainSectionProps> = ({children}) => {
 				router.replace("/login");
 				console.log("Unauthorised");
 			}
+			else if(router.pathname!="/profile/edit" && !(data?.getCurrentUser.address&&data?.getCurrentUser.fullName&&data?.getCurrentUser.phoneNo))
+			{
+				router.replace("/profile/edit");
+				console.log("Please enter all the details!");
+			}
 		}
 
 

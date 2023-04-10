@@ -11,6 +11,7 @@ query GetSellerHistory {
     }
     buyer {
       fullName
+      phoneNo
     }
     price
     isFinal

@@ -32,7 +32,7 @@ function Advert(e:AdvertProps)
             variables: {
                 touchAdvertisement: {
                     price: Number(touchPriceRef.current.value),
-                    advertisementId: e.id
+                    advertisementId: router.query.id as string
                 }
             }
         });

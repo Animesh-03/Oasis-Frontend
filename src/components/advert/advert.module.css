@@ -8,9 +8,10 @@
 .left
 {
     min-width: 35%;
+    max-width: 40%;
     padding:40px;
-    
 }
+
 .ImgBottom input
 {
     border:1px solid black;
@@ -52,4 +53,5 @@
 .right button{
     min-height: 40px;
     margin-left: auto;
+    margin-top: auto;
 }

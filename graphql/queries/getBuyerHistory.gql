@@ -9,6 +9,7 @@ query GetBuyerHistory {
       }
       seller {
         fullName
+        phoneNo
       }
       price
     }

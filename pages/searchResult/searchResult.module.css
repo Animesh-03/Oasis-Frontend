@@ -19,6 +19,7 @@
     /* height: 350px;; */
     margin: 2% 10% 5% 10%;
     border-radius: 48px;
+    min-height: 50vh;
     box-shadow: 2px 5px 33px black;
     padding: 20px;
     display: flex;

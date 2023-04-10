@@ -20,8 +20,7 @@
 
 .similar
 {
-    background-color: white;
-    width: 100%;
+    background-color: rgb(248, 248, 248);
     min-height: 60vh;
     padding:30px;
 }

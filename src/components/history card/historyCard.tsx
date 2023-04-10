@@ -38,6 +38,7 @@ const HistoryCard:React.FC<HistoryCardProps> = ({historyItems, type})=>{
                     participant={type === "purchase" ? item.advertisement.seller.fullName : item.buyer.fullName}
                     bought={item.isFinal}
                     type={type}
+                    phoneNo={item.seller.phoneNo??item.buyer.phoneNo}
                 />
             })}
         </div>

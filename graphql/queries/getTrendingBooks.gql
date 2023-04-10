@@ -2,5 +2,8 @@ query GetTrendingBooks {
   getTrendingBooks {
     description
     bookName
+    advertisements {
+      images
+    }
   }
 }

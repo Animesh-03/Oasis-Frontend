@@ -22,10 +22,9 @@ interface AdInfo {
 
 function PostAd() {
 	const router = useRouter();
-
 	const {data: categories, loading} = useGetAllCategoriesQuery();
 	const [postAdvertisement] = usePostAdvertisementMutation();
-
+	
 
 	const [addInfo, setAddInfo] = React.useState<AdInfo>({
 		title: "",
@@ -43,6 +42,7 @@ function PostAd() {
 			...addInfo,
 			[e.target.name]: e.target.value,
 		});
+		console.log(addInfo);
 	};
 
 	const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -79,9 +79,10 @@ function PostAd() {
 
 	if(loading)
 		return <>Loading</>
-
+	
 	return (
 		<MainSection>
+
 			<div className={css["sell-root"]}>
 				<div className="flex flex-col justify-center items-center w-full h-2/4">
 					<div className={css.hero_par}>
