@@ -40,7 +40,9 @@ function LoginPage() {
     }
   }
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
     await registerUser({
       variables: {
         registerDetails: {
