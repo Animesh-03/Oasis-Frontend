@@ -101,11 +101,11 @@ function PostAd() {
 								addInfo.image == null ?
 									<UploadImage onSuccess={
 										(url: string) => {
+											console.log(addInfo);
 											setAddInfo({
 												...addInfo,
 												image: url
 											});
-											console.log(url);
 										}
 									}
 									/>
@@ -113,7 +113,7 @@ function PostAd() {
 							}
 						</div>
 						<div className="mb-4">
-							<Button variant="dark" label="remove" onClick={() => setAddInfo({
+							<Button variant="elong" label="remove" onClick={() => setAddInfo({
 								...addInfo,
 								image: null
 							})} />
@@ -143,11 +143,12 @@ function PostAd() {
 							</div>
 							<div className={css["description"]}>
 								<div className={css["add-info-title"]}> Description </div>
-								<input
+								<textarea
 									className={css["description-input"]}
-									type="textarea"
 									name="description"
-									onChange={onAddInfoChange}
+									onChange={(e)=>{
+										setAddInfo({...addInfo,description:e.target.value});
+									}}
 								/>
 							</div>
 
@@ -173,7 +174,7 @@ function PostAd() {
 							</div>
 						</div>
 						<div className="mb-4">
-							<Button variant={"dark"} label={"Post"} onClick={(e) => handleSubmit(e)} />
+							<Button variant='elong' label={"Post"} onClick={(e) => handleSubmit(e)} />
 						</div>
 					</div>
 				</div>

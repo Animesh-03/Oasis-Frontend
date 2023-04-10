@@ -24,14 +24,11 @@ const Sidebar: React.FC<SiderbarProps> = ({ option, setOption, setSidebarActive,
 	return (
 		<>
 			<div className={clsx([css.root, sideBarActive && css.active])}>
-				<div onClick={() => handleClick(1, "/profile/edit")}>
-					Profile
-				</div>
-				<div onClick={() => handleClick(2, "/buy")}>
-					Buy
-				</div>
 				<div onClick={() => handleClick(3, "/postAd")}>
 					SELL
+				</div>
+				<div onClick={() => handleClick(1, "/profile/edit")}>
+					Profile
 				</div>
 				<div onClick={() => handleClick(3, "/actions")}>
 					Actions
@@ -39,9 +36,9 @@ const Sidebar: React.FC<SiderbarProps> = ({ option, setOption, setSidebarActive,
 				<div onClick={() => handleClick(3, "/dashboard")}>
 					Dashboard
 				</div>
-				<div onClick={() => handleClick(3, "/advertisement")}>
+				{/* <div onClick={() => handleClick(3, "/advertisement")}>
 					test
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

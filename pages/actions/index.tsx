@@ -25,21 +25,40 @@ function ActionsPage(){
     const [buyerResponds, setBuyerResponds] = React.useState<GetBuyerRespondsQueryResult>();
 
     const refreshActionsList = async () => {
+        try{
         setBuyerTouches(await getBuyerTouches());
         setSellerResponds(await getSellerResponds());
         setBuyerResponds(await getBuyerResponds());
-    }
+        }
+        catch(e)
+        {
 
+        }
+    };
 
-    if(buyerTouches.loading || sellerResponds.loading || buyerResponds.loading) return <>Loading...</>
+    
+    React.useEffect(()=>{
+        try{
+            refreshActionsList();
+        }
+        catch(ed)
+        {
 
+        }
+    },[])
+    
+
+    if(!(buyerResponds && buyerTouches && sellerResponds))
+        return <>Loading...</> 
+    if(buyerTouches?.loading || sellerResponds?.loading || buyerResponds?.loading) 
+        return <>Loading...</>
     return (
         <MainSection>
             <div className={css["root"]}>
                 <p className="text-4xl font-bold tracking-wide mb-4 mt-4 text-white">Actions</p>
-                <ActionCard onAction={refreshActionsList} actionItems={buyerTouches.data.getBuyerTouches} type="touch" participant="seller"></ActionCard>
-                <ActionCard onAction={refreshActionsList} actionItems={sellerResponds.data.getSellerResponds} type="respond" participant="buyer"></ActionCard>
-                <ActionCard onAction={refreshActionsList} actionItems={buyerResponds.data.getBuyerResponds} type="confirm" participant="seller"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={buyerTouches?.data.getBuyerTouches} type="touch" participant="seller"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={sellerResponds?.data.getSellerResponds} type="respond" participant="buyer"></ActionCard>
+                <ActionCard onAction={refreshActionsList} actionItems={buyerResponds?.data.getBuyerResponds} type="confirm" participant="seller"></ActionCard>
             </div>
         </MainSection>
     )

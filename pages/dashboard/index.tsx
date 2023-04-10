@@ -51,7 +51,7 @@ function Dashboard() {
                             )}
                         </div>
                     </div>
-
+                <hr></hr>
                     <div className="flex flex-col items-center w-full mt-16">
                         <p className="text-4xl font-bold tracking-wide mb-4">Trending</p>
                         <div className={css.trending}>

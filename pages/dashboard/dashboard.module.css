@@ -18,11 +18,18 @@
     align-items: center;
     background-color: rgb(255, 255, 255);
 }
+.dashboard-root hr{
+    height: 2px;
+    background-color: rgb(171, 171, 171);
+    margin-top: 90px;
+    margin-left: -20px;
+    width:105%;
+}
 .hero {
     background-image: url("https://thediplomat.com/wp-content/uploads/2020/07/sizes/medium/thediplomat-2020-07-31-2.jpg");
     background-size: cover;
     width: 80vw;
-    height: fit-content;
+    min-height: 50vh;
     min-width: 800px;
     /* height: 350px;; */
     margin: 2% 10% 5% 10%;

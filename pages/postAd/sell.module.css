@@ -27,8 +27,8 @@
 	background-size: cover;
 	width: 80vw;
 	min-width: 800px;
-	min-height: 250px;
-	margin: 2% 10% 5% 10%;
+	min-height: 50vh;
+	margin: 2% 10% 2% 10%;
 	border-radius: 48px;
 	box-shadow: 2px 5px 33px black;
 
@@ -55,10 +55,19 @@
 	min-height: 70vh;
 	display: flex;
 	padding: 20px;
+	padding-inline:40px;
 	justify-content: center;
 	background: white;
+	margin-bottom: 3%;
 }
-
+.sell-root input,.sell-root select,.sell-root textarea{
+	border-radius: 5px;
+	border: 3px solid rgb(157, 157, 157);
+	margin-right: 70px;
+}
+.sell-root div{
+	text-align: center;
+}
 .add-image {
 	background: #ffffff;
 	border: 0.5px solid #391a00;
