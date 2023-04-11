@@ -23,7 +23,7 @@
 	background-color: rgb(255, 255, 255);
 }
 .hero {
-	background-image: url("https://thediplomat.com/wp-content/uploads/2020/07/sizes/medium/thediplomat-2020-07-31-2.jpg");
+	background-image: url(../../images/thediplomat-2020-07-31-2.jpg);
 	background-size: cover;
 	width: 80vw;
 	min-width: 800px;

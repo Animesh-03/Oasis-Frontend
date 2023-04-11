@@ -59,7 +59,7 @@ function SearchResult(){
                 return (
                     <SearchCard key={index} id={data.id} author={data.book.authorName} imageUrl={data.images[0]} price={data.price} tags={["Science", "Fiction", "Sci-Fi"]} title={data.book.bookName} />
                 )
-            }) : <>No Advertisments Found</>}
+            }) : <div className="text-center w-full">No Advertisments Found</div>}
             </div>
         </div> 
         </MainSection>

@@ -8,10 +8,11 @@
     padding-top: 50px;
     padding-bottom: 50px;
     width: 100%;
+    background: linear-gradient(to bottom right,rgb(16, 157, 223), cyan);
 }
 
 .hero {
-    background-image: url("https://thediplomat.com/wp-content/uploads/2020/07/sizes/medium/thediplomat-2020-07-31-2.jpg");
+    background-image: url(../../images/thediplomat-2020-07-31-2.jpg);
     background-size: cover;
     width: 80vw;
     height: fit-content;
