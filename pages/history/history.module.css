@@ -1,6 +1,6 @@
 .root
 {
-    background-color: #391A00;
+    background:url(../../images/552581.jpg);
     display: flex;
     flex-direction: column;
     justify-content: space-around;

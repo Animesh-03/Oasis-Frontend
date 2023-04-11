@@ -42,7 +42,7 @@ function Dashboard() {
 
                         </div>
                     </div>
-
+<div className={css.low}>
                     <div className="flex flex-col items-center w-full">
                         <p className="text-4xl font-bold tracking-wide mb-4 mt-4">Categories</p>
                         <div className={css.category}>
@@ -61,6 +61,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </MainSection>
     );
