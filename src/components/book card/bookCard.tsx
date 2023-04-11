@@ -20,7 +20,7 @@ const BookCard: React.FC<BookCardProps> = ({imageURL, title, description})=> {
             </div>
             <div className={css.inner}>
                  <p className="text-2xl font-semibold">{title}</p>
-                <p className="text-xs font-extralight break-words">{description}</p>
+                <p className="text-xs font-extralight break-words">{description?.slice(0,50) +( description?.length > 30 ? '...' : '')}</p>
             </div>
         </div>
     )

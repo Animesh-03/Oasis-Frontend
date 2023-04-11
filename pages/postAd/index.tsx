@@ -66,7 +66,7 @@ function PostAd() {
 						bookName: addInfo.title,
 						description: addInfo.description,
 						isbn: addInfo.isbn,
-						category: addInfo.category
+						category: addInfo.category ?? categories.getAllCategories[0].name
 					}
 				}
 			}
