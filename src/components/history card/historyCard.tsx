@@ -9,6 +9,8 @@ interface HistoryCardProps {
 
 const HistoryCard:React.FC<HistoryCardProps> = ({historyItems, type})=>{
 
+    console.log(historyItems[0]);
+
     return( 
     <div className={css["root"]}>
 
@@ -38,7 +40,7 @@ const HistoryCard:React.FC<HistoryCardProps> = ({historyItems, type})=>{
                     participant={type === "purchase" ? item.advertisement.seller.fullName : item.buyer.fullName}
                     bought={item.isFinal}
                     type={type}
-                    phoneNo={item.seller.phoneNo??item.buyer.phoneNo}
+                    phoneNo={item.advertisement?.seller?.phoneNo ?? item.buyer?.phoneNo}
                 />
             })}
         </div>
