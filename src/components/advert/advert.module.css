@@ -29,6 +29,7 @@
 .left img{
     object-fit: cover;
     height: 80%;
+    width: 100%;
     box-shadow: 0 0 10px black;
     border-radius: 10px;
 }
