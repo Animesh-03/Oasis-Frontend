@@ -55,6 +55,7 @@ export type AdvertisementType = {
   sellerID: Scalars['String'];
   time: Scalars['String'];
   touches: Array<TouchType>;
+  verified: Scalars['Boolean'];
 };
 
 
@@ -93,6 +94,7 @@ export type AdvertisementTypeOrderByWithRelationInput = {
   sellerID?: InputMaybe<SortOrder>;
   time?: InputMaybe<SortOrder>;
   touches?: InputMaybe<TouchTypeOrderByRelationAggregateInput>;
+  verified?: InputMaybe<SortOrder>;
 };
 
 export type AdvertisementTypeRelationFilter = {
@@ -107,7 +109,8 @@ export enum AdvertisementTypeScalarFieldEnum {
   Open = 'open',
   Price = 'price',
   SellerId = 'sellerID',
-  Time = 'time'
+  Time = 'time',
+  Verified = 'verified'
 }
 
 export type AdvertisementTypeWhereInput = {
@@ -124,6 +127,7 @@ export type AdvertisementTypeWhereInput = {
   sellerID?: InputMaybe<StringFilter>;
   time?: InputMaybe<StringFilter>;
   touches?: InputMaybe<TouchTypeListRelationFilter>;
+  verified?: InputMaybe<BoolFilter>;
 };
 
 export type AdvertisementTypeWhereUniqueInput = {
@@ -147,6 +151,7 @@ export type Book = {
   id: Scalars['String'];
   isbn: Scalars['String'];
   purchases: Scalars['Int'];
+  ratings: Array<Rating>;
 };
 
 
@@ -159,9 +164,20 @@ export type BookAdvertisementsArgs = {
   where?: InputMaybe<AdvertisementTypeWhereInput>;
 };
 
+
+export type BookRatingsArgs = {
+  cursor?: InputMaybe<RatingWhereUniqueInput>;
+  distinct?: InputMaybe<Array<RatingScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<RatingOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RatingWhereInput>;
+};
+
 export type BookCount = {
   __typename?: 'BookCount';
   advertisements: Scalars['Int'];
+  ratings: Scalars['Int'];
 };
 
 export type BookCreationInput = {
@@ -192,6 +208,7 @@ export type BookOrderByWithRelationInput = {
   id?: InputMaybe<SortOrder>;
   isbn?: InputMaybe<SortOrder>;
   purchases?: InputMaybe<SortOrder>;
+  ratings?: InputMaybe<RatingOrderByRelationAggregateInput>;
 };
 
 export type BookRelationFilter = {
@@ -222,6 +239,7 @@ export type BookWhereInput = {
   id?: InputMaybe<StringFilter>;
   isbn?: InputMaybe<StringFilter>;
   purchases?: InputMaybe<IntFilter>;
+  ratings?: InputMaybe<RatingListRelationFilter>;
 };
 
 export type BookWhereUniqueInput = {
@@ -307,6 +325,7 @@ export type Mutation = {
   loginUser?: Maybe<UserType>;
   logoutUser: Scalars['Boolean'];
   postAdvertisement: AdvertisementType;
+  rateBook: Scalars['Boolean'];
   registerUser: Scalars['Boolean'];
   respondBuyerTouch: Scalars['Boolean'];
   respondSellerTouch: Scalars['Boolean'];
@@ -327,6 +346,12 @@ export type MutationLoginUserArgs = {
 
 export type MutationPostAdvertisementArgs = {
   postAdvertisement: AdvertisementPostInputType;
+};
+
+
+export type MutationRateBookArgs = {
+  bookID: Scalars['String'];
+  rating: Scalars['Float'];
 };
 
 
@@ -406,14 +431,30 @@ export type Query = {
   getAllAdvertisements: Array<AdvertisementType>;
   getAllCategories: Array<Category>;
   getAllUsers: Array<UserType>;
+  getAveragePostingPrice: Scalars['Float'];
+  getAverageTouchPrice: Scalars['Float'];
+  getBookRating: Scalars['Float'];
   getBuyerHistory: Array<TouchType>;
   getBuyerResponds: Array<TouchType>;
   getBuyerTouches: Array<TouchType>;
   getCurrentUser: UserType;
+  getNumberOfAccepts: Scalars['Float'];
+  getNumberOfActiveAdvertisements: Scalars['Float'];
+  getNumberOfActiveResponds: Scalars['Float'];
+  getNumberOfActiveTouches: Scalars['Float'];
+  getNumberOfBuyers: Scalars['Float'];
+  getNumberOfResponds: Scalars['Float'];
+  getNumberOfSellers: Scalars['Float'];
+  getNumberOfTouches: Scalars['Float'];
   getSellerHistory: Array<TouchType>;
   getSellerResponds: Array<TouchType>;
+  getTotalSaleAmount: Scalars['Float'];
   getTrendingBooks: Array<Book>;
+  getUnverifiedAdvertisements: Array<AdvertisementType>;
+  getUserRating: Scalars['Float'];
   searchAdvertisements: Array<AdvertisementType>;
+  userBoughtAdvertisement: Scalars['Boolean'];
+  verifyAdvertisement: Scalars['Boolean'];
 };
 
 
@@ -422,14 +463,81 @@ export type QueryGetAdvertisementArgs = {
 };
 
 
+export type QueryGetBookRatingArgs = {
+  bookID: Scalars['String'];
+};
+
+
 export type QuerySearchAdvertisementsArgs = {
   searchInput: AdvertisementSearchType;
+};
+
+
+export type QueryUserBoughtAdvertisementArgs = {
+  advertisement: Scalars['String'];
+};
+
+
+export type QueryVerifyAdvertisementArgs = {
+  advertisementID: Scalars['String'];
 };
 
 export enum QueryMode {
   Default = 'default',
   Insensitive = 'insensitive'
 }
+
+export type Rating = {
+  __typename?: 'Rating';
+  book: Book;
+  bookID: Scalars['String'];
+  id: Scalars['String'];
+  user: UserType;
+  userID: Scalars['String'];
+  value: Scalars['Int'];
+};
+
+export type RatingListRelationFilter = {
+  every?: InputMaybe<RatingWhereInput>;
+  none?: InputMaybe<RatingWhereInput>;
+  some?: InputMaybe<RatingWhereInput>;
+};
+
+export type RatingOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type RatingOrderByWithRelationInput = {
+  book?: InputMaybe<BookOrderByWithRelationInput>;
+  bookID?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  user?: InputMaybe<UserTypeOrderByWithRelationInput>;
+  userID?: InputMaybe<SortOrder>;
+  value?: InputMaybe<SortOrder>;
+};
+
+export enum RatingScalarFieldEnum {
+  BookId = 'bookID',
+  Id = 'id',
+  UserId = 'userID',
+  Value = 'value'
+}
+
+export type RatingWhereInput = {
+  AND?: InputMaybe<Array<RatingWhereInput>>;
+  NOT?: InputMaybe<Array<RatingWhereInput>>;
+  OR?: InputMaybe<Array<RatingWhereInput>>;
+  book?: InputMaybe<BookRelationFilter>;
+  bookID?: InputMaybe<StringFilter>;
+  id?: InputMaybe<StringFilter>;
+  user?: InputMaybe<UserTypeRelationFilter>;
+  userID?: InputMaybe<StringFilter>;
+  value?: InputMaybe<IntFilter>;
+};
+
+export type RatingWhereUniqueInput = {
+  id?: InputMaybe<Scalars['String']>;
+};
 
 export enum SortOrder {
   Asc = 'asc',
@@ -564,6 +672,7 @@ export type UserType = {
   id: Scalars['String'];
   password: Scalars['String'];
   phoneNo?: Maybe<Scalars['String']>;
+  ratings: Array<Rating>;
   touches: Array<TouchType>;
   username: Scalars['String'];
 };
@@ -579,6 +688,16 @@ export type UserTypeAdsArgs = {
 };
 
 
+export type UserTypeRatingsArgs = {
+  cursor?: InputMaybe<RatingWhereUniqueInput>;
+  distinct?: InputMaybe<Array<RatingScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<RatingOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RatingWhereInput>;
+};
+
+
 export type UserTypeTouchesArgs = {
   cursor?: InputMaybe<TouchTypeWhereUniqueInput>;
   distinct?: InputMaybe<Array<TouchTypeScalarFieldEnum>>;
@@ -591,6 +710,7 @@ export type UserTypeTouchesArgs = {
 export type UserTypeCount = {
   __typename?: 'UserTypeCount';
   ads: Scalars['Int'];
+  ratings: Scalars['Int'];
   touches: Scalars['Int'];
 };
 
@@ -602,6 +722,7 @@ export type UserTypeOrderByWithRelationInput = {
   id?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
   phoneNo?: InputMaybe<SortOrder>;
+  ratings?: InputMaybe<RatingOrderByRelationAggregateInput>;
   touches?: InputMaybe<TouchTypeOrderByRelationAggregateInput>;
   username?: InputMaybe<SortOrder>;
 };
@@ -622,6 +743,7 @@ export type UserTypeWhereInput = {
   id?: InputMaybe<StringFilter>;
   password?: InputMaybe<StringFilter>;
   phoneNo?: InputMaybe<StringNullableFilter>;
+  ratings?: InputMaybe<RatingListRelationFilter>;
   touches?: InputMaybe<TouchTypeListRelationFilter>;
   username?: InputMaybe<StringFilter>;
 };
@@ -774,6 +896,38 @@ export function usePostAdvertisementMutation(baseOptions?: Apollo.MutationHookOp
 export type PostAdvertisementMutationHookResult = ReturnType<typeof usePostAdvertisementMutation>;
 export type PostAdvertisementMutationResult = Apollo.MutationResult<PostAdvertisementMutation>;
 export type PostAdvertisementMutationOptions = Apollo.BaseMutationOptions<PostAdvertisementMutation, PostAdvertisementMutationVariables>;
+export const RateBookDocument = gql`
+    mutation RateBook($rating: Float!, $rateBookBookId: String!) {
+  rateBook(rating: $rating, bookID: $rateBookBookId)
+}
+    `;
+export type RateBookMutationFn = Apollo.MutationFunction<RateBookMutation, RateBookMutationVariables>;
+
+/**
+ * __useRateBookMutation__
+ *
+ * To run a mutation, you first call `useRateBookMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRateBookMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [rateBookMutation, { data, loading, error }] = useRateBookMutation({
+ *   variables: {
+ *      rating: // value for 'rating'
+ *      rateBookBookId: // value for 'rateBookBookId'
+ *   },
+ * });
+ */
+export function useRateBookMutation(baseOptions?: Apollo.MutationHookOptions<RateBookMutation, RateBookMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RateBookMutation, RateBookMutationVariables>(RateBookDocument, options);
+      }
+export type RateBookMutationHookResult = ReturnType<typeof useRateBookMutation>;
+export type RateBookMutationResult = Apollo.MutationResult<RateBookMutation>;
+export type RateBookMutationOptions = Apollo.BaseMutationOptions<RateBookMutation, RateBookMutationVariables>;
 export const RegisterUserDocument = gql`
     mutation RegisterUser($registerDetails: UserRegisterType!) {
   registerUser(registerDetails: $registerDetails)
@@ -945,8 +1099,10 @@ export const GetAdvertisementDocument = gql`
     open
     seller {
       fullName
+      phoneNo
     }
     book {
+      id
       bookName
       authorName
       description
@@ -955,6 +1111,8 @@ export const GetAdvertisementDocument = gql`
       }
     }
   }
+  getUserRating
+  userBoughtAdvertisement(advertisement: $advertisement)
 }
     `;
 
@@ -985,6 +1143,39 @@ export function useGetAdvertisementLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetAdvertisementQueryHookResult = ReturnType<typeof useGetAdvertisementQuery>;
 export type GetAdvertisementLazyQueryHookResult = ReturnType<typeof useGetAdvertisementLazyQuery>;
 export type GetAdvertisementQueryResult = Apollo.QueryResult<GetAdvertisementQuery, GetAdvertisementQueryVariables>;
+export const GetBookRatingDocument = gql`
+    query GetBookRating($getBookRatingBookId: String!) {
+  getBookRating(bookID: $getBookRatingBookId)
+}
+    `;
+
+/**
+ * __useGetBookRatingQuery__
+ *
+ * To run a query within a React component, call `useGetBookRatingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBookRatingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBookRatingQuery({
+ *   variables: {
+ *      getBookRatingBookId: // value for 'getBookRatingBookId'
+ *   },
+ * });
+ */
+export function useGetBookRatingQuery(baseOptions: Apollo.QueryHookOptions<GetBookRatingQuery, GetBookRatingQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBookRatingQuery, GetBookRatingQueryVariables>(GetBookRatingDocument, options);
+      }
+export function useGetBookRatingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBookRatingQuery, GetBookRatingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBookRatingQuery, GetBookRatingQueryVariables>(GetBookRatingDocument, options);
+        }
+export type GetBookRatingQueryHookResult = ReturnType<typeof useGetBookRatingQuery>;
+export type GetBookRatingLazyQueryHookResult = ReturnType<typeof useGetBookRatingLazyQuery>;
+export type GetBookRatingQueryResult = Apollo.QueryResult<GetBookRatingQuery, GetBookRatingQueryVariables>;
 export const GetBuyerHistoryDocument = gql`
     query GetBuyerHistory {
   getBuyerHistory {
@@ -1398,6 +1589,14 @@ export type PostAdvertisementMutationVariables = Exact<{
 
 export type PostAdvertisementMutation = { __typename?: 'Mutation', postAdvertisement: { __typename?: 'AdvertisementType', images: Array<string>, price: number, time: string, book: { __typename?: 'Book', authorName: string, bookName: string, description: string, id: string, isbn: string, category: { __typename?: 'Category', name: string } } } };
 
+export type RateBookMutationVariables = Exact<{
+  rating: Scalars['Float'];
+  rateBookBookId: Scalars['String'];
+}>;
+
+
+export type RateBookMutation = { __typename?: 'Mutation', rateBook: boolean };
+
 export type RegisterUserMutationVariables = Exact<{
   registerDetails: UserRegisterType;
 }>;
@@ -1438,7 +1637,14 @@ export type GetAdvertisementQueryVariables = Exact<{
 }>;
 
 
-export type GetAdvertisementQuery = { __typename?: 'Query', getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null }, book: { __typename?: 'Book', bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
+export type GetAdvertisementQuery = { __typename?: 'Query', getUserRating: number, userBoughtAdvertisement: boolean, getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null, phoneNo?: string | null }, book: { __typename?: 'Book', id: string, bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
+
+export type GetBookRatingQueryVariables = Exact<{
+  getBookRatingBookId: Scalars['String'];
+}>;
+
+
+export type GetBookRatingQuery = { __typename?: 'Query', getBookRating: number };
 
 export type GetBuyerHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 

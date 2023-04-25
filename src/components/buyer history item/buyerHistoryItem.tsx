@@ -48,7 +48,6 @@ const BuyerHistoryItem: React.FC<BuyerHistoryItemProps> = ({title, author, price
                 </div>
                 <div className='flex-col'>
                     <Button onClick={async () => {
-                        alert("Phone Number : "+phoneNo)
                         await router.push(`/advertisement/${advertisementId}`);}} label="View Details" variant="elong" />
                 </div>
             </div>

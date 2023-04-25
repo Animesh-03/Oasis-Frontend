@@ -1,0 +1,3 @@
+mutation RateBook($rating: Float!, $rateBookBookId: String!) {
+  rateBook(rating: $rating, bookID: $rateBookBookId)
+}

@@ -6,8 +6,10 @@ query GetAdvertisement($advertisement: String!) {
     open
     seller {
       fullName
+      phoneNo
     }  
     book {
+      id
       bookName
       authorName
       description
@@ -16,4 +18,6 @@ query GetAdvertisement($advertisement: String!) {
       }
     }
   }
+  getUserRating
+  userBoughtAdvertisement(advertisement: $advertisement)
 }

@@ -37,6 +37,7 @@ type AdvertisementType {
   sellerID: String!
   time: String!
   touches(cursor: TouchTypeWhereUniqueInput, distinct: [TouchTypeScalarFieldEnum!], orderBy: [TouchTypeOrderByWithRelationInput!], skip: Int, take: Int, where: TouchTypeWhereInput): [TouchType!]!
+  verified: Boolean!
 }
 
 type AdvertisementTypeCount {
@@ -64,6 +65,7 @@ input AdvertisementTypeOrderByWithRelationInput {
   sellerID: SortOrder
   time: SortOrder
   touches: TouchTypeOrderByRelationAggregateInput
+  verified: SortOrder
 }
 
 input AdvertisementTypeRelationFilter {
@@ -79,6 +81,7 @@ enum AdvertisementTypeScalarFieldEnum {
   price
   sellerID
   time
+  verified
 }
 
 input AdvertisementTypeWhereInput {
@@ -95,6 +98,7 @@ input AdvertisementTypeWhereInput {
   sellerID: StringFilter
   time: StringFilter
   touches: TouchTypeListRelationFilter
+  verified: BoolFilter
 }
 
 input AdvertisementTypeWhereUniqueInput {
@@ -117,10 +121,12 @@ type Book {
   id: String!
   isbn: String!
   purchases: Int!
+  ratings(cursor: RatingWhereUniqueInput, distinct: [RatingScalarFieldEnum!], orderBy: [RatingOrderByWithRelationInput!], skip: Int, take: Int, where: RatingWhereInput): [Rating!]!
 }
 
 type BookCount {
   advertisements: Int!
+  ratings: Int!
 }
 
 input BookCreationInput {
@@ -151,6 +157,7 @@ input BookOrderByWithRelationInput {
   id: SortOrder
   isbn: SortOrder
   purchases: SortOrder
+  ratings: RatingOrderByRelationAggregateInput
 }
 
 input BookRelationFilter {
@@ -181,6 +188,7 @@ input BookWhereInput {
   id: StringFilter
   isbn: StringFilter
   purchases: IntFilter
+  ratings: RatingListRelationFilter
 }
 
 input BookWhereUniqueInput {
@@ -253,6 +261,7 @@ type Mutation {
   loginUser(loginDetails: UserLoginType!): UserType
   logoutUser: Boolean!
   postAdvertisement(postAdvertisement: AdvertisementPostInputType!): AdvertisementType!
+  rateBook(bookID: String!, rating: Float!): Boolean!
   registerUser(registerDetails: UserRegisterType!): Boolean!
   respondBuyerTouch(responseInput: AdvertisementBuyerResponseType!): Boolean!
   respondSellerTouch(responseInput: AdvertisementSellerResponseType!): Boolean!
@@ -311,19 +320,86 @@ type Query {
   getAllAdvertisements: [AdvertisementType!]!
   getAllCategories: [Category!]!
   getAllUsers: [UserType!]!
+  getAveragePostingPrice: Float!
+  getAverageTouchPrice: Float!
+  getBookRating(bookID: String!): Float!
   getBuyerHistory: [TouchType!]!
   getBuyerResponds: [TouchType!]!
   getBuyerTouches: [TouchType!]!
   getCurrentUser: UserType!
+  getNumberOfAccepts: Float!
+  getNumberOfActiveAdvertisements: Float!
+  getNumberOfActiveResponds: Float!
+  getNumberOfActiveTouches: Float!
+  getNumberOfBuyers: Float!
+  getNumberOfResponds: Float!
+  getNumberOfSellers: Float!
+  getNumberOfTouches: Float!
   getSellerHistory: [TouchType!]!
   getSellerResponds: [TouchType!]!
+  getTotalSaleAmount: Float!
   getTrendingBooks: [Book!]!
+  getUnverifiedAdvertisements: [AdvertisementType!]!
+  getUserRating: Float!
   searchAdvertisements(searchInput: AdvertisementSearchType!): [AdvertisementType!]!
+  userBoughtAdvertisement(advertisement: String!): Boolean!
+  verifyAdvertisement(advertisementID: String!): Boolean!
 }
 
 enum QueryMode {
   default
   insensitive
+}
+
+type Rating {
+  book: Book!
+  bookID: String!
+  id: String!
+  user: UserType!
+  userID: String!
+  value: Int!
+}
+
+input RatingListRelationFilter {
+  every: RatingWhereInput
+  none: RatingWhereInput
+  some: RatingWhereInput
+}
+
+input RatingOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input RatingOrderByWithRelationInput {
+  book: BookOrderByWithRelationInput
+  bookID: SortOrder
+  id: SortOrder
+  user: UserTypeOrderByWithRelationInput
+  userID: SortOrder
+  value: SortOrder
+}
+
+enum RatingScalarFieldEnum {
+  bookID
+  id
+  userID
+  value
+}
+
+input RatingWhereInput {
+  AND: [RatingWhereInput!]
+  NOT: [RatingWhereInput!]
+  OR: [RatingWhereInput!]
+  book: BookRelationFilter
+  bookID: StringFilter
+  id: StringFilter
+  user: UserTypeRelationFilter
+  userID: StringFilter
+  value: IntFilter
+}
+
+input RatingWhereUniqueInput {
+  id: String
 }
 
 enum SortOrder {
@@ -457,12 +533,14 @@ type UserType {
   id: String!
   password: String!
   phoneNo: String
+  ratings(cursor: RatingWhereUniqueInput, distinct: [RatingScalarFieldEnum!], orderBy: [RatingOrderByWithRelationInput!], skip: Int, take: Int, where: RatingWhereInput): [Rating!]!
   touches(cursor: TouchTypeWhereUniqueInput, distinct: [TouchTypeScalarFieldEnum!], orderBy: [TouchTypeOrderByWithRelationInput!], skip: Int, take: Int, where: TouchTypeWhereInput): [TouchType!]!
   username: String!
 }
 
 type UserTypeCount {
   ads: Int!
+  ratings: Int!
   touches: Int!
 }
 
@@ -474,6 +552,7 @@ input UserTypeOrderByWithRelationInput {
   id: SortOrder
   password: SortOrder
   phoneNo: SortOrder
+  ratings: RatingOrderByRelationAggregateInput
   touches: TouchTypeOrderByRelationAggregateInput
   username: SortOrder
 }
@@ -494,6 +573,7 @@ input UserTypeWhereInput {
   id: StringFilter
   password: StringFilter
   phoneNo: StringNullableFilter
+  ratings: RatingListRelationFilter
   touches: TouchTypeListRelationFilter
   username: StringFilter
 }

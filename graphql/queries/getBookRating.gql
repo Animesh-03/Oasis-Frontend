@@ -1,0 +1,3 @@
+query GetBookRating($getBookRatingBookId: String!) {
+  getBookRating(bookID: $getBookRatingBookId) 
+}
