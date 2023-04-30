@@ -14,7 +14,7 @@ interface EditProfileProps {
 
 }
 
-const EditProfile: React.FC<EditProfileProps> = ({ }) => {
+const EditProfile: React.FC<EditProfileProps> = () => {
     const { data: userData, loading: userLoading } = useGetCurrentUserQuery();
     const [updateUser] = useUpdateUserMutation();
     const [deleteUser] = useDeleteUserMutation();
