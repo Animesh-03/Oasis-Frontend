@@ -8,7 +8,6 @@
     border-radius: 15px;
 }
 .inner {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
