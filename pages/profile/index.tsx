@@ -6,7 +6,7 @@ interface ProfilePageProps {
 
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({}) => {
+const ProfilePage: React.FC<ProfilePageProps> = () => {
 
     return (
         <MainSection>
