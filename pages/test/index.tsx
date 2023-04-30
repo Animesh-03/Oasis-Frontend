@@ -3,7 +3,7 @@ import withApollo from "@/apollo/client";
 import clsx from "clsx"
 import css from "./test.module.css"
 import { useRouter } from "next/router";
-const ProfilePage: React.FC = ({}) => {
+const ProfilePage: React.FC = () => {
     const router = useRouter();
     const handleClick = async function(e){
         await router.push(e);
