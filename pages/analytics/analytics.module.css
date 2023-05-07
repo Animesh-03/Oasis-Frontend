@@ -1,6 +1,7 @@
 .root
 {
     display: flex;
+    overflow-y: scroll;
 }
 .section
 {
@@ -38,6 +39,7 @@
 }
 .comp
 {
+    padding: 4rem 5rem 4rem 5rem;
     flex-grow: 1;
     border-radius: 20px;
     background-color: #303030;

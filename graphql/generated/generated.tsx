@@ -1143,6 +1143,48 @@ export function useGetAdvertisementLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetAdvertisementQueryHookResult = ReturnType<typeof useGetAdvertisementQuery>;
 export type GetAdvertisementLazyQueryHookResult = ReturnType<typeof useGetAdvertisementLazyQuery>;
 export type GetAdvertisementQueryResult = Apollo.QueryResult<GetAdvertisementQuery, GetAdvertisementQueryVariables>;
+export const GetAnalyticsDocument = gql`
+    query GetAnalytics {
+  getNumberOfBuyers
+  getNumberOfSellers
+  getTotalSaleAmount
+  getNumberOfResponds
+  getNumberOfTouches
+  getNumberOfAccepts
+  getNumberOfActiveAdvertisements
+  getNumberOfActiveResponds
+  getNumberOfActiveTouches
+  getAverageTouchPrice
+  getAveragePostingPrice
+}
+    `;
+
+/**
+ * __useGetAnalyticsQuery__
+ *
+ * To run a query within a React component, call `useGetAnalyticsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAnalyticsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAnalyticsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAnalyticsQuery(baseOptions?: Apollo.QueryHookOptions<GetAnalyticsQuery, GetAnalyticsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAnalyticsQuery, GetAnalyticsQueryVariables>(GetAnalyticsDocument, options);
+      }
+export function useGetAnalyticsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAnalyticsQuery, GetAnalyticsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAnalyticsQuery, GetAnalyticsQueryVariables>(GetAnalyticsDocument, options);
+        }
+export type GetAnalyticsQueryHookResult = ReturnType<typeof useGetAnalyticsQuery>;
+export type GetAnalyticsLazyQueryHookResult = ReturnType<typeof useGetAnalyticsLazyQuery>;
+export type GetAnalyticsQueryResult = Apollo.QueryResult<GetAnalyticsQuery, GetAnalyticsQueryVariables>;
 export const GetBookRatingDocument = gql`
     query GetBookRating($getBookRatingBookId: String!) {
   getBookRating(bookID: $getBookRatingBookId)
@@ -1638,6 +1680,11 @@ export type GetAdvertisementQueryVariables = Exact<{
 
 
 export type GetAdvertisementQuery = { __typename?: 'Query', getUserRating: number, userBoughtAdvertisement: boolean, getAdvertisement: { __typename?: 'AdvertisementType', id: string, price: number, images: Array<string>, open: boolean, seller: { __typename?: 'UserType', fullName?: string | null, phoneNo?: string | null }, book: { __typename?: 'Book', id: string, bookName: string, authorName: string, description: string, category: { __typename?: 'Category', name: string } } } };
+
+export type GetAnalyticsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAnalyticsQuery = { __typename?: 'Query', getNumberOfBuyers: number, getNumberOfSellers: number, getTotalSaleAmount: number, getNumberOfResponds: number, getNumberOfTouches: number, getNumberOfAccepts: number, getNumberOfActiveAdvertisements: number, getNumberOfActiveResponds: number, getNumberOfActiveTouches: number, getAverageTouchPrice: number, getAveragePostingPrice: number };
 
 export type GetBookRatingQueryVariables = Exact<{
   getBookRatingBookId: Scalars['String'];

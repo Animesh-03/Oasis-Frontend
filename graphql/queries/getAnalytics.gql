@@ -1,0 +1,13 @@
+query GetAnalytics {
+  getNumberOfBuyers
+  getNumberOfSellers
+  getTotalSaleAmount
+  getNumberOfResponds
+  getNumberOfTouches
+  getNumberOfAccepts
+  getNumberOfActiveAdvertisements
+  getNumberOfActiveResponds
+  getNumberOfActiveTouches
+  getAverageTouchPrice
+  getAveragePostingPrice
+}
